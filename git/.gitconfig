@@ -1,0 +1,9 @@
+[user]
+	name = Huray-hub
+  email = panos.skiadas12@gmail.com
+
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = nvim
+
+

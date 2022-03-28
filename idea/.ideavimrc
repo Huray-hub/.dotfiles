@@ -1,0 +1,93 @@
+set incsearch
+set ignorecase
+set smartcase
+set relativenumber
+set showmode
+set clipboard+=unnamed
+set clipboard+=ideaput
+set ideajoin
+set idearefactormode=keep
+set incsearch
+set ideamarks
+set ideawrite=file
+set lookupkeys
+set ideastatusicon=gray
+set hlsearch
+
+let mapleader=" "
+
+nnoremap ]m :action MethodDown<CR>
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gr :action FindUsages<CR>
+nnoremap gl :action ShowErrorDescription<CR>
+nnoremap <S-h> :action PreviousTab<CR>
+nnoremap <S-l> :action NextTab<CR>
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+nnoremap <leader>/ :action CommentByLineComment<CR>
+nnoremap <leader>f :action GotoFile<CR>
+"nnoremap <leader>a :action GotoAction<CR>
+"nnoremap <leader>a :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>a :action ShowIntentionActions<CR>
+nnoremap <leader>w :action SaveAll<CR>
+nnoremap <Leader>c :action CloseContent<CR>
+nnoremap <leader>h :noh<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
+nnoremap Y y$
+
+"nnoremap za :toggleFold
+nnoremap zM :action CollapseAllRegions<CR>
+nnoremap zR :action ExpandAllRegions<CR>
+"nnoremap <leader>zc <Action> CollapseAllRegions<CR>
+"nnoremap <leader>zo <Action> ExpandAllRegions<CR>
+
+vnoremap < <gv
+vnoremap > >gv
+
+"sethandler <c-j> a:vim
+"sethandler <c-k> a:vim
+
+"nnoremap <c-/> <Action> FindInPath<CR>
+"nnoremap <leader>s <Action> GotoRelated<CR>
+"nnoremap <leader>h <Action> CallHierarchy<CR>
+"nnoremap <leader>b <Action> ShowNavBar<CR>
+"nnoremap <c-s> <Action> FileStructurePopup<CR>
+"nnoremap <c-o> <Action> GotoSymbol<CR>
+"nnoremap gc <Action> GotoClass<CR>
+"nnoremap gp <Action> GotToSuperMethod<CR>
+"nnoremap gt <Action> GotoTest<CR>
+
+"nnoremap zc <Action> CollapseRegion<CR>
+"nnoremap zo <Action> ExpandRegion<CR>
+"nnoremap <Leader>=  <Action> ReformatCode<CR>
+"nnoremap <leader>o <Action> OptimizeImports<CR>
+"nnoremap <c-r> <Action> RecentFiles<CR>
+"nnoremap <leader>l <Action> RecentLocations<CR>
+"nnoremap <leader>h  <Action> LocalHistory.ShowHistory<CR>
+
+"nnoremap \e :e ~/.ideavimrc<CR>
+"nnoremap \r <Action> IdeaVim.ReloadVimRc.reload<CR>
+
+"zenmode ?"
+"nnoremap <c-z> <Action> ToggleDistractionFreeMode<CR>
+
+"Terminal
+"nnoremap <c-t> <Action> ActivateTerminalToolWindow<CR>
+"nnoremap <leader>t <Action> Terminal.OpenInTerminal<CR>"
+
+"nnoremap <c-\> <Action> SplitVertically<CR>
+"nnoremap <c--> <Action> SplitHorizontally<CR>
+"nnoremap <c-=> <Action> Unsplit<CR>
+"nnoremap <c-m> <Action> MoveEditorToOppositeTabGroup<CR>
+"nnoremap <Leader>en <Action> EditSourceInNewWindow<CR>
+"nnoremap <Leader>n <Action> NextWindow<CR>
+"nnoremap <Leader>qa <Action> CloseAllEditors<CR>
