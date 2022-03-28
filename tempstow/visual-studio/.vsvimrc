@@ -1,0 +1,110 @@
+set clipboard=unnamed
+set shell=powershell
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set autoindent
+"set smartindent = true
+"set splitbelow
+set number relativenumber
+set scrolloff=8
+"set sidescrolloff=8
+set cursorline
+"set completeopt=menuone,noselect
+let mapleader="\<Space>"
+let maplocalleader="\<Space>"
+"ALL
+noremap <Leader>/ :vsc Edit.ToggleLineComment<CR>
+noremap <leader>h :nohlsearch<CR>
+noremap <Tab> :vsc Edit.LineDown<CR>
+noremap <S-Tab> :vsc Edit.LineUp<CR>
+"NORMAL 
+nnoremap gd :vsc Edit.GoToDefinition<CR>
+nnoremap gi :vsc Edit.GoToImplementation<CR>
+nnoremap gr :vsc Edit.FindAllReferences<CR>
+nnoremap gp :vsc Edit.PeekDefinition<CR>
+nnoremap <Leader>c :vsc File.Close<CR>
+nnoremap <Leader>w :vsc File.SaveSelectedItems<CR>
+nnoremap <Leader>wa :wa<CR>
+nnoremap <Leader>f :vsc Edit.Gotofile<CR>
+nnoremap <Leader>F :vsc Edit.FindinFiles<CR>
+nnoremap <C-o> :vsc View.NavigateBackward<CR>
+nnoremap <C-i> :vsc View.NavigateForward<CR>
+"nnoremap R :vsc Refactor.Rename<CR>
+nnoremap <leader>b :vsc Debug.ToggleBreakpoint<CR>
+nnoremap <S-l> :vsc Window.NextTab<CR>
+nnoremap <S-h> :vsc Window.PreviousTab<CR>
+"hover
+nnoremap K :vsc Edit.QuickInfo<CR>
+"code actions
+nnoremap <Leader>a :vsc View.QuickActions<CR>
+vnoremap <Leader>a :vsc View.QuickActions<CR>
+"Explorers
+nnoremap <Leader>e :vsc View.SolutionExplorer<CR>
+nnoremap <Leader>se :vsc View.ServerExplorer<CR>
+nnoremap <Leader>te :vsc TestExplorer.ShowTestExplorer<CR>
+nnoremap <Leader>el :vsc View.ErrorList<CR>
+nnoremap <Leader>pi :vsc Window.PinTab<CR>
+"Window navigation mappings
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+"Go to errors 
+"Jump between compilation errors
+nnoremap ]d :vsc View.NextError<cr>:vsc Edit.QuickInfo<CR>
+nnoremap [d :vsc View.PreviousError<cr>:vsc Edit.QuickInfo<CR>
+"Yank like vim (default in nvim)
+nnoremap Y y$ 
+"Keep search navigation centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+"Jump between methods
+nnoremap ]m :vsc Edit.NextMethod<CR>
+nnoremap [m :vsc Edit.PreviousMethod<CR>
+"Good stuff
+nnoremap ci( f(ci(
+nnoremap ca( f(ca(
+nnoremap di( f(di(
+nnoremap da( f(da(
+nnoremap vi( f(vi(
+nnoremap va( f(va(
+nnoremap yi( f(yi(
+nnoremap ya( f(ya(
+"INSERT
+"Undo break points
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
+" inoremap <C-k> :vsc Edit.LineUp<CR>
+" inoremap <C-j> :vsc Edit.LineDown<CR>
+"VISUAL 
+"Stay in indent mode
+vnoremap < <gv
+vnoremap > >gv
+"wrap visual content
+vnoremap " c"<C-r>""<Esc>
+vnoremap ' c'<C-r>"'<Esc>
+vnoremap ( c(<C-r>")<Esc>
+vnoremap [ c[<C-r>"]<Esc>
+vnoremap { c{<C-r>"}<Esc>
+vnoremap < c<lt><C-r>"><Esc>
+"nvim includes #5 as well as 3 other good mappings by default:
+"nnoremap <C-L> <Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
+"nnoremap <C-U> <C-G>u<C-U>
+nnoremap <C-W> <C-G>u<C-W>
+" testing and debugging
+"nnoremap <leader>r :vsc TestExplorer.RunAllTestsInContext<cr>
+"nnoremap <leader>R :vsc TestExplorer.DebugAllTestsInContext<cr>
+" open the change parameter window, a bit fake because it's not a text-object
+"nnoremap cia :vsc Refactor.ReorderParameters<cr>
+"COMMANDS
+"command Se vsc View.ServerExplorer
+"command Te vsc TestExplorer.ShowTestExplorer
+"Notes
+"maybe make F5 work on SQL exec query too 
+"noremap <F5>
+"autocmd BufEnter *.sql unmap <F5> 
+"autocmd BufEnter *.sql noremap <F5> :vsc SQL.TSqlEditorExecuteQuery<CR>
