@@ -26,4 +26,4 @@ _darcs
 ^/COPYING
 
 # directory to temporary save configs (ie. windows config files) 
-tempstow/.*
+\tempstow
