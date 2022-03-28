@@ -1,0 +1,3 @@
+[sqlfluff]
+sql_file_exts = ".sql"
+exclude_rules = L044, L014

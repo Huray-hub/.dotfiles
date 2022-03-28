@@ -3,7 +3,8 @@
   email = panos.skiadas12@gmail.com
 
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global 
   editor = nvim
+  #TODO excludesfiles = %USERPROFILE%\.gitignore 
 
 
