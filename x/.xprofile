@@ -1,0 +1,20 @@
+# Don't randomly turn off
+xset s off
+# xset -dpms   --WSL 2 server does not have that option
+xset s noblank
+
+# Speedy keys
+xset r rate 210 40
+
+# Environment variables set everywhere 
+export EDITOR="nvim"
+# export TERMINAL="kitty"
+# export BROWSER="brave"
+
+# XDG Paths
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share 
+
+# zsh config dir
+# export ZDOTDIR=$HOME/.config/zsh
