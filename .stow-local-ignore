@@ -24,3 +24,6 @@ _darcs
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
+
+# directory to temporary save configs (ie. windows config files) 
+tempstow/.*

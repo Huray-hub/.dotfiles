@@ -1,0 +1,122 @@
+{
+  "main": {
+    "id": "4cee837babb81959",
+    "type": "split",
+    "children": [
+      {
+        "id": "795b0ef2c33a982a",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Fleeting Notes/Add dotfiles.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a9e8c17c1143118a",
+    "type": "split",
+    "children": [
+      {
+        "id": "78fab6d6394abb7b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "32f73349d3c0c51e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "bbe319a09c60fbed",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "cfb0866c94fe8e86",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 178.51006317138672
+  },
+  "right": {
+    "id": "47914f4d3d4faac6",
+    "type": "split",
+    "children": [
+      {
+        "id": "06666db5f29bb0ba",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9ca76b65a38b80f2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Fleeting Notes/Add dotfiles.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "8be72776af2675da",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 240.90000915527344,
+    "collapsed": true
+  },
+  "active": "795b0ef2c33a982a",
+  "lastOpenFiles": [
+    "Fleeting Notes/Add dotfiles.md",
+    "Permanent Notes/College roadmap.md",
+    "Permanent Notes/Computer Networks II.md",
+    "Permanent Notes/Writing of Technological Documents.md",
+    "Zettelkasten/Guide to Zettelkasten Method.md",
+    "Zettelkasten/Computer Networks.md",
+    "Zettelkasten/nodes.md",
+    "Zettelkasten/Test IQ.md",
+    "Zettelkasten/Reliability.md",
+    "Zettelkasten/Performance.md"
+  ]
+}

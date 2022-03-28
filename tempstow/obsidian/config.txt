@@ -1,0 +1,7 @@
+ "leader-hotkeys-obsidian:leader": [
+    {
+      "modifiers": [
+      ],
+      "key": " "
+    }
+  ]

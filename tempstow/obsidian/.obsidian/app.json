@@ -1,0 +1,18 @@
+{
+  "legacyEditor": false,
+  "livePreview": true,
+  "vimMode": true,
+  "showLineNumber": true,
+  "spellcheck": true,
+  "spellcheckLanguages": [
+    "en-US",
+    "el"
+  ],
+  "promptDelete": false,
+  "foldIndent": true,
+  "foldHeading": true,
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "Attachments",
+  "newFileLocation": "current",
+  "newFileFolderPath": "Zettelkasten"
+}
