@@ -26,12 +26,12 @@ sethandler <C-F> a:ide
 sethandler <C-G> a:ide
 sethandler <C-H> a:vim
 sethandler <C-I> a:vim
-sethandler <C-J> a:ide
-sethandler <C-K> a:ide
+sethandler <C-J> a:vim
+sethandler <C-K> a:vim
 sethandler <C-L> a:vim
 sethandler <C-M> a:ide
 sethandler <C-N> a:vim
-sethandler <C-O> a:ide
+sethandler <C-O> a:vim
 sethandler <C-P> a:vim
 sethandler <C-R> a:ide
 sethandler <C-S> a:vim
@@ -42,6 +42,8 @@ sethandler <C-W> a:vim
 sethandler <C-X> a:vim
 sethandler <C-Y> a:ide
 sethandler <C-]> a:ide
+sethandler <C-[> a:ide
+sethandler <C-\> a:ide
 
 
 let mapleader=" "
@@ -66,6 +68,7 @@ nnoremap <leader>w :action SaveAll<CR>
 nnoremap <Leader>c :action CloseContent<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+nnoremap <leader>e :action ActivateProjectToolWindow<CR>
 
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
