@@ -100,7 +100,8 @@ return packer.startup(function(use)
 
   -- Java
   use('mfussenegger/nvim-jdtls')
-
+  use('theHamsta/nvim-dap-virtual-text')
+  use('rcarriga/nvim-dap-ui')
   -- Telescope
   use('nvim-telescope/telescope.nvim')
 
