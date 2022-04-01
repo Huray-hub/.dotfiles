@@ -44,7 +44,7 @@ vnoremap <Leader>a :vsc View.QuickActions<CR>
 nnoremap <Leader>e :vsc View.SolutionExplorer<CR>
 nnoremap <Leader>se :vsc View.ServerExplorer<CR>
 nnoremap <Leader>te :vsc TestExplorer.ShowTestExplorer<CR>
-nnoremap <Leader>el :vsc View.ErrorList<CR>
+nnoremap <Leader>q :vsc View.ErrorList<CR>
 nnoremap <Leader>pi :vsc Window.PinTab<CR>
 "Window navigation mappings
 nnoremap <C-H> <C-W>h
@@ -64,14 +64,14 @@ nnoremap N Nzzzv
 nnoremap ]m :vsc Edit.NextMethod<CR>
 nnoremap [m :vsc Edit.PreviousMethod<CR>
 "Good stuff
-nnoremap ci( f(ci(
-nnoremap ca( f(ca(
-nnoremap di( f(di(
-nnoremap da( f(da(
-nnoremap vi( f(vi(
-nnoremap va( f(va(
-nnoremap yi( f(yi(
-nnoremap ya( f(ya(
+"  nnoremap ci( f(ci(
+"  nnoremap ca( f(ca(
+"  nnoremap di( f(di(
+"  nnoremap da( f(da(
+"  nnoremap vi( f(vi(
+"  nnoremap va( f(va(
+"  nnoremap yi( f(yi(
+"  nnoremap ya( f(ya(
 "INSERT
 "Undo break points
 inoremap , ,<C-g>u
@@ -108,3 +108,4 @@ nnoremap <C-W> <C-G>u<C-W>
 "noremap <F5>
 "autocmd BufEnter *.sql unmap <F5> 
 "autocmd BufEnter *.sql noremap <F5> :vsc SQL.TSqlEditorExecuteQuery<CR>
+set whichwrap=<,>,[,],h,l
