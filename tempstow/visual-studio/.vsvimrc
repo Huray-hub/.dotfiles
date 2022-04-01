@@ -5,12 +5,15 @@ set smartcase
 set hlsearch
 set incsearch
 set autoindent
+
 "set smartindent = true
 "set splitbelow
 set number relativenumber
 set scrolloff=8
 "set sidescrolloff=8
 set cursorline
+set whichwrap=b,s,<,>,[,],h,l
+set iskeyword=@,48-57,_,192-255,-
 "set completeopt=menuone,noselect
 let mapleader="\<Space>"
 let maplocalleader="\<Space>"
@@ -92,20 +95,19 @@ vnoremap [ c[<C-r>"]<Esc>
 vnoremap { c{<C-r>"}<Esc>
 vnoremap < c<lt><C-r>"><Esc>
 "nvim includes #5 as well as 3 other good mappings by default:
-"nnoremap <C-L> <Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
-"nnoremap <C-U> <C-G>u<C-U>
-nnoremap <C-W> <C-G>u<C-W>
+"nnoremap <C-L><Cmd>nohlsearch<Bar>diffupdate<CR><C-L>
+"nnoremap <C-U><C-G>u<C-U>
+nnoremap <C-W><C-G>u<C-W>
 " testing and debugging
 "nnoremap <leader>r :vsc TestExplorer.RunAllTestsInContext<cr>
 "nnoremap <leader>R :vsc TestExplorer.DebugAllTestsInContext<cr>
 " open the change parameter window, a bit fake because it's not a text-object
 "nnoremap cia :vsc Refactor.ReorderParameters<cr>
 "COMMANDS
-"command Se vsc View.ServerExplorer
+"command Se :vsc View.ServerExplorer<cr>
 "command Te vsc TestExplorer.ShowTestExplorer
 "Notes
 "maybe make F5 work on SQL exec query too 
 "noremap <F5>
 "autocmd BufEnter *.sql unmap <F5> 
 "autocmd BufEnter *.sql noremap <F5> :vsc SQL.TSqlEditorExecuteQuery<CR>
-set whichwrap=<,>,[,],h,l
