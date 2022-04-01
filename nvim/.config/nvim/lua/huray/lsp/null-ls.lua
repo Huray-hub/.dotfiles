@@ -55,8 +55,8 @@ null_ls.setup({
       extra_args = {
         '--keywords',
         'upper',
-        '--reindent',
-        -- '--reindent_aligned'
+        -- '--reindent',
+        -- '--reindent_aligned',
       },
     }),
     diagnostics.shellcheck,

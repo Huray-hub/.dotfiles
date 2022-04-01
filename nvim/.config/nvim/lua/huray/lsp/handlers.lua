@@ -114,6 +114,13 @@ M.on_attach = function(client, bufnr)
     client.commands = require('sqls').commands
   end
 
+  if client.name == 'jdt.ls' then
+    vim.notify(client.name)
+    require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    require('jdtls.dap').setup_dap_main_class_configs()
+    vim.lsp.codelens.refresh()
+  end
+
   lsp_options(bufnr)
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
@@ -129,6 +136,7 @@ M.on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not status_ok then
