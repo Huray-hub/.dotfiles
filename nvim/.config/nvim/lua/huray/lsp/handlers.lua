@@ -112,10 +112,10 @@ M.on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.execute_command = true
     client.commands = require('sqls').commands
+    require('sqls').on_attach(client, bufnr)
   end
 
   if client.name == 'jdt.ls' then
-    vim.notify(client.name)
     require('jdtls').setup_dap({ hotcodereplace = 'auto' })
     require('jdtls.dap').setup_dap_main_class_configs()
     vim.lsp.codelens.refresh()

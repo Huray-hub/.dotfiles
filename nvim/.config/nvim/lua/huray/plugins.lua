@@ -96,12 +96,12 @@ return packer.startup(function(use)
 
   -- Debugging
   use('mfussenegger/nvim-dap') -- debug adapter protocol
+  use('theHamsta/nvim-dap-virtual-text')
+  use('rcarriga/nvim-dap-ui')
   -- use("Pocco81/DAPInstall.nvim") -- debug adapter installer
 
   -- Java
   use('mfussenegger/nvim-jdtls')
-  use('theHamsta/nvim-dap-virtual-text')
-  use('rcarriga/nvim-dap-ui')
   -- Telescope
   use('nvim-telescope/telescope.nvim')
 

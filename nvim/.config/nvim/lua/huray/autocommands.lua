@@ -40,5 +40,12 @@ vim.cmd([[
     autocmd!
     autocmd FileType sql nnoremap <silent> <buffer> <leader>a :lua vim.lsp.buf.code_action()<CR> 
     autocmd FileType sql vnoremap <silent> <buffer> <leader>a :lua vim.lsp.buf.code_action()<CR> 
+    autocmd FileType sql nnoremap <silent> <buffer> <F5> :SqlsExecuteQuery<CR> 
+    autocmd FileType sql vnoremap <silent> <buffer> <F5> :SqlsExecuteQuery<CR> 
   augroup end
+
+  " augroup _nvim_tree_auto_close_when_last
+  "   autocmd!
+  "   autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+  " augroup end
 ]])

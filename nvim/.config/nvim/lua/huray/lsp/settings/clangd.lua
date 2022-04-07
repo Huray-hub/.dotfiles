@@ -1,18 +1,18 @@
 local opts = {
   cmd = {
-      "clangd",
-     "--background-index",
-     "-j=12",
-     "--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
-     "--clang-tidy",
-     "--clang-tidy-checks=*",
-     "--all-scopes-completion",
-     "--cross-file-rename",
-     "--completion-style=detailed",
-     "--header-insertion-decorators",
-     "--header-insertion=iwyu",
-     "--pch-storage=memory",
-  }
+    '/home/pskiadas/.local/share/nvim/lsp_servers/clangd/clangd/bin/clangd',
+    '--background-index',
+    '-j=12',
+    '--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
+    '--clang-tidy',
+    '--clang-tidy-checks=*',
+    '--all-scopes-completion',
+    '--cross-file-rename',
+    '--completion-style=detailed',
+    '--header-insertion-decorators',
+    '--header-insertion=iwyu',
+    '--pch-storage=memory',
+  },
 }
 
 return opts

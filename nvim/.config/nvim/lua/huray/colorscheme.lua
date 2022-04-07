@@ -1,10 +1,9 @@
-local colorscheme = "darkplus"
-
+local colorscheme = 'darkplus'
 
 local material_status_ok, material_colorscheme = pcall(require, colorscheme)
-if material_status_ok  then
-  if colorscheme == "material" then
-    vim.g.material_style = "palenight"
+if material_status_ok then
+  if colorscheme == 'material' then
+    vim.g.material_style = 'palenight'
 
     material_colorscheme.setup({
       contrast = {
@@ -26,9 +25,9 @@ if material_status_ok  then
       },
 
       contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
-        "terminal", -- Darker terminal background
-        "packer", -- Darker packer background
-        "qf", -- Darker qf list background
+        'terminal', -- Darker terminal background
+        'packer', -- Darker packer background
+        'qf', -- Darker qf list background
       },
 
       high_visibility = {
@@ -43,17 +42,17 @@ if material_status_ok  then
         eob_lines = true, -- Hide the end-of-buffer lines
       },
 
-      lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
+      lualine_style = 'default', -- Lualine style ( can be 'stealth' or 'default' )
 
       custom_highlights = {
-        LineNr = { fg = "#525262"}, -- #585863
+        LineNr = { fg = '#525262' }, -- #585863
       }, -- Overwrite highlights with your own
     })
   end
 end
 
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+local status_ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
 if not status_ok then
-	vim.notify("colorscheme " .. colorscheme .. " not found!")
-	return
+  vim.notify('colorscheme ' .. colorscheme .. ' not found!')
+  return
 end

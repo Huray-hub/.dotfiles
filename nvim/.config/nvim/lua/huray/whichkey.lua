@@ -87,10 +87,21 @@ local mappings = {
   ['d'] = {
     name = 'Debugging',
     b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", 'Breakpoint' },
-    r = { "<cmd>lua require'dap'.repl.toggle()<cr>", 'Repl' },
+    r = { "<cmd>lua require'dap'.repl.toggle({}, 'vsplit')<cr><C-W>l", 'Repl' },
     l = { "<cmd>lua require'dap'.run_last()<cr>", 'Last' },
     u = { "<cmd>lua require'dapui'.toggle()<cr>", 'UI' },
     x = { "<cmd>lua require'dap'.terminate()<cr>", 'Exit' },
+    h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", 'Hover' },
+
+    -- map('n', '<leader>dH', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+    -- map('n', '<leader>dn', ':lua require"dap".run_to_cursor()<CR>')
+    -- map('n', '<leader>dk', ':lua require"dap".up()<CR>zz')
+    -- map('n', '<leader>dj', ':lua require"dap".down()<CR>zz')
+    -- map('n', '<leader>dR', ':lua require"dap".clear_breakpoints()<CR>')
+    -- map('n', '<leader>de', ':lua require"dap".set_exception_breakpoints({"all"})<CR>')
+    -- map('n', '<leader>da', ':lua require"debugHelper".attach()<CR>')
+    -- map('n', '<leader>dA', ':lua require"debugHelper".attachToRemote()<CR>')
+    -- map('n', '<leader>d?', ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
   },
   ['e'] = { '<cmd>NvimTreeToggle<cr>', 'Explorer' },
   ['w'] = { '<cmd>w!<CR>', 'Save' },
