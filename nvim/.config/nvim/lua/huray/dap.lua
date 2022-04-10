@@ -12,11 +12,13 @@ vim.fn.sign_define('DapBreakpoint', { text = icons.ui.Bug, texthl = '', linehl =
 vim.fn.sign_define('DapBreakpointRejected', { text = icons.ui.Bug, texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = '', texthl = '', linehl = '', numhl = '' })
 
+local home = os.getenv('HOME')
+
 -- adapter definition
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
-  command = '/home/pskiadas/.vscode-server/extensions/ms-vscode.cpptools-1.8.4/debugAdapters/bin/OpenDebugAD7',
+  command = vim.fn.glob(home .. '/.vscode-server/extensions/ms-vscode.cpptools-*/debugAdapters/bin/OpenDebugAD7'),
 }
 
 dap.configurations.cpp = {

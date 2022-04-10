@@ -33,11 +33,14 @@ local workspace_dir = WORKSPACE_PATH .. project_name
 
 local bundles = {
   vim.fn.glob(
-    home .. '/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar'
+    home .. '/.vscode-server/extensions/vscjava.vscode-java-debug-*/server/com.microsoft.java.debug.plugin-*.jar'
   ),
 }
 
-vim.list_extend(bundles, vim.split(vim.fn.glob(home .. '/.local/share/vscode-java-test/server/*.jar'), '\n'))
+vim.list_extend(
+  bundles,
+  vim.split(vim.fn.glob(home .. '/.vscode-server/extensions/vscjava.vscode-java-test-*/server/*.jar'), '\n')
+)
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
