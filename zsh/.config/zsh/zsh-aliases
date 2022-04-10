@@ -4,7 +4,7 @@ alias f='zi'
 alias g='lazygit'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias vim='nvim'
-alias svim='sudo -E nvim' # Preserving user' s config when sudo nvim
+alias suvim='sudo -E nvim' # Preserving user' s config when sudo nvim
 alias vimrc='nvim ~/.config/nvim/'
 [ "$OS" = "Ubuntu" ] && alias update='sudo apt update && sudo apt upgrade'
 
@@ -68,6 +68,7 @@ Darwin)
 
 Linux)
 	alias ls='ls --color=auto'
+  alias la='ls -Al --color=auto'
 	;;
 
 CYGWIN* | MINGW32* | MSYS* | MINGW*)

@@ -13,6 +13,7 @@ export PATH=$HOME/.fnm:$PATH
 export PATH="$PATH:./node_modules/.bin"
 export GRADLE_HOME=$HOME/.local/share/gradle/latest
 export PATH=${GRADLE_HOME}/bin:$PATH
+# export MANPATH="/usr/share/man"
 
 eval "$(fnm env)"
 # eval "$(zoxide init zsh)"
