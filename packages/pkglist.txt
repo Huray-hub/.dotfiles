@@ -41,6 +41,7 @@ stow
 stylua
 sudo
 texinfo
+tree
 unzip
 vim
 wget
