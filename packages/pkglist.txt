@@ -18,6 +18,8 @@ groff
 jre-openjdk
 lazygit
 libtool
+lldb
+llvm
 m4
 make
 man-db
