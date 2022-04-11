@@ -28,6 +28,7 @@ nnoremap gi :vsc Edit.GoToImplementation<CR>
 nnoremap gr :vsc Edit.FindAllReferences<CR>
 nnoremap gp :vsc Edit.PeekDefinition<CR>
 nnoremap <Leader>c :vsc File.Close<CR>
+nnoremap <Leader>C :vsc File.CloseAllButThis<CR>
 nnoremap <Leader>w :vsc File.SaveSelectedItems<CR>
 nnoremap <Leader>wa :wa<CR>
 nnoremap <Leader>f :vsc Edit.Gotofile<CR>
