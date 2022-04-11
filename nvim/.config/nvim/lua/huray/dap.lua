@@ -14,48 +14,80 @@ vim.fn.sign_define('DapStopped', { text = '', texthl = '', linehl = '', numhl
 
 local home = os.getenv('HOME')
 
--- adapter definition
-dap.adapters.cppdbg = {
+-- adapter definitions
+dap.adapters.cppdbg = { -- requires vscode's C/C++ extension
   id = 'cppdbg',
   type = 'executable',
   command = vim.fn.glob(home .. '/.vscode-server/extensions/ms-vscode.cpptools-*/debugAdapters/bin/OpenDebugAD7'),
 }
 
+dap.adapters.lldb = { -- requires llvm package
+  type = 'executable',
+  command = '/usr/bin/lldb-vscode', -- adjust as needed
+  name = 'lldb',
+}
+
+-- adapter configurations
 dap.configurations.cpp = {
-  {
-    name = '(gdb) Launch file',
-    type = 'cppdbg',
-    request = 'launch',
-    program = function()
-      return vim.fn.getcwd() .. '/' .. 'a.out'
-    end,
-    cwd = '${workspaceFolder}',
-    -- args = { '<', 'input1.txt' },
-    stopOnEntry = true,
-    setupCommands = {
-      {
-        text = '-enable-pretty-printing',
-        description = 'enable pretty printing',
-        ignoreFailures = false,
-      },
-    },
-    MIMode = 'gdb',
-    externalConsole = false,
-  },
+  -- {
+  --   name = 'Launch gdb',
+  --   type = 'cppdbg',
+  --   request = 'launch',
+  --   program = '${fileDirname}/a.out',
+  --   cwd = '${workspaceFolder}',
+  --   args = { '<', 'input1.txt' },
+  --   stopOnEntry = true,
+  --   setupCommands = {
+  --     {
+  --       text = '-enable-pretty-printing',
+  --       description = 'enable pretty printing',
+  --       ignoreFailures = false,
+  --     },
+  --   },
+  --   MIMode = 'gdb',
+  --   externalConsole = false,
+  -- },
   -- {
   -- 	name = "Attach to gdbserver :1234",
   -- 	type = "cppdbg",
   -- 	request = "launch",
   -- 	MIMode = "gdb",
   -- 	miDebuggerServerAddress = "localhost:1234",
+  --  program = '${relativeFileDirname}/a.out',
   -- 	cwd = "${workspaceFolder}",
-  -- 	program = function()
-  -- 		return vim.fn.getcwd() .. "/", "a.out")
-  -- 	end,
   -- },
+  {
+    name = 'Launch lldb',
+    type = 'lldb',
+    request = 'launch',
+    program = '${relativeFileDirname}/a.out',
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+
+    -- 💀
+    -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
+    --
+    --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+    --
+    -- Otherwise you might get the following error:
+    --
+    --    Error on launch: Failed to attach to the target process
+    --
+    -- But you should be aware of the implications:
+    -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
+    runInTerminal = false,
+    -- 💀
+    -- If you use `runInTerminal = true` and resize the terminal window,
+    -- lldb-vscode will receive a `SIGWINCH` signal which can cause problems
+    -- To avoid that uncomment the following option
+    -- See https://github.com/mfussenegger/nvim-dap/issues/236#issuecomment-1066306073
+    postRunCommands = { 'process handle -p true -s false -n false SIGWINCH' },
+  },
 }
 
 dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
 
 require('nvim-dap-virtual-text').setup()
 require('dapui').setup()
