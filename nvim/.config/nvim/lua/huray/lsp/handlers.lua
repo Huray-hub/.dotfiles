@@ -55,7 +55,7 @@ local function lsp_highlight_document(client)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]],
+    ]] ,
       false
     )
   end
@@ -104,7 +104,7 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == 'tsserver' then
+  if client.name == 'tsserver' or client.name == 'summeko_lua' then
     client.resolved_capabilities.document_formatting = false
   end
 

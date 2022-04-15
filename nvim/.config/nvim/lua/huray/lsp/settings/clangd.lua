@@ -1,6 +1,6 @@
 local opts = {
   cmd = {
-    '/home/pskiadas/.local/share/nvim/lsp_servers/clangd/clangd/bin/clangd',
+    'clangd',
     '--background-index',
     '-j=12',
     '--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++',
@@ -12,6 +12,7 @@ local opts = {
     '--header-insertion-decorators',
     '--header-insertion=iwyu',
     '--pch-storage=memory',
+    -- '--enable-config',
   },
 }
 
