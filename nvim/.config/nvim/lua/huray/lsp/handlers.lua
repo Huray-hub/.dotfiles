@@ -1,6 +1,5 @@
 local M = {}
 
--- TODO: backfill this to template
 M.setup = function()
   local icons = require('huray.icons')
   local signs = {
@@ -48,6 +47,25 @@ end
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
+    -- local _lsp_document_highlight = vim.api.nvim_create_autogroup('_lsp_document_highlight', {})
+    -- vim.api.nvim_create_autocmd({ 'CursorHold' }, {
+    --   desc = '',
+    --   group = _lsp_document_highlight,
+    --   callback = function()
+    --     vim.lsp.buf.document_highlight()
+    --   end,
+    --   buffer = 0,
+    -- })
+    --
+    -- vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
+    --   desc = '',
+    --   group = _lsp_document_highlight,
+    --   callback = function()
+    --     vim.lsp.buf.clear_references()
+    --   end,
+    --   buffer = 0,
+    -- })
+
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
@@ -55,7 +73,7 @@ local function lsp_highlight_document(client)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]] ,
+    ]],
       false
     )
   end
@@ -100,11 +118,13 @@ local function lsp_keymaps(bufnr)
   -- keymap(bufnr, 'n', '<leader>a', '<cmd>Telescope lsp_code_actions<CR>', opts)
   -- keymap(bufnr, 'v', '<leader>a', '<cmd>Telescope lsp_code_actions<CR>', opts)
 
-  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+  vim.api.nvim_create_user_command('Format', function()
+    vim.lsp.buf.formatting()
+  end, { bang = true })
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == 'tsserver' or client.name == 'summeko_lua' then
+  if client.name == 'tsserver' or client.name == 'sumneko_lua' then
     client.resolved_capabilities.document_formatting = false
   end
 
@@ -124,8 +144,6 @@ M.on_attach = function(client, bufnr)
   lsp_options(bufnr)
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
-
-  -- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 
   vim.cmd([[
     augroup LspFormatting

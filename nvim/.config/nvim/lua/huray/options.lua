@@ -31,9 +31,10 @@ local options = {
   numberwidth = 2, -- set number column width to 2 {default 4}
   signcolumn = 'yes', -- always show the sign column, otherwise it would shift the text each time
   wrap = false, -- display lines as one long line
-  scrolloff = 8, -- is one of my fav
-  sidescrolloff = 8,
+  scrolloff = 8, -- number of screen lines to keep cursor x lines from the edges (top & bottom of screen)
+  sidescrolloff = 8, -- same as scrolloff but vertical
   guifont = 'monospace:h17', -- the font used in graphical neovim applications
+  -- laststatus = 3, -- global status line (only neovim 0.7)
 }
 
 for k, v in pairs(options) do
