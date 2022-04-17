@@ -15,7 +15,7 @@ local _general_settings = augroup('_general_settings', {})
 autocmd('FileType', {
   desc = 'These filetypes will close with q',
   group = _general_settings,
-  pattern = { 'qf', 'help', 'man', 'lspinfo' },
+  pattern = { 'qf', 'help', 'man', 'lspinfo', 'null-ls-info' },
   callback = function()
     buf_keymap('n', 'q', '<cmd>wincmd c<CR>')
   end,

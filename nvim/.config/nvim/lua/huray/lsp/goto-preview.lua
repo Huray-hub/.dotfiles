@@ -3,7 +3,7 @@
 --   return
 -- end
 
-local status_ok2, gotoPreview = pcall(require, "goto-preview")
+local status_ok2, gotoPreview = pcall(require, 'goto-preview')
 if not status_ok2 then
   return
 end
@@ -11,7 +11,7 @@ end
 gotoPreview.setup({
   width = 120, -- Width of the floating window
   height = 15, -- Height of the floating window
-  border = { "↖", "─", "┐", "│", "┘", "─", "└", "│" }, -- Border characters of the floating window
+  border = { '↖', '─', '┐', '│', '┘', '─', '└', '│' }, -- Border characters of the floating window
   default_mappings = false, -- Bind default mappings
   debug = false, -- Print debug information
   opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
@@ -24,6 +24,5 @@ gotoPreview.setup({
   focus_on_open = true, -- Focus the floating window when opening it.
   dismiss_on_move = false, -- Dismiss the floating window when moving the cursor.
   force_close = true, -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
-  bufhidden = "wipe", -- the bufhidden option to set on the floating window. See :h bufhidden
+  bufhidden = 'wipe', -- the bufhidden option to set on the floating window. See :h bufhidden
 })
-

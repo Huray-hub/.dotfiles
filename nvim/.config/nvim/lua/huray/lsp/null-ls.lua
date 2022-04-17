@@ -56,7 +56,7 @@ null_ls.setup({
     -- formatting.sqlfluff,
     diagnostics.shellcheck,
     diagnostics.zsh,
-    -- diagnostics.sqlfluff,
+    diagnostics.sqlfluff,
     code_actions.shellcheck,
   },
 })

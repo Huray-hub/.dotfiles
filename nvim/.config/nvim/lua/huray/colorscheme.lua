@@ -1,9 +1,9 @@
-local colorscheme = 'darkplus'
+local colorscheme = 'material'
 
 local material_status_ok, material_colorscheme = pcall(require, colorscheme)
 if material_status_ok then
   if colorscheme == 'material' then
-    vim.g.material_style = 'palenight'
+    vim.api.nvim_set_var('material_style', 'palenight')
 
     material_colorscheme.setup({
       contrast = {

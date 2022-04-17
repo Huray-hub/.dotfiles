@@ -8,6 +8,7 @@ docker
 fakeroot
 fd
 flex
+fuse2
 fzf
 gcc
 gdb
@@ -24,7 +25,6 @@ m4
 make
 man-db
 man-pages
-neovim
 nodejs
 npm
 openssh

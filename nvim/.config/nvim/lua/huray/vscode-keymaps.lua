@@ -1,4 +1,3 @@
-
 local opts = { noremap = true, silent = true }
 
 -- Shorten function name
@@ -19,12 +18,12 @@ local keymap = vim.api.nvim_set_keymap
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", ":call VSCodeNotify('workbench.action.navigateLeft')<CR>", opts)
-keymap("n", "<C-j>", ":call VSCodeNotify('workbench.action.navigateDown')<CR>", opts)
-keymap("n", "<C-k>", ":call VSCodeNotify('workbench.action.navigateUp')<CR>", opts)
-keymap("n", "<C-l>", ":call VSCodeNotify('workbench.action.navigateRight')<CR>", opts)
+keymap('n', '<C-h>', ":call VSCodeNotify('workbench.action.navigateLeft')<CR>", opts)
+keymap('n', '<C-j>', ":call VSCodeNotify('workbench.action.navigateDown')<CR>", opts)
+keymap('n', '<C-k>', ":call VSCodeNotify('workbench.action.navigateUp')<CR>", opts)
+keymap('n', '<C-l>', ":call VSCodeNotify('workbench.action.navigateRight')<CR>", opts)
 
-keymap("n", "<leader>e", ":call VSCodeNotify('workbench.action.quickOpenNavigatePreviousInFilePicker')<CR>", opts)
+keymap('n', '<leader>e', ":call VSCodeNotify('workbench.action.quickOpenNavigatePreviousInFilePicker')<CR>", opts)
 
 -- Resize with arrows
 -- keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -35,4 +34,3 @@ keymap("n", "<leader>e", ":call VSCodeNotify('workbench.action.quickOpenNavigate
 -- Navigate buffers
 -- keymap("n", "<S-l>", ":bnext<CR>", opts)
 -- keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
