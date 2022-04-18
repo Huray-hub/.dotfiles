@@ -33,6 +33,7 @@ pkgconf
 prettier
 python-pip
 python-pynvim
+python-sqlparse
 reflector
 ripgrep
 rust
