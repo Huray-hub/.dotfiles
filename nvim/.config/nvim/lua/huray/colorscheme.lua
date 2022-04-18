@@ -1,4 +1,4 @@
-local colorscheme = 'material'
+local colorscheme = 'darkplus'
 
 local material_status_ok, material_colorscheme = pcall(require, colorscheme)
 if material_status_ok then

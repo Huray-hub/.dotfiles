@@ -15,7 +15,7 @@ local _general_settings = augroup('_general_settings', {})
 autocmd('FileType', {
   desc = 'These filetypes will close with q',
   group = _general_settings,
-  pattern = { 'qf', 'help', 'man', 'lspinfo', 'null-ls-info' },
+  pattern = { 'qf', 'help', 'man', 'lspinfo', 'null-ls-info', 'sqls_output' },
   callback = function()
     buf_keymap('n', 'q', '<cmd>wincmd c<CR>')
   end,
@@ -140,9 +140,21 @@ autocmd('FileType', {
   group = _sql,
   pattern = 'sql',
   callback = function()
-    buf_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-    buf_keymap('v', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-    buf_keymap('n', '<F5>', '<cmd>SqlsExecuteQuery<CR>')
-    buf_keymap('v', '<F5>', '<cmd>SqlsExecuteQuery<CR>')
+    buf_keymap('n', '<leader>a', '<CMD>lua vim.lsp.buf.code_action()<CR>')
+    buf_keymap('v', '<leader>a', '<CMD>lua vim.lsp.buf.code_action()<CR><ESC>')
+    -- buf_keymap('n', '<F5>', '<CMD>SqlsExecuteQuery<CR>')
+    -- buf_keymap('v', '<F5>', '<CMD>SqlsExecuteQuery<CR><ESC>')
+    -- <Plug>(sqls-execute-query)
+    buf_keymap('n', '<F5>', '<Plug>(sqls-execute-query)')
+    buf_keymap('v', '<F5>', '<Plug>(sqls-execute-query)')
+  end,
+})
+
+autocmd('FileType', {
+  desc = 'Sql output filetype opens in vertical split',
+  group = _sql,
+  pattern = 'sqls_output',
+  callback = function()
+    command('wincmd L')
   end,
 })

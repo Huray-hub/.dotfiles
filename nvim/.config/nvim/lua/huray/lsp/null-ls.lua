@@ -3,42 +3,6 @@ if not null_ls_status_ok then
   return
 end
 
--- local helpers = require('null-ls.helpers')
--- local methods = require('null-ls.methods')
---
--- local sqlfluff = helpers.make_builtin({
---   name = 'sqlfluff',
---   method = methods.internal.DIAGNOSTICS,
---   filetypes = { 'sql' },
---   generator_opts = {
---     command = 'sqlfluff',
---     args = { 'lint', '--format', 'json', '-' },
---     to_stdin = true,
---     from_stderr = true,
---     format = 'json',
---     on_output = function(params)
---       params.messages = params and params.output and params.output[1] and params.output[1].violations or {}
---
---       local diagnostics = {}
---       for _, json_diagnostic in ipairs(params.messages) do
---         local diagnostic = {
---           row = json_diagnostic['line_no'],
---           col = json_diagnostic['line_pos'],
---           code = json_diagnostic['code'],
---           message = json_diagnostic['description'],
---           severity = helpers.diagnostics.severities['information'],
---         }
---
---         table.insert(diagnostics, diagnostic)
---       end
---
---       return diagnostics
---     end,
---   },
---
---   factory = helpers.generator_factory,
--- })
-
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
@@ -53,10 +17,31 @@ null_ls.setup({
     formatting.stylua,
     -- diagnostics.flake8,
     formatting.shfmt,
+    formatting.sqlformat.with({
+      extra_args = {
+        '--keywords',
+        'upper',
+        '--identifiers',
+        'upper',
+        '--indent_width',
+        '2',
+        '--indent_after_first',
+        -- '--reindent',
+        -- '--indent_columns',
+        -- '--reindent_aligned',
+        '--use_space_around_operators',
+      },
+    }),
     -- formatting.sqlfluff,
+    -- null_ls.builtins.formatting.sqlfluff.with({
+    --   args = { 'fix', '--disable_progress_bar', '-f', '-n', '-' },
+    -- }),
     diagnostics.shellcheck,
     diagnostics.zsh,
-    diagnostics.sqlfluff,
+    -- diagnostics.sqlfluff,
+    -- diagnostics.sqlfluff.with({
+    --   args = { 'lint', '-f', 'github-annotation', '-n', '--disable_progress_bar', '-' },
+    -- }),
     code_actions.shellcheck,
   },
 })
