@@ -90,17 +90,17 @@ dapui.setup({
         size = 0.25, -- Can be float or integer > 1
       },
       { id = 'breakpoints', size = 0.25 },
-      -- { id = "stacks", size = 0.25 },
-      -- { id = "watches", size = 00.25 },
+      { id = 'stacks', size = 0.25 },
+      { id = 'watches', size = 00.25 },
     },
     size = 40,
-    position = 'right', -- Can be "left", "right", "top", "bottom"
+    position = 'left', -- Can be "left", "right", "top", "bottom"
   },
   tray = {
-    elements = {},
-    -- elements = { "repl" },
-    -- size = 10,
-    -- position = "bottom", -- Can be "left", "right", "top", "bottom"
+    -- elements = {},
+    elements = { 'repl' },
+    size = 10,
+    position = 'bottom', -- Can be "left", "right", "top", "bottom"
   },
   floating = {
     max_height = nil, -- These can be integers or a float between 0 and 1.
@@ -116,6 +116,7 @@ dapui.setup({
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+--TODO: Replace vimscript with lua
 keymap('n', '<F5>', "<cmd>lua require('dap').continue()<CR>", opts) --it also starts the execution in debug mode
 keymap('n', '<F17>', "<cmd>lua require('dap').terminate()<CR>", opts) --F17 = S-F5
 --TODO: map  F29 (= C-F5 to either 'run without debugger'  or 'restart debugger')

@@ -6,8 +6,8 @@ local set_global_option = vim.api.nvim_set_option
 local set_option = vim.api.nvim_set_option_value
 
 local buf_keymap = function(mode, lhs, rhs)
-  local opts = { noremap = true, silent = true }
-  vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
+  local opts = { buffer = true, silent = true }
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 ---------------------------------------------------------------------
@@ -17,7 +17,9 @@ autocmd('FileType', {
   group = _general_settings,
   pattern = { 'qf', 'help', 'man', 'lspinfo', 'null-ls-info', 'sqls_output' },
   callback = function()
-    buf_keymap('n', 'q', '<cmd>wincmd c<CR>')
+    buf_keymap('n', 'q', function()
+      vim.api.nvim_win_close(0, false)
+    end)
   end,
 })
 
@@ -140,11 +142,8 @@ autocmd('FileType', {
   group = _sql,
   pattern = 'sql',
   callback = function()
-    buf_keymap('n', '<leader>a', '<CMD>lua vim.lsp.buf.code_action()<CR>')
-    buf_keymap('v', '<leader>a', '<CMD>lua vim.lsp.buf.code_action()<CR><ESC>')
-    -- buf_keymap('n', '<F5>', '<CMD>SqlsExecuteQuery<CR>')
-    -- buf_keymap('v', '<F5>', '<CMD>SqlsExecuteQuery<CR><ESC>')
-    -- <Plug>(sqls-execute-query)
+    buf_keymap('n', '<leader>a', vim.lsp.buf.code_action)
+    buf_keymap('v', '<leader>a', vim.lsp.buf.code_action)
     buf_keymap('n', '<F5>', '<Plug>(sqls-execute-query)')
     buf_keymap('v', '<F5>', '<Plug>(sqls-execute-query)')
   end,

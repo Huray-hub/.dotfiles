@@ -47,6 +47,7 @@ end
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
+    -- TODO: replace vimscript with lua
     -- local _lsp_document_highlight = vim.api.nvim_create_autogroup('_lsp_document_highlight', {})
     -- vim.api.nvim_create_autocmd({ 'CursorHold' }, {
     --   desc = '',
@@ -84,43 +85,59 @@ local function lsp_options(bufnr)
 end
 
 local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
-  local keymap = vim.api.nvim_buf_set_keymap
+  local buf_keymap = function(mode, lhs, rhs)
+    local opts = { buffer = bufnr, silent = true }
+    vim.keymap.set(mode, lhs, rhs, opts)
+  end
 
-  keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_keymap('n', 'gD', vim.lsp.buf.declaration)
+  buf_keymap('n', 'gd', vim.lsp.buf.definition)
+  buf_keymap('n', 'K', vim.lsp.buf.hover)
+  buf_keymap('n', 'gi', vim.lsp.buf.implementation)
+  buf_keymap('n', '<C-k>', vim.lsp.buf.signature_help)
+  buf_keymap('n', '<leader>rn', vim.lsp.buf.rename)
+  buf_keymap('n', 'gr', vim.lsp.buf.references)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gp", "<cmd>lua require'lsp.peek'.Peek('definition')<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
-  keymap(bufnr, 'n', 'gp', "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", opts)
-  keymap(bufnr, 'n', 'gP', "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", opts)
-  keymap(bufnr, 'n', 'gr', "<cmd>lua require('goto-preview').close_all_win()<CR>", opts)
-  -- keymap(bufnr, "n", "gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR> ",opts)
+  buf_keymap('n', 'gp', function()
+    require('goto-preview').goto_preview_definition()
+  end)
+  buf_keymap('n', 'gP', function()
+    require('goto-preview').goto_preview_implementation()
+  end)
+  buf_keymap('n', 'gr', function()
+    require('goto-preview').close_all_win()
+  end)
+  -- keymap("n", "gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR> ",opts)
   -- nnoremap gpd<cmd>lua require('goto-preview').goto_preview_definition()<CR>
   -- nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>
   -- nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>
   -- " Only set if you have telescope installed
   -- nnoremap gpr <cmd>lua require('goto-preview').goto_preview_references()<CR>
 
-  keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-  keymap(bufnr, 'n', 'gl', '<cmd>lua vim.diagnostic.open_float(0, { scope = "line", border = "rounded" })<CR>', opts)
-  keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-  keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  keymap(bufnr, 'n', '<leader>a', '<cmd>CodeActionMenu<CR>', opts)
-  keymap(bufnr, 'v', '<leader>a', '<cmd>CodeActionMenu<CR>', opts)
+  buf_keymap('n', '[d', function()
+    vim.diagnostic.goto_prev({ border = 'rounded' })
+  end)
+  buf_keymap('n', 'gl', function()
+    vim.diagnostic.open_float(0, { scope = 'line', border = 'rounded' })
+  end)
+  buf_keymap('n', ']d', function()
+    vim.diagnostic.goto_next({ border = 'rounded' })
+  end)
+  buf_keymap('n', '<leader>q', vim.diagnostic.setloclist)
+  buf_keymap('n', '<leader>a', function()
+    vim.api.nvim_command('CodeActionMenu')
+  end)
+  buf_keymap('v', '<leader>a', function()
+    vim.api.nvim_command('CodeActionMenu')
+  end)
   -- keymap(bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- keymap(bufnr, 'v', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- keymap(bufnr, 'n', '<leader>a', '<cmd>Telescope lsp_code_actions<CR>', opts)
   -- keymap(bufnr, 'v', '<leader>a', '<cmd>Telescope lsp_code_actions<CR>', opts)
 
-  vim.api.nvim_create_user_command('Format', function()
-    vim.lsp.buf.formatting()
-  end, { bang = true })
+  vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting, { bang = true })
 end
 
 M.on_attach = function(client, bufnr)
@@ -145,6 +162,11 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 
+  -- TODO: replace vim with lua
+  -- local _lsp_formatting = vim.api.nvim_create_augroup('_lsp_formatting', {})
+  -- vim.api.nvim_create_autocmd('BufWritePre', {
+  --
+  -- })
   vim.cmd([[
     augroup LspFormatting
     autocmd! * <buffer>

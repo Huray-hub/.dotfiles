@@ -25,6 +25,7 @@ m4
 make
 man-db
 man-pages
+neovim
 nodejs
 npm
 openssh
