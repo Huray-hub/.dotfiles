@@ -86,7 +86,8 @@ xset r rate 210 40
 
 # Environment variables set everywhere
 export EDITOR="nvim"
-
+export TERMINAL="alacritty"
+export BROWSER="chromium"
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
 

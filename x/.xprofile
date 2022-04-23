@@ -1,6 +1,6 @@
 # Don't randomly turn off
 xset s off
-# xset -dpms   --WSL 2 server does not have that option
+xset -dpms   #--WSL 2 server does not have that option
 xset s noblank
 
 # Speedy keys
@@ -8,8 +8,8 @@ xset r rate 210 40
 
 # Environment variables set everywhere 
 export EDITOR="nvim"
-# export TERMINAL="kitty"
-# export BROWSER="brave"
+export TERMINAL="alacritty"
+export BROWSER="chromium"
 
 # XDG Paths
 export XDG_CONFIG_HOME=$HOME/.config
@@ -18,3 +18,23 @@ export XDG_DATA_HOME=$HOME/.local/share
 
 # zsh config dir
 # export ZDOTDIR=$HOME/.config/zsh
+
+
+
+# Network Manager Applet
+# nm-applet --indicator &
+
+
+# For QT Themes
+# export QT_QPA_PLATFORMTHEME=qt5ct
+
+
+# Compositor
+# picom -b
+
+# Hide mouse when typing
+# xbanish &
+
+# Screenshots
+flameshot &
+
