@@ -1,0 +1,23 @@
+super + Return
+  $TERMINAL
+
+# FUNCTION KEYS
+# Volume controls
+@XF86AudioMute
+  pamixer -t
+
+@XF86AudioLowerVolume
+  pamixer -d 10 
+
+@XF86AudioRaiseVolume
+  pamixer -i 10 
+
+# Brightness controls
+@XF86MonBrightnessDown
+  pkexec /usr/bin/brillo -U 15
+
+@XF86MonBrightnessUp
+  pkexec /usr/bin/brillo -A 15 
+
+Print 
+  flameshot gui

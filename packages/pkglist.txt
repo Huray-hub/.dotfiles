@@ -1,3 +1,4 @@
+acpi
 alacritty
 alsa-utils
 amd-ucode
@@ -9,12 +10,15 @@ binutils
 bison
 bluez
 bluez-utils
+brillo
+caprine
 chromium
 cmake
 dhcpcd
 discord
 docker
 dosfstools
+dunst
 efibootmgr
 fakeroot
 fd
@@ -59,6 +63,7 @@ obsidian
 openssh
 os-prober
 pacman
+pamixer
 patch
 pavucontrol
 pipewire-pulse
@@ -79,6 +84,7 @@ sqlfluff
 stow
 stylua
 sudo
+sxhkd
 teams
 texinfo
 tree

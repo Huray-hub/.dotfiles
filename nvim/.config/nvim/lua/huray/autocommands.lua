@@ -157,3 +157,20 @@ autocmd('FileType', {
     command('wincmd L')
   end,
 })
+
+-- Relative to installed programs
+local _Xresources = augroup('_Xresources', {})
+autocmd('BufWritePost', {
+  desc = 'Run xrdb whenever Xresources are updated',
+  group = _Xresources,
+  pattern = '*Xresources',
+  command = '!xrdb %',
+})
+
+local _sxhkd = augroup('_sxhkd', {})
+autocmd('BufWritePost', {
+  desc = 'Update binds when sxhkdrc is updated',
+  group = _sxhkd,
+  pattern = '*sxhkdrc',
+  command = '!killall sxhkd; setsid sxhkd &',
+})
