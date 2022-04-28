@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Fleeting Notes/Add dotfiles.md",
+            "file": "LN/Csharp asynchonous methods.md",
             "mode": "source",
             "source": false
           }
@@ -61,7 +61,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 178.51006317138672
+    "width": 291.5,
+    "collapsed": true
   },
   "right": {
     "id": "47914f4d3d4faac6",
@@ -77,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Fleeting Notes/Add dotfiles.md",
+                "file": "LN/Csharp asynchonous methods.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,15 +109,15 @@
   },
   "active": "795b0ef2c33a982a",
   "lastOpenFiles": [
-    "Fleeting Notes/Add dotfiles.md",
-    "Permanent Notes/College roadmap.md",
-    "Permanent Notes/Computer Networks II.md",
-    "Permanent Notes/Writing of Technological Documents.md",
-    "Zettelkasten/Guide to Zettelkasten Method.md",
-    "Zettelkasten/Computer Networks.md",
-    "Zettelkasten/nodes.md",
-    "Zettelkasten/Test IQ.md",
-    "Zettelkasten/Reliability.md",
-    "Zettelkasten/Performance.md"
+    "LN/Csharp asynchonous methods.md",
+    "LN/Backup.md",
+    "LN/C.md",
+    "LN/OSII - Week 01.md",
+    "PN/Writing of Technological Documents.md",
+    "PN/Nodes.md",
+    "PN/Computer Networks II.md",
+    "PN/College roadmap.md",
+    "Computer Networks.md",
+    "README.md"
   ]
 }
