@@ -1,23 +1,39 @@
 super + Return
   $TERMINAL
 
-# FUNCTION KEYS
+alt + space
+  rofi -show 
+  /* rofi -show drun -modi drun */
+
+/* Caps_Lock */
+/*   Escape */
+
 # Volume controls
-@XF86AudioMute
+XF86AudioMute
   pamixer -t
 
-@XF86AudioLowerVolume
-  pamixer -d 10 
+XF86AudioLowerVolume
+  pamixer -d 7 
 
-@XF86AudioRaiseVolume
-  pamixer -i 10 
+XF86AudioRaiseVolume
+  pamixer -i 7 
 
 # Brightness controls
-@XF86MonBrightnessDown
-  pkexec /usr/bin/brillo -U 15
+XF86MonBrightnessDown
+  brillo -q -U 10
 
-@XF86MonBrightnessUp
-  pkexec /usr/bin/brillo -A 15 
+XF86MonBrightnessUp
+  brillo -q -A 10
 
+# Calculator
+XF86Calculator
+  rofi -show calc
+
+
+# Screenshot
 Print 
   flameshot gui
+
+# Toggle bt headphones connection
+super + k
+  bt-toggle-headphones.sh
