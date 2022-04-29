@@ -1,4 +1,6 @@
 local fn = vim.fn
+local my_utils = require('huray.my-utils')
+local command = my_utils.command
 
 -- Automatically install packer
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -12,10 +14,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path,
   })
   print('Installing packer close and reopen Neovim...')
-  vim.cmd([[packadd packer.nvim]])
+  command('packadd packer.nvim')
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- TODO: refactor to lua
 vim.cmd([[
   augroup packer_user_config
     autocmd!

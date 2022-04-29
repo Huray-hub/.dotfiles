@@ -1,12 +1,6 @@
-local opts = { noremap = true, silent = true }
-
--- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
---Remap space as leader key
--- keymap("", "<Space>", "<Nop>", opts)
--- vim.g.mapleader = " "
--- vim.g.maplocalleader = " "
+local my_utils = require('huray.my-utils')
+local keymap = my_utils.keymap
+local command = my_utils.command
 
 -- Modes
 --   normal_mode = "n",
@@ -18,19 +12,19 @@ local keymap = vim.api.nvim_set_keymap
 
 -- Normal --
 -- Better window navigation
-keymap('n', '<C-h>', ":call VSCodeNotify('workbench.action.navigateLeft')<CR>", opts)
-keymap('n', '<C-j>', ":call VSCodeNotify('workbench.action.navigateDown')<CR>", opts)
-keymap('n', '<C-k>', ":call VSCodeNotify('workbench.action.navigateUp')<CR>", opts)
-keymap('n', '<C-l>', ":call VSCodeNotify('workbench.action.navigateRight')<CR>", opts)
+keymap('n', '<C-h>', command("call VSCodeNotify('workbench.action.navigateLeft')"))
+keymap('n', '<C-j>', command("call VSCodeNotify('workbench.action.navigateDown')"))
+keymap('n', '<C-k>', command("call VSCodeNotify('workbench.action.navigateUp')"))
+keymap('n', '<C-l>', command("call VSCodeNotify('workbench.action.navigateRight')"))
 
-keymap('n', '<leader>e', ":call VSCodeNotify('workbench.action.quickOpenNavigatePreviousInFilePicker')<CR>", opts)
+keymap('n', '<leader>e', command("call VSCodeNotify('workbench.action.quickOpenNavigatePreviousInFilePicker')"))
 
 -- Resize with arrows
--- keymap("n", "<C-Up>", ":resize -2<CR>", opts)
--- keymap("n", "<C-Down>", ":resize +2<CR>", opts)
--- keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
--- keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+-- keymap("n", "<C-Up>", ":resize -2<CR>")
+-- keymap("n", "<C-Down>", ":resize +2<CR>")
+-- keymap("n", "<C-Left>", ":vertical resize -2<CR>")
+-- keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Navigate buffers
--- keymap("n", "<S-l>", ":bnext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- keymap("n", "<S-l>", ":bnext<CR>")
+-- keymap("n", "<S-h>", ":bprevious<CR>")

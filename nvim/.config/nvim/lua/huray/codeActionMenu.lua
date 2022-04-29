@@ -1,3 +1,4 @@
 --floating window for code actions
-vim.api.nvim_set_var('code_action_menu_show_details', false)
-vim.api.nvim_set_var('code_action_menu_show_diff', false)
+local my_utils = require('huray.my-utils')
+my_utils.set_global_variable('code_action_menu_show_details', false)
+my_utils.set_global_variable('code_action_menu_show_diff', false)

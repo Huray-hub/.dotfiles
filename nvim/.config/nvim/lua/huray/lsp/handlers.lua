@@ -1,3 +1,5 @@
+local my_utils = require('huray.my-utils')
+
 local M = {}
 
 M.setup = function()
@@ -14,9 +16,7 @@ M.setup = function()
   end
 
   local config = {
-    -- disable virtual text
     virtual_text = false,
-    -- show signs
     signs = {
       active = signs,
     },
@@ -81,13 +81,14 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_options(bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  my_utils.buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc', bufnr)
 end
 
 local function lsp_keymaps(bufnr)
+  local create_command = my_utils.create_command
+  local command = my_utils.command
   local buf_keymap = function(mode, lhs, rhs)
-    local opts = { buffer = bufnr, silent = true }
-    vim.keymap.set(mode, lhs, rhs, opts)
+    my_utils.buf_keymap(mode, lhs, rhs, bufnr)
   end
 
   buf_keymap('n', 'gD', vim.lsp.buf.declaration)
@@ -127,17 +128,17 @@ local function lsp_keymaps(bufnr)
   end)
   buf_keymap('n', '<leader>q', vim.diagnostic.setloclist)
   buf_keymap('n', '<leader>a', function()
-    vim.api.nvim_command('CodeActionMenu')
+    command('CodeActionMenu')
   end)
   buf_keymap('v', '<leader>a', function()
-    vim.api.nvim_command('CodeActionMenu')
+    command('CodeActionMenu')
   end)
   -- keymap(bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- keymap(bufnr, 'v', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   -- keymap(bufnr, 'n', '<leader>a', '<cmd>Telescope lsp_code_actions<CR>', opts)
   -- keymap(bufnr, 'v', '<leader>a', '<cmd>Telescope lsp_code_actions<CR>', opts)
 
-  vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting, { bang = true })
+  create_command('Format', vim.lsp.buf.formatting, { bang = true })
 end
 
 M.on_attach = function(client, bufnr)

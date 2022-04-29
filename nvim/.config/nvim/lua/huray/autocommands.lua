@@ -1,14 +1,12 @@
 -- :h nvim_*
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-local command = vim.api.nvim_command -- this one executes commands
-local set_global_option = vim.api.nvim_set_option
-local set_option = vim.api.nvim_set_option_value
+local my_utils = require('huray.my-utils')
 
-local buf_keymap = function(mode, lhs, rhs)
-  local opts = { buffer = true, silent = true }
-  vim.keymap.set(mode, lhs, rhs, opts)
-end
+local augroup = my_utils.augroup
+local autocmd = my_utils.autocmd
+local command = my_utils.command
+local set_global_option = my_utils.set_global_option
+local set_option = my_utils.set_option
+local buf_keymap = my_utils.buf_keymap
 
 ---------------------------------------------------------------------
 local _general_settings = augroup('_general_settings', {})
@@ -156,21 +154,4 @@ autocmd('FileType', {
   callback = function()
     command('wincmd L')
   end,
-})
-
--- Relative to installed programs
-local _Xresources = augroup('_Xresources', {})
-autocmd('BufWritePost', {
-  desc = 'Run xrdb whenever Xresources are updated',
-  group = _Xresources,
-  pattern = '*Xresources',
-  command = '!xrdb %',
-})
-
-local _sxhkd = augroup('_sxhkd', {})
-autocmd('BufWritePost', {
-  desc = 'Update binds when sxhkdrc is updated',
-  group = _sxhkd,
-  pattern = '*sxhkdrc',
-  command = '!killall sxhkd; setsid sxhkd &',
 })

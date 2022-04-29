@@ -44,4 +44,5 @@ require('nvim-lightbulb').update_lightbulb({
   },
 })
 
+--TODO: refactor this to lua
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('nvim-lightbulb').update_lightbulb()]])

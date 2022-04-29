@@ -1,4 +1,6 @@
 local status_ok, toggleterm = pcall(require, 'toggleterm')
+local my_utils = require('huray.my-utils')
+local buf_keymap = my_utils.buf_keymap
 if not status_ok then
   return
 end
@@ -27,15 +29,15 @@ toggleterm.setup({
 })
 
 function _G.set_terminal_keymaps()
-  local opts = { noremap = true }
-  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
-  -- vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
-  -- vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
+  buf_keymap('t', '<esc>', [[<C-\><C-n>]])
+  buf_keymap('t', 'jk', [[<C-\><C-n>]])
+  buf_keymap('t', '<C-h>', [[<C-\><C-n><C-W>h]])
+  buf_keymap('t', '<C-j>', [[<C-\><C-n><C-W>j]])
+  buf_keymap('t', '<C-k>', [[<C-\><C-n><C-W>k]])
+  buf_keymap('t', '<C-l>', [[<C-\><C-n><C-W>l]])
 end
 
+-- TODO: refactor this to lua
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 local Terminal = require('toggleterm.terminal').Terminal
