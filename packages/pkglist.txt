@@ -83,6 +83,7 @@ pcmanfm
 pcsclite
 pipewire-pulse
 pkgconf
+playerctl
 prettier
 python-pip
 python-pynvim

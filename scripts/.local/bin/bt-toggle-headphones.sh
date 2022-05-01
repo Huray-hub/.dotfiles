@@ -24,7 +24,7 @@ main() {
 	local deviceName
 	deviceName=$(get_device_name "$deviceInfo")
 
-	bluetoothctl "$action" "$deviceUid" && notify-send "$deviceName ${action}ed successfully"
+	bluetoothctl "$action" "$deviceUid" && notify-send "$deviceName ${action}ed successfully" || notify-send "Could not $action $deviceName " -u critical
 
 	return 0
 }

@@ -35,11 +35,11 @@ xinput set-prop 14 298 1 # Natural Scrolling
 
 autorandr --change # Change monitor layout on new detection of monitor layout
 
-sxhkd &     # Bind keys
 dunst &     # Notifications
 udiskie &   # Auto mount removable media
 flameshot & # Screenshot tool
 redshift &  # Color temperature based on the datetime of your location (https://wiki.archlinux.org/title/redshift)
+sxhkd &     # Bind keys
 
 setxkbmap -option caps:escape
 setxkbmap us,gr -option grp:win_space_toggle

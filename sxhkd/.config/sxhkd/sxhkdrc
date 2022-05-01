@@ -3,29 +3,30 @@ super + Return
 
 alt + space
   rofi -show 
-  /* rofi -show drun -modi drun */
 
-/* Caps_Lock */
-/*   Escape */
-
-# Volume controls
 XF86AudioMute
   pamixer -t
 
-XF86AudioLowerVolume
-  pamixer -d 7 
+XF86Audio{Raise,Lower}Volume
+  pamixer -{i,d} 7 
 
-XF86AudioRaiseVolume
-  pamixer -i 7 
+# XF86AudioRaiseVolume 
+#   pamixer -i 7  
+
+XF86Audio{Play,Pause}
+  playerctl play-pause
+  
+XF86Audio{Next,Prev}
+  playerctl {next,previous}
 
 # Brightness controls
-XF86MonBrightnessDown
-  brillo -q -U 10
+XF86MonBrightness{Up,Down}
+  brillo -q -{A,U} 10
 
-XF86MonBrightnessUp
-  brillo -q -A 10
+# XF86MonBrightnessUp
+#  brillo -q -A 10
 
-# Calculator
+
 XF86Calculator
   rofi -show calc
 
@@ -36,4 +37,4 @@ Print
 
 # Toggle bt headphones connection
 super + k
-  bt-toggle-headphones.sh
+  ~/.local/bin/bt-toggle-headphones.sh
