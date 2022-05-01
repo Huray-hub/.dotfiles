@@ -126,6 +126,9 @@ return packer.startup(function(use)
   -- Competitive programming
   use('p00f/cphelper.nvim')
 
+  -- Colors
+  use('norcalli/nvim-colorizer.lua')
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
