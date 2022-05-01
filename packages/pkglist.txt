@@ -58,6 +58,7 @@ linux-lts
 lldb
 llvm
 lxappearance
+ly-git
 m4
 make
 man-pages
