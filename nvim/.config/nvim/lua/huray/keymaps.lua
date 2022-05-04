@@ -26,24 +26,24 @@ keymap('n', '<C-l>', '<C-w>l')
 
 -- Resize with arrows
 keymap('n', '<C-Up>', function()
-  command('resize -2')
+    command('resize -2')
 end)
 keymap('n', '<C-Down>', function()
-  command('resize +2')
+    command('resize +2')
 end)
 keymap('n', '<C-Left>', function()
-  command('vertical resize -2')
+    command('vertical resize -2')
 end)
 keymap('n', '<C-Right>', function()
-  command('vertical resize +2')
+    command('vertical resize +2')
 end)
 
 -- Navigate buffers
 keymap('n', '<S-l>', function()
-  command('bnext')
+    command('bnext')
 end)
 keymap('n', '<S-h>', function()
-  command('bprevious')
+    command('bprevious')
 end)
 
 -- Move text up and down

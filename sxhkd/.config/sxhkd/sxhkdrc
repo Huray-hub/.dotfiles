@@ -1,6 +1,12 @@
 super + Return
   $TERMINAL
 
+super + {w,s}
+  {$BROWSER,spotify}
+
+super + e
+  $TERMINAL -e lf
+
 alt + space
   rofi -show 
 
@@ -38,3 +44,4 @@ Print
 # Toggle bt headphones connection
 super + k
   ~/.local/bin/bt-toggle-headphones.sh
+

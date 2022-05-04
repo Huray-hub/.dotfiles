@@ -1,8 +1,8 @@
 local status_ok, dap = pcall(require, 'dap')
 
 if not status_ok then
-  vim.notify('dap ' .. dap .. ' not found!')
-  return
+    vim.notify('dap ' .. dap .. ' not found!')
+    return
 end
 
 local icons = require('huray.icons')
@@ -16,48 +16,48 @@ local home = os.getenv('HOME')
 
 -- adapter definitions
 dap.adapters.cppdbg = { -- requires vscode's C/C++ extension
-  id = 'cppdbg',
-  type = 'executable',
-  command = vim.fn.glob(home .. '/.vscode-server/extensions/ms-vscode.cpptools-*/debugAdapters/bin/OpenDebugAD7'),
+    id = 'cppdbg',
+    type = 'executable',
+    command = vim.fn.glob(home .. '/.vscode-server/extensions/ms-vscode.cpptools-*/debugAdapters/bin/OpenDebugAD7'),
 }
 
 dap.adapters.lldb = { -- requires llvm package
-  type = 'executable',
-  command = '/usr/bin/lldb-vscode', -- adjust as needed
-  name = 'lldb',
+    type = 'executable',
+    command = '/usr/bin/lldb-vscode', -- adjust as needed
+    name = 'lldb',
 }
 
 -- adapter configurations
 dap.configurations.cpp = {
-  {
-    name = 'Launch lldb',
-    type = 'lldb',
-    request = 'launch',
-    program = '${relativeFileDirname}/a.out',
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = {},
-    MIMode = 'lldb',
+    {
+        name = 'Launch lldb',
+        type = 'lldb',
+        request = 'launch',
+        program = '${relativeFileDirname}/a.out',
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+        args = {},
+        MIMode = 'lldb',
 
-    -- 💀
-    -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
-    --
-    --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-    --
-    -- Otherwise you might get the following error:
-    --
-    --    Error on launch: Failed to attach to the target process
-    --
-    -- But you should be aware of the implications:
-    -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
-    runInTerminal = false,
-    -- 💀
-    -- If you use `runInTerminal = true` and resize the terminal window,
-    -- lldb-vscode will receive a `SIGWINCH` signal which can cause problems
-    -- To avoid that uncomment the following option
-    -- See https://github.com/mfussenegger/nvim-dap/issues/236#issuecomment-1066306073
-    postRunCommands = { 'process handle -p true -s false -n false SIGWINCH' },
-  },
+        -- 💀
+        -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
+        --
+        --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+        --
+        -- Otherwise you might get the following error:
+        --
+        --    Error on launch: Failed to attach to the target process
+        --
+        -- But you should be aware of the implications:
+        -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
+        runInTerminal = false,
+        -- 💀
+        -- If you use `runInTerminal = true` and resize the terminal window,
+        -- lldb-vscode will receive a `SIGWINCH` signal which can cause problems
+        -- To avoid that uncomment the following option
+        -- See https://github.com/mfussenegger/nvim-dap/issues/236#issuecomment-1066306073
+        postRunCommands = { 'process handle -p true -s false -n false SIGWINCH' },
+    },
 }
 
 dap.configurations.c = dap.configurations.cpp
@@ -67,50 +67,50 @@ require('nvim-dap-virtual-text').setup()
 
 local dap_ui_status_ok, dapui = pcall(require, 'dapui')
 if not dap_ui_status_ok then
-  return
+    return
 end
 
 dapui.setup({
-  icons = { expanded = '▾', collapsed = '▸' },
-  mappings = {
-    -- Use a table to apply multiple mappings
-    expand = { '<CR>', '<2-LeftMouse>' },
-    open = 'o',
-    remove = 'd',
-    edit = 'e',
-    repl = 'r',
-    toggle = 't',
-  },
-  sidebar = {
-    -- You can change the order of elements in the sidebar
-    elements = {
-      -- Provide as ID strings or tables with "id" and "size" keys
-      {
-        id = 'scopes',
-        size = 0.25, -- Can be float or integer > 1
-      },
-      { id = 'breakpoints', size = 0.25 },
-      { id = 'stacks', size = 0.25 },
-      { id = 'watches', size = 00.25 },
-    },
-    size = 40,
-    position = 'left', -- Can be "left", "right", "top", "bottom"
-  },
-  tray = {
-    -- elements = {},
-    elements = { 'repl' },
-    size = 10,
-    position = 'bottom', -- Can be "left", "right", "top", "bottom"
-  },
-  floating = {
-    max_height = nil, -- These can be integers or a float between 0 and 1.
-    max_width = nil, -- Floats will be treated as percentage of your screen.
-    border = 'rounded', -- Border style. Can be "single", "double" or "rounded"
+    icons = { expanded = '▾', collapsed = '▸' },
     mappings = {
-      close = { 'q', '<Esc>' },
+        -- Use a table to apply multiple mappings
+        expand = { '<CR>', '<2-LeftMouse>' },
+        open = 'o',
+        remove = 'd',
+        edit = 'e',
+        repl = 'r',
+        toggle = 't',
     },
-  },
-  windows = { indent = 1 },
+    sidebar = {
+        -- You can change the order of elements in the sidebar
+        elements = {
+            -- Provide as ID strings or tables with "id" and "size" keys
+            {
+                id = 'scopes',
+                size = 0.25, -- Can be float or integer > 1
+            },
+            { id = 'breakpoints', size = 0.25 },
+            { id = 'stacks', size = 0.25 },
+            { id = 'watches', size = 00.25 },
+        },
+        size = 40,
+        position = 'left', -- Can be "left", "right", "top", "bottom"
+    },
+    tray = {
+        -- elements = {},
+        elements = { 'repl' },
+        size = 10,
+        position = 'bottom', -- Can be "left", "right", "top", "bottom"
+    },
+    floating = {
+        max_height = nil, -- These can be integers or a float between 0 and 1.
+        max_width = nil, -- Floats will be treated as percentage of your screen.
+        border = 'rounded', -- Border style. Can be "single", "double" or "rounded"
+        mappings = {
+            close = { 'q', '<Esc>' },
+        },
+    },
+    windows = { indent = 1 },
 })
 
 local opts = { noremap = true, silent = true }
@@ -126,10 +126,10 @@ keymap('n', '<F22>', "<cmd>lua require('dap').step_out()<CR>", opts) --F22 -> S-
 keymap('n', '<leader>db', "<cmd>lua require('dap').toggle_breakpoint()<CR>", opts)
 keymap('n', '<leader>B', "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
 keymap(
-  'n',
-  '<leader>lp',
-  "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-  opts
+    'n',
+    '<leader>lp',
+    "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
+    opts
 )
 keymap('n', '<leader>dr', "<cmd>lua require('dap').repl.open()<CR>", opts)
 keymap('n', '<leader>dl', "<cmd>lua require('dap').run_last()<CR>", opts)

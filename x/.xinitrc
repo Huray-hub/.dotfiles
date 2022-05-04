@@ -35,6 +35,8 @@ xinput set-prop 14 298 1 # Natural Scrolling
 
 autorandr --change # Change monitor layout on new detection of monitor layout
 
+picom --experimental-backends -b
+
 dunst &     # Notifications
 udiskie &   # Auto mount removable media
 flameshot & # Screenshot tool

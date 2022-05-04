@@ -13,8 +13,8 @@ require('huray.indentline')
 require('huray.autocommands')
 
 if vim.g.vscode then
-  require('huray.vscode-keymaps')
-  return
+    require('huray.vscode-keymaps')
+    return
 end
 
 require('huray.nvim-tree')
