@@ -21,6 +21,7 @@ chntpw
 chromium
 cmake
 cmatrix
+deluge
 dhcpcd
 discord
 docker
@@ -42,6 +43,7 @@ gdb
 gettext
 git
 github-cli
+gnome-keyring
 go-md2man
 gradle
 grep
@@ -68,6 +70,7 @@ make
 man-pages
 mpv
 mtools
+mysql-workbench
 nano
 neofetch
 neovim
@@ -82,6 +85,7 @@ obsidian
 openssh
 os-prober
 pacman
+pacman-contrib
 pamixer
 patch
 pavucontrol
@@ -107,11 +111,14 @@ shellcheck
 shfmt
 speedtest-cli
 spotify
+spotify-tui-bin
+spotifyd
 sqlfluff
 stow
 stylua
 sudo
 sxhkd
+sxiv
 teams
 texinfo
 tree
@@ -130,6 +137,7 @@ wireplumber
 wps-office
 xclip
 xdg-user-dirs
+xf86-input-synaptics
 xf86-video-amdgpu
 xf86-video-vesa
 xorg-bdftopcf
