@@ -7,11 +7,9 @@
         "id": "795b0ef2c33a982a",
         "type": "leaf",
         "state": {
-          "type": "markdown",
+          "type": "image",
           "state": {
-            "file": "LN/Csharp asynchonous methods.md",
-            "mode": "source",
-            "source": false
+            "file": "Attachments/Screenshot_1.png"
           }
         }
       }
@@ -61,8 +59,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.5,
-    "collapsed": true
+    "width": 291.5
   },
   "right": {
     "id": "47914f4d3d4faac6",
@@ -78,7 +75,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "LN/Csharp asynchonous methods.md",
+                "file": "Attachments/Screenshot_1.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,15 +106,15 @@
   },
   "active": "795b0ef2c33a982a",
   "lastOpenFiles": [
+    "Attachments/Screenshot_1.png",
+    "LN/AZ900 Azure fundamentals Day 2.md",
+    "Computer Networks.md",
+    "README.md",
     "LN/Csharp asynchonous methods.md",
     "LN/Backup.md",
     "LN/C.md",
     "LN/OSII - Week 01.md",
     "PN/Writing of Technological Documents.md",
-    "PN/Nodes.md",
-    "PN/Computer Networks II.md",
-    "PN/College roadmap.md",
-    "Computer Networks.md",
-    "README.md"
+    "PN/Nodes.md"
   ]
 }

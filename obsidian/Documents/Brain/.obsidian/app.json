@@ -12,7 +12,7 @@
   "foldIndent": true,
   "foldHeading": true,
   "alwaysUpdateLinks": true,
-  "attachmentFolderPath": "~T",
+  "attachmentFolderPath": "~A",
   "newFileLocation": "current",
   "newFileFolderPath": "Zettelkasten"
 }
