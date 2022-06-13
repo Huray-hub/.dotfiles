@@ -133,8 +133,9 @@ local function lsp_keymaps(bufnr)
     buf_keymap('v', '<leader>a', function()
         command('CodeActionMenu')
     end)
-    -- keymap(bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    -- keymap(bufnr, 'v', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    -- buf_keymap('n', '<leader>a', vim.lsp.buf.code_action)
+    -- buf_keymap('v', '<leader>a', vim.lsp.buf.code_action)
+
     -- keymap(bufnr, 'n', '<leader>a', '<cmd>Telescope lsp_code_actions<CR>', opts)
     -- keymap(bufnr, 'v', '<leader>a', '<cmd>Telescope lsp_code_actions<CR>', opts)
 

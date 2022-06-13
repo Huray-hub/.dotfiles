@@ -6,12 +6,13 @@ end
 local servers = {
     'bashls',
     'clangd',
-
+    'pyright',
     'jsonls',
     --"jdtls",
     'sqls',
     'sumneko_lua',
     'yamlls',
+    'omnisharp',
 }
 local settings = {
     ensure_installed = servers,
@@ -70,6 +71,11 @@ for _, server in pairs(servers) do
     if server == 'clangd' then
         local clangd_opts = require('huray.lsp.settings.clangd')
         opts = vim.tbl_deep_extend('force', clangd_opts, opts)
+    end
+
+    if server == 'pyright' then
+        local pyright_opts = require('huray.lsp.settings.pyright')
+        opts = vim.tbl_deep_extend('force', pyright_opts, opts)
     end
 
     if server == 'jdtls' then

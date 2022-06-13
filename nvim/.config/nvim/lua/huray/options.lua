@@ -35,6 +35,11 @@ local options = {
     sidescrolloff = 8, -- same as scrolloff but vertical
     guifont = 'monospace:h17', -- the font used in graphical neovim applications
     -- laststatus = 3, -- global status line (only neovim 0.7)
+
+    --test
+    -- keymap = 'greek_utf-8',
+    -- iminsert = 0,
+    -- imsearch = -1,
 }
 
 for k, v in pairs(options) do

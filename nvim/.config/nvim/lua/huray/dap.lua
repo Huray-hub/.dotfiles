@@ -27,7 +27,27 @@ dap.adapters.lldb = { -- requires llvm package
     name = 'lldb',
 }
 
+dap.adapters.coreclr = {
+    type = 'executable',
+    command = '/usr/bin/netcoredbg',
+    args = { '--interpreter=vscode' },
+}
+
 -- adapter configurations
+
+dap.configurations.cs = {
+    {
+        type = 'coreclr',
+        name = 'launch - netcoredbg',
+        request = 'launch',
+        -- program = function()
+        --     return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+        -- end,
+        program = '${relativeFileDirname}/bin/Debug/net6.0/dotnet-notes.dll',
+        cwd = '${workspaceFolder}',
+    },
+}
+
 dap.configurations.cpp = {
     {
         name = 'Launch lldb',

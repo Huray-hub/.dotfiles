@@ -14,9 +14,8 @@ null_ls.setup({
     debug = false,
     sources = {
         formatting.prettier.with({ extra_args = { '--no-semi', '--single-quote', '--jsx-single-quote' } }),
-        -- formatting.black.with({ extra_args = { "--fast" } }),
+        formatting.black.with({ extra_args = { '--fast' } }),
         formatting.stylua,
-        -- diagnostics.flake8,
         formatting.shfmt,
         formatting.sqlformat.with({
             extra_args = {
@@ -33,6 +32,7 @@ null_ls.setup({
                 '--use_space_around_operators',
             },
         }),
+        diagnostics.flake8,
         -- formatting.sqlfluff,
         -- null_ls.builtins.formatting.sqlfluff.with({
         --   args = { 'fix', '--disable_progress_bar', '-f', '-n', '-' },
