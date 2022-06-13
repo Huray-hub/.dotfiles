@@ -14,8 +14,6 @@ zle_highlight=('paste:none')
 # beeping is annoying
 unsetopt BEEP
 
-
-
 #completions
 autoload -Uz compinit
 zstyle ':completion:*' menu select
@@ -52,7 +50,7 @@ zsh_add_completion "esc/conda-zsh-completion" false
 # More completions: https://github.com/zsh-users/zsh-completions
 
 # Key-bindings
-bindkey -s '^o' 'ranger^M'
+bindkey -s '^o' 'lf^M'
 bindkey -s '^f' 'zi^M'
 bindkey -s '^s' 'ncdu^M'
 # bindkey -s '^n' 'nvim $(fzf)^M'
@@ -87,12 +85,9 @@ xset r rate 210 40
 # Environment variables set everywhere
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="chromium"
+export BROWSER="brave"
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-
-
-
-
-
+# opam configuration
+[[ ! -r /home/pskiadas/.opam/opam-init/init.zsh ]] || source /home/pskiadas/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

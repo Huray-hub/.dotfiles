@@ -31,10 +31,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 	unset f
 fi
 
-#Touchpad settings 
-xinput set-prop 14 298 1 # Natural Scrolling
-xinput set-prop 14 321 1 # Tapping
-
 autorandr --change # Change monitor layout on new detection of monitor layout
 
 picom --experimental-backends -b
@@ -47,5 +43,7 @@ sxhkd &     # Bind keys
 
 setxkbmap -option caps:escape
 setxkbmap us,gr -option grp:win_space_toggle
+# setxkbmap us,gr -option grp:alt_shift_toggle
 
+~/.local/bin/dwm-bar.sh &
 ~/.local/bin/random-multimonitor-wallpaper.sh

@@ -1,11 +1,11 @@
 super + Return
   $TERMINAL
 
-super + {w,s}
-  {$BROWSER,spotify}
+super + {w,s,d,t}
+  {$BROWSER,spotify,discord,teams}
 
 super + e
-  $TERMINAL -e lf
+  $TERMINAL -e lfrun $HOME
 
 alt + space
   rofi -show 
@@ -25,17 +25,11 @@ XF86Audio{Play,Pause}
 XF86Audio{Next,Prev}
   playerctl {next,previous}
 
-# Brightness controls
 XF86MonBrightness{Up,Down}
   brillo -q -{A,U} 10
 
-# XF86MonBrightnessUp
-#  brillo -q -A 10
-
-
 XF86Calculator
   rofi -show calc
-
 
 # Screenshot
 Print 
