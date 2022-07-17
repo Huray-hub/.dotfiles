@@ -23,7 +23,7 @@ cmd mkfile ${{
   $EDITOR $ans
 }}
 
-cmd setwallpaper %feh --bg-fill "$f" 
+cmd setwallpaper %feh --bg-fill --no-fehbg "$f" 
 
 cmd zread %zaread "$f"
 

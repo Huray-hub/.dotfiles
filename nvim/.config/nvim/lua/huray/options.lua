@@ -40,6 +40,9 @@ local options = {
     -- keymap = 'greek_utf-8',
     -- iminsert = 0,
     -- imsearch = -1,
+
+    -- foldmethod = 'expr',
+    -- foldexpr = 'nvim_treesitter#foldexpr()',
 }
 
 for k, v in pairs(options) do

@@ -30,6 +30,17 @@ autocmd('FileType', { --depends on bufferline.nvim
     end,
 })
 
+autocmd('FileType', {
+    desc = 'Dap-float filetypes will close with Esc',
+    group = _general_settings,
+    pattern = 'dap-float',
+    callback = function()
+        buf_keymap('n', '<Esc>', function()
+            vim.api.nvim_win_close(0, false)
+        end)
+    end,
+})
+
 autocmd('TextYankPost', {
     desc = 'Highlights text on yank(copy)',
     group = _general_settings,
@@ -155,3 +166,14 @@ autocmd('FileType', {
         command('wincmd L')
     end,
 })
+
+---------------------------------------------------------------------
+-- local _treesitter = augroup('_treesitter', {})
+-- autocmd({ 'BufReadPost', 'FileReadPost' }, {
+--     desc = 'Open folds',
+--     group = _treesitter,
+--     pattern = '*',
+--     callback = function()
+--         command('normal zR')
+--     end,
+-- })

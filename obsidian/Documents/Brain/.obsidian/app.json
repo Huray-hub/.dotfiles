@@ -3,7 +3,7 @@
   "livePreview": true,
   "vimMode": true,
   "showLineNumber": true,
-  "spellcheck": true,
+  "spellcheck": false,
   "spellcheckLanguages": [
     "en-US",
     "el"

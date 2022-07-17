@@ -21,23 +21,23 @@ configs.setup({
         enable = true,
         ensure_installed = false,
     },
-    -- autotag = {
-    -- 		enable = true,
-    -- 		disable = { "xml" },
-    -- 	},
-    -- 	rainbow = {
-    -- 		enable = true,
-    -- 		colors = {
-    -- 			"Gold",
-    -- 			"Orchid",
-    -- 			"DodgerBlue",
-    -- 			-- "Cornsilk",
-    -- 			-- "Salmon",
-    -- 			-- "LawnGreen",
-    -- 		},
-    -- 		disable = { "html" },
-    -- 	},
-    -- 	playground = {
-    -- 		enable = true,
-    -- 	},
+    autotag = {
+        enable = true,
+        disable = { 'xml' },
+    },
+    rainbow = {
+        enable = true,
+        colors = {
+            'Gold',
+            'Orchid',
+            'DodgerBlue',
+            -- "Cornsilk",
+            -- "Salmon",
+            -- "LawnGreen",
+        },
+        disable = { 'html' },
+    },
+    playground = {
+        enable = true,
+    },
 })

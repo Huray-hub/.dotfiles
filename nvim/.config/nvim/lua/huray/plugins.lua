@@ -43,7 +43,6 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-    -- My plugins here
     use('wbthomason/packer.nvim') -- Have packer manage itself
     use('nvim-lua/popup.nvim') -- An implementation of the Popup API from vim in Neovim
     use('nvim-lua/plenary.nvim') -- Useful lua functions used ny lots of plugins
@@ -63,6 +62,7 @@ return packer.startup(function(use)
     use('folke/which-key.nvim')
     use({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' })
     use('kosayoda/nvim-lightbulb')
+    use('filipdutescu/renamer.nvim')
 
     -- Colorschemes
     use('marko-cerovac/material.nvim')
@@ -72,6 +72,7 @@ return packer.startup(function(use)
     use('navarasu/onedark.nvim')
     use('ellisonleao/gruvbox.nvim')
     use({ 'catppuccin/nvim', as = 'catppuccin' })
+    use('Mofiqul/vscode.nvim')
 
     -- cmp plugins
     use('hrsh7th/nvim-cmp') -- The completion plugin
@@ -80,6 +81,7 @@ return packer.startup(function(use)
     use('hrsh7th/cmp-cmdline') -- cmdline completions
     use('saadparwaiz1/cmp_luasnip') -- snippet completions
     use('hrsh7th/cmp-nvim-lsp')
+    use('rcarriga/cmp-dap') -- completion for dap buffers
 
     -- snippets
     use('L3MON4D3/LuaSnip') --snippet engine
@@ -105,6 +107,7 @@ return packer.startup(function(use)
     use('mfussenegger/nvim-dap') -- debug adapter protocol
     use('theHamsta/nvim-dap-virtual-text')
     use('rcarriga/nvim-dap-ui')
+    use('mfussenegger/nvim-dap-python')
     -- use("Pocco81/DAPInstall.nvim") -- debug adapter installer
 
     -- Java
@@ -123,8 +126,6 @@ return packer.startup(function(use)
     use('lewis6991/gitsigns.nvim')
 
     -- SQL
-    -- use('tpope/vim-dadbod')
-    -- use('kristijanhusak/vim-dadbod-ui')
     use('nanotee/sqls.nvim')
 
     -- Competitive programming
@@ -132,6 +133,15 @@ return packer.startup(function(use)
 
     -- Colors
     use('norcalli/nvim-colorizer.lua')
+
+    -- Discord presence
+    use('andweeb/presence.nvim')
+
+    use({
+        'abecodes/tabout.nvim',
+        wants = { 'nvim-treesitter' }, -- or require if not used so far
+        after = { 'nvim-cmp' }, -- if a completion plugin is using tabs load it before
+    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

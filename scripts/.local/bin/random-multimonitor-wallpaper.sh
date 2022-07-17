@@ -8,7 +8,7 @@ main() {
 	# local wallpaper = wal
 	local random_wallpaper="${wallpapers[1 + $RANDOM % ${#wallpapers[@]}]}"
 
-	feh --bg-fill "$random_wallpaper"
+	feh --bg-fill --no-fehbg "$random_wallpaper"
 }
 
 main "@"

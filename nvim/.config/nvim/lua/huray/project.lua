@@ -34,6 +34,8 @@ project.setup({
         'package.json',
         '.sln',
         'gradle',
+        'go.mod',
+        '__pycache__',
     },
 
     ---@ Show hidden files in telescope when searching for files in a project

@@ -10,6 +10,7 @@ autoconf
 automake
 autorandr
 base
+bat
 bdf-unifont
 binutils
 bison
@@ -46,9 +47,12 @@ gcc
 gdb
 gettext
 ghostscript
+gimp
 git
 github-cli
 gnome-keyring
+gnome-pomodoro-git
+go
 go-md2man
 gpointing-device-settings
 gradle
@@ -61,6 +65,7 @@ htop
 icaclient
 imagemagick
 intellij-idea-community-edition
+jq
 jre-openjdk
 lazygit
 lf
@@ -82,6 +87,7 @@ mpv
 mtools
 mysql-workbench
 nano
+ncdu
 neofetch
 neomutt
 neovim
@@ -109,7 +115,10 @@ picom-git
 pipewire-pulse
 pkgconf
 playerctl
+postman-bin
 prettier
+python-black
+python-debugpy
 python-pip
 python-pynvim
 python-sqlparse
@@ -141,9 +150,11 @@ trash-cli
 tree
 ttf-font-awesome-4
 ttf-paratype
+typeracer-bin
 udiskie
 ueberzug
 unzip
+valgrind
 vi
 viber
 vim
@@ -152,6 +163,7 @@ vscodium-bin-marketplace
 wget
 which
 wireplumber
+wireshark-cli
 wkhtmltopdf
 wmname
 xclip

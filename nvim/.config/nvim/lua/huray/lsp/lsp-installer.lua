@@ -13,7 +13,10 @@ local servers = {
     'sumneko_lua',
     'yamlls',
     'omnisharp',
+    'gopls',
+    'rust_analyzer',
 }
+
 local settings = {
     ensure_installed = servers,
     -- automatic_installation = false,
@@ -51,6 +54,7 @@ if not lspconfig_status_ok then
 end
 
 -- local opts = {}
+local settings_path = 'huray.lsp.settings'
 
 for _, server in pairs(servers) do
     local opts = {
@@ -80,6 +84,11 @@ for _, server in pairs(servers) do
 
     if server == 'jdtls' then
         return
+    end
+
+    if server == 'gopls' then
+        local gopls_opts = require('huray.lsp.settings.pyright')
+        opts = vim.tbl_deep_extend('force', gopls_opts, opts)
     end
 
     -- This setup() function is exactly the same as lspconfig's setup function.

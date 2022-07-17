@@ -5,7 +5,7 @@ super + {w,s,d,t}
   {$BROWSER,spotify,discord,teams}
 
 super + e
-  $TERMINAL -e lfrun $HOME
+  $TERMINAL -e lf $HOME
 
 alt + space
   rofi -show 

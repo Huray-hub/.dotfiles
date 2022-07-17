@@ -1,4 +1,4 @@
-local colorscheme = 'dracula'
+local colorscheme = 'vscode' -- greek message: πούλησα την ψυχή μου στο διάολο
 
 local my_utils = require('huray.my-utils')
 local set_global_variable = my_utils.set_global_variable

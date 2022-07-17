@@ -61,7 +61,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.5
+    "width": 291.5,
+    "collapsed": true
   },
   "right": {
     "id": "47914f4d3d4faac6",
@@ -108,15 +109,15 @@
   },
   "active": "795b0ef2c33a982a",
   "lastOpenFiles": [
+    "LN/OSII Exam topic 2019.md",
+    "LN/OSII Theory - Lecture 01.md",
+    "LN/Operating Systems II.md",
+    "LN/OSII Lab - Week 01.md",
     "ARC/Content to watch.md",
+    "LN/Databases I.md",
     "ARC/Move to Aigaleo.md",
     "LN/AZ-900 Azure fundamentals Day 2.md",
     "LN/PaS - Week 01.md",
-    "LN/Probabilities and Statistics.md",
-    "PN/College roadmap.md",
-    "PN/Nodes.md",
-    "LN/OSII - Week 03.md",
-    "LN/OSII - Week 01.md",
-    "LN/Asynchronous programming Csharp.md"
+    "LN/Probabilities and Statistics.md"
   ]
 }

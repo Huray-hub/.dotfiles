@@ -115,7 +115,9 @@ local mappings = {
     },
     ['F'] = { '<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text' },
     ['P'] = { '<cmd>Telescope projects<cr>', 'Projects' },
+    ['r'] = { '<cmd>lua require("renamer").rename({empty = false})<cr>', 'Rename' },
     ['/'] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', 'Comment' },
+    ['Q'] = { '<cmd>qa!<CR>', 'Quit' },
 
     p = {
         name = 'Packer',

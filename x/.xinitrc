@@ -38,7 +38,7 @@ picom --experimental-backends -b
 dunst &     # Notifications
 udiskie &   # Auto mount removable media
 flameshot & # Screenshot tool
-# redshift &  # Color temperature based on the datetime of your location (https://wiki.archlinux.org/title/redshift)
+redshift &  # Color temperature based on the datetime of your location (https://wiki.archlinux.org/title/redshift)
 sxhkd &     # Bind keys
 
 setxkbmap -option caps:escape
