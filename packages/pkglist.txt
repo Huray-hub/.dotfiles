@@ -70,6 +70,7 @@ jre-openjdk
 lazygit
 lf
 libinput-gestures
+libpipewire02
 libreoffice-fresh
 libtool
 linux
@@ -83,6 +84,10 @@ ly-git
 m4
 make
 man-pages
+manga-cli-git
+mars-mips
+md2pdf
+megasync-bin
 mpv
 mtools
 mysql-workbench
@@ -97,7 +102,6 @@ networkmanager
 nodejs
 noto-fonts-emoji
 npm
-nsxiv
 ntfs-3g
 ntp
 obsidian
@@ -133,6 +137,7 @@ rust
 sed
 shellcheck
 shfmt
+signal-desktop
 speedtest-cli
 spotify
 spotify-tui-bin
@@ -143,7 +148,6 @@ stylua
 sudo
 sxhkd
 syncthing
-tabbed
 teams
 texinfo
 trash-cli
@@ -158,6 +162,7 @@ valgrind
 vi
 viber
 vim
+vivaldi
 vscodium-bin
 vscodium-bin-marketplace
 wget

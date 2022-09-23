@@ -4,7 +4,7 @@ if not status_ok then
     return
 end
 
-presence.setup({
+presence:setup({
     -- General options
     auto_update = true, -- Update activity based on autocmd events (if `false`, map or manually execute `:lua package.loaded.presence:update()`)
     neovim_image_text = 'The One True Text Editor', -- Text displayed when hovered over the Neovim image

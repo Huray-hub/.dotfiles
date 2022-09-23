@@ -5,7 +5,7 @@ super + {w,s,d,t}
   {$BROWSER,spotify,discord,teams}
 
 super + e
-  $TERMINAL -e lf $HOME
+  $TERMINAL -e lfrun $HOME
 
 alt + space
   rofi -show 
@@ -15,9 +15,6 @@ XF86AudioMute
 
 XF86Audio{Raise,Lower}Volume
   pamixer -{i,d} 7 
-
-# XF86AudioRaiseVolume 
-#   pamixer -i 7  
 
 XF86Audio{Play,Pause}
   playerctl play-pause

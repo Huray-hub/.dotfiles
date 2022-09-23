@@ -43,7 +43,8 @@ sxhkd &     # Bind keys
 
 setxkbmap -option caps:escape
 setxkbmap us,gr -option grp:win_space_toggle
-# setxkbmap us,gr -option grp:alt_shift_toggle
 
 ~/.local/bin/dwm-bar.sh &
 ~/.local/bin/random-multimonitor-wallpaper.sh
+
+exec dwm

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "ARC/Content to watch.md",
+            "file": "PN/Computer Architecture.md",
             "mode": "source",
             "source": false
           }
@@ -78,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ARC/Content to watch.md",
+                "file": "PN/Computer Architecture.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,15 +109,15 @@
   },
   "active": "795b0ef2c33a982a",
   "lastOpenFiles": [
+    "PN/College roadmap.md",
+    "LN/OSII Exam topic 2019 Solutions.md",
+    "LN/OSII Exam cheatsheet.md",
+    "LN/OSII Theory - Lecture 07.md",
     "LN/OSII Exam topic 2019.md",
+    "LN/OSII Book ch4 threads.md",
     "LN/OSII Theory - Lecture 01.md",
-    "LN/Operating Systems II.md",
-    "LN/OSII Lab - Week 01.md",
-    "ARC/Content to watch.md",
-    "LN/Databases I.md",
-    "ARC/Move to Aigaleo.md",
-    "LN/AZ-900 Azure fundamentals Day 2.md",
-    "LN/PaS - Week 01.md",
-    "LN/Probabilities and Statistics.md"
+    "PN/Nodes.md",
+    "PN/Writing of Technological Documents.md",
+    "LN/Operating Systems II.md"
   ]
 }
