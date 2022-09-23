@@ -75,3 +75,20 @@ keymap('x', 'J', ":move '>+1<CR>gv-gv")
 keymap('x', 'K', ":move '<-2<CR>gv-gv")
 keymap('x', '<A-j>', ":move '>+1<CR>gv-gv")
 keymap('x', '<A-k>', ":move '<-2<CR>gv-gv")
+
+-- Debugging
+keymap('n', '<F5>', function() --it also starts the execution in debug mode
+    require('dap').continue()
+end)
+keymap('n', '<F17>', function() --F17 = S-F5
+    require('dap').terminate()
+end)
+keymap('n', '<F10>', function()
+    require('dap').step_over()
+end)
+keymap('n', '<F11>', function()
+    require('dap').step_into()
+end)
+keymap('n', '<F22>', function() --F22 -> S-F11
+    require('dap').step_out()
+end)

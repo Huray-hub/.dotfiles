@@ -34,11 +34,10 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
+    -- General
     use('wbthomason/packer.nvim') -- Have packer manage itself
     use('nvim-lua/popup.nvim') -- An implementation of the Popup API from vim in Neovim
     use('nvim-lua/plenary.nvim') -- Useful lua functions used ny lots of plugins
-    use('windwp/nvim-autopairs') -- Autopairs, integrates with both cmp and treesitter
-    use('numToStr/Comment.nvim') -- Easily comment stuff
     use('kyazdani42/nvim-web-devicons')
     use('kyazdani42/nvim-tree.lua')
     use('akinsho/bufferline.nvim')
@@ -47,11 +46,24 @@ return packer.startup(function(use)
     use('akinsho/toggleterm.nvim')
     use('ahmedkhalf/project.nvim')
     use('lewis6991/impatient.nvim')
-    use('lukas-reineke/indent-blankline.nvim')
     use('goolord/alpha-nvim')
     use('folke/which-key.nvim')
     use({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' })
     use('kosayoda/nvim-lightbulb')
+
+    -- Convenience
+    use('kylechui/nvim-surround') -- Surround text-objects with letters
+    use('voldikss/vim-browser-search') -- Open Urls to Browser
+    use('norcalli/nvim-colorizer.lua') -- Colors on hex codes
+    use({ -- Pass through parentheses with tabs
+        'abecodes/tabout.nvim',
+        wants = { 'nvim-treesitter' }, -- or require if not used so far
+        after = { 'nvim-cmp' }, -- if a completion plugin is using tabs load it before
+    })
+    use('Shatur/neovim-session-manager') -- Session support
+    use('windwp/nvim-autopairs') -- Autopairs, integrates with both cmp and treesitter
+    use('numToStr/Comment.nvim') -- Easily comment stuff
+    use('lukas-reineke/indent-blankline.nvim')
     use('RRethy/vim-illuminate')
     use('filipdutescu/renamer.nvim')
 
@@ -64,7 +76,7 @@ return packer.startup(function(use)
     use('ellisonleao/gruvbox.nvim')
     use('Mofiqul/vscode.nvim')
 
-    -- cmp plugins
+    -- Cmp plugins
     use('hrsh7th/nvim-cmp') -- The completion plugin
     use('hrsh7th/cmp-buffer') -- buffer completions
     use('hrsh7th/cmp-path') -- path completions
@@ -73,7 +85,7 @@ return packer.startup(function(use)
     use('hrsh7th/cmp-nvim-lsp')
     use('rcarriga/cmp-dap') -- completion for dap buffers
 
-    -- snippets
+    -- Snippets
     use('L3MON4D3/LuaSnip') --snippet engine
     use('rafamadriz/friendly-snippets') -- a bunch of snippets to use
 
@@ -85,23 +97,18 @@ return packer.startup(function(use)
     use('jose-elias-alvarez/null-ls.nvim') -- for formatters and linters
     use('ray-x/lsp_signature.nvim')
 
-    -- Sessions
-    use('Shatur/neovim-session-manager')
+    -- Programming languages
+    use('mfussenegger/nvim-jdtls') -- Java
+    use('simrat39/rust-tools.nvim') -- Rust
+    -- use('ray-x/go.nvim') -- Golang
+    -- use('ray-x/guihua.lua') -- recommended if need floating window support
+    use('nanotee/sqls.nvim') -- SQL
 
     -- Debugging
     use('mfussenegger/nvim-dap') -- debug adapter protocol
     use('theHamsta/nvim-dap-virtual-text')
     use('rcarriga/nvim-dap-ui')
     use('mfussenegger/nvim-dap-python')
-
-    -- Java
-    use('mfussenegger/nvim-jdtls')
-    -- Rust
-    use('simrat39/rust-tools.nvim')
-
-    -- Golang
-    -- use('ray-x/go.nvim')
-    -- use('ray-x/guihua.lua') -- recommended if need floating window support
 
     -- Telescope
     use('nvim-telescope/telescope.nvim')
@@ -116,26 +123,12 @@ return packer.startup(function(use)
     -- Git
     use('lewis6991/gitsigns.nvim')
 
-    -- SQL
-    use('nanotee/sqls.nvim')
-
-    -- Competitive programming
-    use('p00f/cphelper.nvim')
-
-    -- Colors
-    use('norcalli/nvim-colorizer.lua')
-
     -- Discord presence
     use('andweeb/presence.nvim')
 
-    use({
-        'abecodes/tabout.nvim',
-        wants = { 'nvim-treesitter' }, -- or require if not used so far
-        after = { 'nvim-cmp' }, -- if a completion plugin is using tabs load it before
-    })
-
     -- Org mode
     use('nvim-orgmode/orgmode')
+
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

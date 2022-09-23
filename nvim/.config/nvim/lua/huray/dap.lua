@@ -137,24 +137,3 @@ dapui.setup({
 })
 
 require('dap-python').setup()
-
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-
---TODO: Replace vimscript with lua
-keymap('n', '<F5>', "<cmd>lua require('dap').continue()<CR>", opts) --it also starts the execution in debug mode
-keymap('n', '<F17>', "<cmd>lua require('dap').terminate()<CR>", opts) --F17 = S-F5
---TODO: map  F29 (= C-F5 to either 'run without debugger'  or 'restart debugger')
-keymap('n', '<F10>', "<cmd>lua require('dap').step_over()<CR>", opts)
-keymap('n', '<F11>', "<cmd>lua require('dap').step_into()<CR>", opts)
-keymap('n', '<F22>', "<cmd>lua require('dap').step_out()<CR>", opts) --F22 -> S-F11
-keymap('n', '<leader>db', "<cmd>lua require('dap').toggle_breakpoint()<CR>", opts)
-keymap('n', '<leader>B', "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
-keymap(
-    'n',
-    '<leader>lp',
-    "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-    opts
-)
-keymap('n', '<leader>dr', "<cmd>lua require('dap').repl.open()<CR>", opts)
-keymap('n', '<leader>dl', "<cmd>lua require('dap').run_last()<CR>", opts)

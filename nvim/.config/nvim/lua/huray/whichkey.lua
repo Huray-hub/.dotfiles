@@ -85,11 +85,23 @@ local mappings = {
         end,
         'Alpha',
     },
-    ['b'] = {
+    ['t'] = {
         function()
             require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({ previewer = false }))
         end,
         'Buffers',
+    },
+    ['b'] = {
+        function()
+            require('dap').toggle_breakpoint()
+        end,
+        'Toggle breakpoint',
+    },
+    ['B'] = {
+        function()
+            require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
+        end,
+        'Toggle conditional breakpoint',
     },
     ['d'] = {
         name = 'Debugging',
@@ -105,18 +117,6 @@ local mappings = {
             function()
                 require('dap').run_last()
             end,
-            'Last',
-        },
-        u = {
-            function()
-                require('dapui').toggle()
-            end,
-            'UI',
-        },
-        x = {
-            function()
-                require('dap').terminate()
-            end,
             'Exit',
         },
         h = {
@@ -125,16 +125,61 @@ local mappings = {
             end,
             'Hover',
         },
-
-        -- map('n', '<leader>dH', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-        -- map('n', '<leader>dn', ':lua require"dap".run_to_cursor()<CR>')
-        -- map('n', '<leader>dk', ':lua require"dap".up()<CR>zz')
-        -- map('n', '<leader>dj', ':lua require"dap".down()<CR>zz')
-        -- map('n', '<leader>dR', ':lua require"dap".clear_breakpoints()<CR>')
-        -- map('n', '<leader>de', ':lua require"dap".set_exception_breakpoints({"all"})<CR>')
-        -- map('n', '<leader>da', ':lua require"debugHelper".attach()<CR>')
-        -- map('n', '<leader>dA', ':lua require"debugHelper".attachToRemote()<CR>')
-        -- map('n', '<leader>d?', ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
+        c = {
+            function()
+                require('dap').run_to_cursor()
+            end,
+            'Run to cursor',
+        },
+        C = {
+            function()
+                require('dap').clear_breakpoints()
+            end,
+            'Clear breakpoints',
+        },
+        k = {
+            function()
+                require('dap').up()
+            end,
+            'Move arrow up',
+        },
+        j = {
+            function()
+                require('dap').down()
+            end,
+            'Move arrow down',
+        },
+        L = {
+            function()
+                require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+            end,
+            'breakpoint log message',
+        },
+        e = {
+            function()
+                require('dap').set_exception_breakpoints({ 'all' })
+            end,
+            'exception breakpoint',
+        },
+        a = {
+            function()
+                require('debugHelper').attach()
+            end,
+            'Attach',
+        },
+        A = {
+            function()
+                require('debugHelper').attachToRemote()
+            end,
+            'Attach to remote',
+        },
+        ['?'] = {
+            function()
+                local widgets = require('dap.ui.widgets')
+                widgets.centered_float(widgets.scopes)
+            end,
+            'widgets?????',
+        },
     },
     ['e'] = {
         function()
@@ -446,7 +491,9 @@ local mappings = {
         },
     },
 
-    t = {
+    ['O'] = { '<CMD>BrowserSearch<CR><ESC>', 'Open Link' },
+
+    T = {
         name = 'Terminal',
         n = {
             function()
@@ -508,7 +555,9 @@ local vmappings = {
         '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>',
         'Comment',
     },
+    ['O'] = { '<CMD>BrowserSearch<CR><ESC>', 'Open Link' },
 }
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)

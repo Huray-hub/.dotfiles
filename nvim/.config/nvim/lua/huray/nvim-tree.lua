@@ -48,7 +48,6 @@ nvim_tree.setup({
     },
     view = {
         adaptive_size = true,
-        -- width = 40,
         hide_root_folder = false,
         side = 'left',
         mappings = {
