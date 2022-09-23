@@ -27,7 +27,7 @@ M.setup = function()
             focusable = false,
             style = 'minimal',
             border = 'rounded',
-            source = 'always',
+            source = 'if_many', -- or "always"
             header = '',
             prefix = '',
         },
@@ -42,42 +42,6 @@ M.setup = function()
     vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
         border = 'rounded',
     })
-end
-
-local function lsp_highlight_document(client)
-    -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
-        -- TODO: replace vimscript with lua
-        -- local _lsp_document_highlight = vim.api.nvim_create_autogroup('_lsp_document_highlight', {})
-        -- vim.api.nvim_create_autocmd({ 'CursorHold' }, {
-        --   desc = '',
-        --   group = _lsp_document_highlight,
-        --   callback = function()
-        --     vim.lsp.buf.document_highlight()
-        --   end,
-        --   buffer = 0,
-        -- })
-        --
-        -- vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
-        --   desc = '',
-        --   group = _lsp_document_highlight,
-        --   callback = function()
-        --     vim.lsp.buf.clear_references()
-        --   end,
-        --   buffer = 0,
-        -- })
-
-        vim.api.nvim_exec(
-            [[
-              augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-              augroup END
-            ]],
-            false
-        )
-    end
 end
 
 local function lsp_options(bufnr)
@@ -98,25 +62,6 @@ local function lsp_keymaps(bufnr)
     buf_keymap('n', '<C-k>', vim.lsp.buf.signature_help)
     buf_keymap('n', '<leader>rn', vim.lsp.buf.rename)
     buf_keymap('n', 'gr', vim.lsp.buf.references)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gp", "<cmd>lua require'lsp.peek'.Peek('definition')<CR>", opts)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-
-    buf_keymap('n', 'gp', function()
-        require('goto-preview').goto_preview_definition()
-    end)
-    buf_keymap('n', 'gP', function()
-        require('goto-preview').goto_preview_implementation()
-    end)
-    buf_keymap('n', 'gr', function()
-        require('goto-preview').close_all_win()
-    end)
-    -- keymap("n", "gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR> ",opts)
-    -- nnoremap gpd<cmd>lua require('goto-preview').goto_preview_definition()<CR>
-    -- nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>
-    -- nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>
-    -- " Only set if you have telescope installed
-    -- nnoremap gpr <cmd>lua require('goto-preview').goto_preview_references()<CR>
-
     buf_keymap('n', '[d', function()
         vim.diagnostic.goto_prev({ border = 'rounded' })
     end)
@@ -133,11 +78,6 @@ local function lsp_keymaps(bufnr)
     buf_keymap('v', '<leader>a', function()
         command('CodeActionMenu')
     end)
-    -- buf_keymap('n', '<leader>a', vim.lsp.buf.code_action)
-    -- buf_keymap('v', '<leader>a', vim.lsp.buf.code_action)
-
-    -- keymap(bufnr, 'n', '<leader>a', '<cmd>Telescope lsp_code_actions<CR>', opts)
-    -- keymap(bufnr, 'v', '<leader>a', '<cmd>Telescope lsp_code_actions<CR>', opts)
 
     create_command('Format', vim.lsp.buf.formatting, { bang = true })
 end
@@ -162,19 +102,16 @@ M.on_attach = function(client, bufnr)
 
     lsp_options(bufnr)
     lsp_keymaps(bufnr)
-    lsp_highlight_document(client)
 
-    -- TODO: replace vim with lua
-    -- local _lsp_formatting = vim.api.nvim_create_augroup('_lsp_formatting', {})
-    -- vim.api.nvim_create_autocmd('BufWritePre', {
-    --
-    -- })
-    vim.cmd([[
-    augroup LspFormatting
-    autocmd! * <buffer>
-    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-    augroup END
-    ]])
+    local _format_on_save = my_utils.augroup('_format_on_save', {})
+    my_utils.autocmd('BufWritePre', {
+        desc = 'Format document on save',
+        buffer = 0,
+        group = _format_on_save,
+        callback = function()
+            vim.lsp.buf.formatting_sync()
+        end,
+    })
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

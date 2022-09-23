@@ -94,6 +94,7 @@ cmp.setup({
         { name = 'buffer' },
         { name = 'path' },
         { name = 'dap' },
+        { name = 'orgmode' },
     },
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,

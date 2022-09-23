@@ -1,8 +1,8 @@
-local fn = vim.fn
 local my_utils = require('huray.my-utils')
 local command = my_utils.command
 
 -- Automatically install packer
+local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
     PACKER_BOOTSTRAP = fn.system({
@@ -16,15 +16,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     print('Installing packer close and reopen Neovim...')
     command('packadd packer.nvim')
 end
-
--- Autocommand that reloads neovim whenever you save the plugins.lua file
--- TODO: refactor to lua
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, 'packer')
@@ -58,10 +49,10 @@ return packer.startup(function(use)
     use('lewis6991/impatient.nvim')
     use('lukas-reineke/indent-blankline.nvim')
     use('goolord/alpha-nvim')
-    use('antoinemadec/FixCursorHold.nvim') -- This is needed to fix lsp doc highlight
     use('folke/which-key.nvim')
     use({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' })
     use('kosayoda/nvim-lightbulb')
+    use('RRethy/vim-illuminate')
     use('filipdutescu/renamer.nvim')
 
     -- Colorschemes
@@ -71,7 +62,6 @@ return packer.startup(function(use)
     use('Mofiqul/dracula.nvim')
     use('navarasu/onedark.nvim')
     use('ellisonleao/gruvbox.nvim')
-    use({ 'catppuccin/nvim', as = 'catppuccin' })
     use('Mofiqul/vscode.nvim')
 
     -- cmp plugins
@@ -89,16 +79,11 @@ return packer.startup(function(use)
 
     -- LSP
     use('neovim/nvim-lspconfig') -- enable LSP
-    use('williamboman/nvim-lsp-installer') -- simple to use language server installer
+    use('williamboman/mason.nvim') -- simple to use language server installer
+    use('williamboman/mason-lspconfig.nvim')
     use('tamago324/nlsp-settings.nvim') -- language server settings defined in json for
     use('jose-elias-alvarez/null-ls.nvim') -- for formatters and linters
     use('ray-x/lsp_signature.nvim')
-    use({
-        'rmagatti/goto-preview',
-        -- config = function()
-        --   require('goto-preview').setup {}
-        -- end
-    })
 
     -- Sessions
     use('Shatur/neovim-session-manager')
@@ -108,10 +93,16 @@ return packer.startup(function(use)
     use('theHamsta/nvim-dap-virtual-text')
     use('rcarriga/nvim-dap-ui')
     use('mfussenegger/nvim-dap-python')
-    -- use("Pocco81/DAPInstall.nvim") -- debug adapter installer
 
     -- Java
     use('mfussenegger/nvim-jdtls')
+    -- Rust
+    use('simrat39/rust-tools.nvim')
+
+    -- Golang
+    -- use('ray-x/go.nvim')
+    -- use('ray-x/guihua.lua') -- recommended if need floating window support
+
     -- Telescope
     use('nvim-telescope/telescope.nvim')
 
@@ -142,6 +133,9 @@ return packer.startup(function(use)
         wants = { 'nvim-treesitter' }, -- or require if not used so far
         after = { 'nvim-cmp' }, -- if a completion plugin is using tabs load it before
     })
+
+    -- Org mode
+    use('nvim-orgmode/orgmode')
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

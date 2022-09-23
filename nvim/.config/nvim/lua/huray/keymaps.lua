@@ -46,10 +46,6 @@ keymap('n', '<S-h>', function()
     command('bprevious')
 end)
 
--- Move text up and down
--- keymap('n', '<A-j>', '<Esc>:m .+1<CR>==gi')
--- keymap('n', '<A-k>', '<Esc>:m .-2<CR>==gi')
-
 -- Keep search navigation centered
 keymap('n', 'n', 'nzzzv')
 keymap('n', 'N', 'Nzzzv')
@@ -62,8 +58,6 @@ keymap('i', ',', ',<C-g>u')
 keymap('i', '.', '.<C-g>u')
 keymap('i', '!', '!<C-g>u')
 keymap('i', '?', '?<C-g>u')
-
--- TODO: inoremap <expr> <Tab> stridx('])}', getline('.')[col('.')-1])==-1 ? "\t" : "\<Right>"
 
 -- Visual --
 -- Stay in indent mode

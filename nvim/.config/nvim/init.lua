@@ -11,12 +11,6 @@ require('huray.gitsigns')
 require('huray.impatient')
 require('huray.indentline')
 require('huray.autocommands')
-
-if vim.g.vscode then
-    require('huray.vscode-keymaps')
-    return
-end
-
 require('huray.nvim-tree')
 require('huray.bufferline')
 require('huray.alpha')
@@ -28,10 +22,11 @@ require('huray.colorscheme')
 require('huray.codeActionMenu')
 require('huray.lightbulb')
 require('huray.dap')
-require('huray.lsp.goto-preview')
 require('huray.autocommands-packages')
 require('huray.colorizer')
 require('huray.session-manager')
 require('huray.renamer')
 require('huray.discord-presence')
 require('huray.tabout')
+require('huray.org-mode')
+require('huray.illuminate')

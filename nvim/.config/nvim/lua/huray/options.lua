@@ -33,16 +33,10 @@ local options = {
     wrap = false, -- display lines as one long line
     scrolloff = 8, -- number of screen lines to keep cursor x lines from the edges (top & bottom of screen)
     sidescrolloff = 8, -- same as scrolloff but vertical
-    guifont = 'monospace:h17', -- the font used in graphical neovim applications
-    -- laststatus = 3, -- global status line (only neovim 0.7)
-
-    --test
-    -- keymap = 'greek_utf-8',
-    -- iminsert = 0,
-    -- imsearch = -1,
-
-    -- foldmethod = 'expr',
-    -- foldexpr = 'nvim_treesitter#foldexpr()',
+    langmap = 'ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR,ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz',
+    foldlevel = 20,
+    foldmethod = 'expr',
+    foldexpr = 'nvim_treesitter#foldexpr()',
 }
 
 for k, v in pairs(options) do

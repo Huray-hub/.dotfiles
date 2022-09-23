@@ -1,5 +1,10 @@
+local status_ok, lightbulb = pcall(require, 'nvim-lightbulb')
+if not status_ok then
+    return
+end
+
 -- Showing efaults
-require('nvim-lightbulb').update_lightbulb({
+lightbulb.update_lightbulb({
     -- LSP client names to ignore
     -- Example: {"sumneko_lua", "null-ls"}
     ignore = {},

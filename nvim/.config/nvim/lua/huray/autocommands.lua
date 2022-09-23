@@ -45,7 +45,7 @@ autocmd('TextYankPost', {
     desc = 'Highlights text on yank(copy)',
     group = _general_settings,
     callback = function()
-        vim.highlight.on_yank({ higroup = 'Search', timeout = 200 })
+        vim.highlight.on_yank({ higroup = 'Visual', timeout = 200 })
     end,
 })
 
@@ -168,12 +168,27 @@ autocmd('FileType', {
 })
 
 ---------------------------------------------------------------------
--- local _treesitter = augroup('_treesitter', {})
--- autocmd({ 'BufReadPost', 'FileReadPost' }, {
---     desc = 'Open folds',
---     group = _treesitter,
---     pattern = '*',
---     callback = function()
---         command('normal zR')
---     end,
--- })
+local _packer_user_config = augroup('_packer_user_config', {})
+autocmd('BufWritePost', {
+    desc = 'Reload neovim whenever you save the plugins.lua file',
+    group = _packer_user_config,
+    pattern = 'plugins.lua',
+    callback = function()
+        command('source <afile> | PackerSync')
+    end,
+})
+
+---------------------------------------------------------------------
+vim.api.nvim_create_autocmd({ 'CursorHold' }, {
+    callback = function()
+        local status_ok, luasnip = pcall(require, 'luasnip')
+        if not status_ok then
+            return
+        end
+        if luasnip.expand_or_jumpable() then
+            -- ask maintainer for option to make this silent
+            -- luasnip.unlink_current()
+            vim.cmd([[silent! lua require("luasnip").unlink_current()]])
+        end
+    end,
+})

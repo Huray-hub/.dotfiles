@@ -77,21 +77,54 @@ local opts = {
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
 }
--- }
+local my_utils = require('huray.my-utils')
 local mappings = {
-    ['m'] = { '<cmd>Alpha<cr>', 'Alpha' },
+    ['m'] = {
+        function()
+            my_utils.command('Alpha')
+        end,
+        'Alpha',
+    },
     ['b'] = {
-        "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+        function()
+            require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({ previewer = false }))
+        end,
         'Buffers',
     },
     ['d'] = {
         name = 'Debugging',
-        b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", 'Breakpoint' },
+        b = {
+            function()
+                require('dap').toggle_breakpoint()
+            end,
+            'Breakpoint',
+        },
+        --TODO: replace this with lua function
         r = { "<cmd>lua require'dap'.repl.toggle({}, 'vsplit')<cr><C-W>l", 'Repl' },
-        l = { "<cmd>lua require'dap'.run_last()<cr>", 'Last' },
-        u = { "<cmd>lua require'dapui'.toggle()<cr>", 'UI' },
-        x = { "<cmd>lua require'dap'.terminate()<cr>", 'Exit' },
-        h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", 'Hover' },
+        l = {
+            function()
+                require('dap').run_last()
+            end,
+            'Last',
+        },
+        u = {
+            function()
+                require('dapui').toggle()
+            end,
+            'UI',
+        },
+        x = {
+            function()
+                require('dap').terminate()
+            end,
+            'Exit',
+        },
+        h = {
+            function()
+                require('dap.ui.widgets').hover()
+            end,
+            'Hover',
+        },
 
         -- map('n', '<leader>dH', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
         -- map('n', '<leader>dn', ':lua require"dap".run_to_cursor()<CR>')
@@ -103,106 +136,360 @@ local mappings = {
         -- map('n', '<leader>dA', ':lua require"debugHelper".attachToRemote()<CR>')
         -- map('n', '<leader>d?', ':lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>')
     },
-    ['e'] = { '<cmd>NvimTreeToggle<cr>', 'Explorer' },
-    ['w'] = { '<cmd>w!<CR>', 'Save' },
-    -- ["q"] = { "<cmd>q!<CR>", "Quit" },
-    ['c'] = { '<cmd>Bdelete!<CR>', 'Close Buffer' },
-    ['C'] = { '<cmd>silent! execute "%bd|e#|bd#"<CR>', 'Close all buffers but this' },
-    ['h'] = { '<cmd>nohlsearch<CR>', 'No Highlight' },
+    ['e'] = {
+        function()
+            my_utils.command('NvimTreeToggle')
+        end,
+        'Explorer',
+    },
+    ['w'] = {
+        function()
+            my_utils.command('w!')
+        end,
+        'Save',
+    },
+    ['c'] = {
+        function()
+            my_utils.command('Bdelete!')
+        end,
+        'Close Buffer',
+    },
+    ['C'] = {
+        function()
+            my_utils.command('silent! execute "%bd|e#|bd#"')
+        end,
+        'Close all buffers but this',
+    },
+    ['h'] = {
+        function()
+            my_utils.command('nohlsearch')
+        end,
+        'No Highlight',
+    },
     ['f'] = {
-        "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({previewer = false}))<cr>",
+        function()
+            require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({ previewer = false }))
+        end,
         'Find files',
     },
-    ['F'] = { '<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text' },
-    ['P'] = { '<cmd>Telescope projects<cr>', 'Projects' },
-    ['r'] = { '<cmd>lua require("renamer").rename({empty = false})<cr>', 'Rename' },
-    ['/'] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', 'Comment' },
-    ['Q'] = { '<cmd>qa!<CR>', 'Quit' },
+    ['F'] = {
+        function()
+            my_utils.command('Telescope live_grep theme=ivy')
+        end,
+        'Find Text',
+    },
+    ['P'] = {
+        function()
+            my_utils.command('Telescope projects')
+        end,
+        'Projects',
+    },
+    ['r'] = {
+        function()
+            require('renamer').rename({ empty = false })
+        end,
+        'Rename',
+    },
+    ['/'] = {
+        function()
+            require('Comment.api').toggle.linewise.current()
+        end,
+        'Comment',
+    },
+    ['Q'] = {
+        function()
+            my_utils.command('qa!')
+        end,
+        'Quit',
+    },
 
     p = {
         name = 'Packer',
-        c = { '<cmd>PackerCompile<cr>', 'Compile' },
-        i = { '<cmd>PackerInstall<cr>', 'Install' },
-        s = { '<cmd>PackerSync<cr>', 'Sync' },
-        S = { '<cmd>PackerStatus<cr>', 'Status' },
-        u = { '<cmd>PackerUpdate<cr>', 'Update' },
+        c = {
+            function()
+                my_utils.command('PackerCompile')
+            end,
+            'Compile',
+        },
+        i = {
+            function()
+                my_utils.command('PackerInstall')
+            end,
+            'Install',
+        },
+        s = {
+            function()
+                my_utils.command('PackerSync')
+            end,
+            'Sync',
+        },
+        S = {
+            function()
+                my_utils.command('PackerStatus')
+            end,
+            'Status',
+        },
+        u = {
+            function()
+                my_utils.command('PackerUpdate')
+            end,
+            'Update',
+        },
     },
 
     g = {
         name = 'Git',
-        g = { '<cmd>lua _LAZYGIT_TOGGLE()<CR>', 'Lazygit' },
-        j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", 'Next Hunk' },
-        k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", 'Prev Hunk' },
-        l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", 'Blame' },
-        p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", 'Preview Hunk' },
-        r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", 'Reset Hunk' },
-        R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", 'Reset Buffer' },
-        s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", 'Stage Hunk' },
+        g = {
+            function()
+                _LAZYGIT_TOGGLE()
+            end,
+            'Lazygit',
+        },
+        j = {
+            function()
+                require('gitsigns').next_hunk()
+            end,
+            'Next Hunk',
+        },
+        k = {
+            function()
+                require('gitsigns').prev_hunk()
+            end,
+            'Prev Hunk',
+        },
+        l = {
+            function()
+                require('gitsigns').blame_line()
+            end,
+            'Blame',
+        },
+        p = {
+            function()
+                require('gitsigns').preview_hunk()
+            end,
+            'Preview Hunk',
+        },
+        r = {
+            function()
+                require('gitsigns').reset_hunk()
+            end,
+            'Reset Hunk',
+        },
+        R = {
+            function()
+                require('gitsigns').reset_buffer()
+            end,
+            'Reset Buffer',
+        },
+        s = {
+            function()
+                require('gitsigns').stage_hunk()
+            end,
+            'Stage Hunk',
+        },
         u = {
-            "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+            function()
+                require('gitsigns').undo_stage_hunk()
+            end,
             'Undo Stage Hunk',
         },
-        o = { '<cmd>Telescope git_status<cr>', 'Open changed file' },
-        b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
-        c = { '<cmd>Telescope git_commits<cr>', 'Checkout commit' },
+        o = {
+            function()
+                my_utils.command('Telescope git_status')
+            end,
+            'Open changed file',
+        },
+        b = {
+            function()
+                my_utils.command('Telescope git_branches')
+            end,
+            'Checkout branch',
+        },
+        c = {
+            function()
+                my_utils.command('Telescope git_commits')
+            end,
+            'Checkout commit',
+        },
         d = {
-            '<cmd>Gitsigns diffthis HEAD<cr>',
+            function()
+                my_utils.command('Gitsigns diffthis HEAD')
+            end,
             'Diff',
         },
     },
 
     l = {
         name = 'LSP',
-        a = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code Action' },
         d = {
-            '<cmd>Telescope lsp_document_diagnostics<cr>',
+            function()
+                my_utils.command('Telescope lsp_document_diagnostics')
+            end,
             'Document Diagnostics',
         },
         w = {
-            '<cmd>Telescope lsp_workspace_diagnostics<cr>',
+            function()
+                my_utils.command('Telescope lsp_workspace_diagnostics')
+            end,
             'Workspace Diagnostics',
         },
-        f = { '<cmd>lua vim.lsp.buf.formatting()<cr>', 'Format' },
-        i = { '<cmd>LspInfo<cr>', 'Info' },
-        I = { '<cmd>LspInstallInfo<cr>', 'Installer Info' },
+        f = {
+            function()
+                vim.lsp.buf.formatting()
+            end,
+            'Format',
+        },
+        i = {
+            function()
+                my_utils.command('LspInfo')
+            end,
+            'Info',
+        },
+        I = {
+            function()
+                my_utils.command('LspInstallInfo')
+            end,
+            'Installer Info',
+        },
         j = {
-            '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>',
+            function()
+                vim.lsp.diagnostic.goto_next()
+            end,
             'Next Diagnostic',
         },
         k = {
-            '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>',
+            function()
+                vim.lsp.diagnostic.goto_prev()
+            end,
             'Prev Diagnostic',
         },
-        l = { '<cmd>lua vim.lsp.codelens.run()<cr>', 'CodeLens Action' },
-        q = { '<cmd>lua vim.diagnostic.setloclist()<cr>', 'Quickfix' },
-        r = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'Rename' },
-        s = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document Symbols' },
+        l = {
+            function()
+                vim.lsp.codelens.run()
+            end,
+            'CodeLens Action',
+        },
+        q = {
+            function()
+                vim.diagnostic.setloclist()
+            end,
+            'Quickfix',
+        },
+        r = {
+            function()
+                vim.lsp.buf.rename()
+            end,
+            'Rename',
+        },
+        s = {
+            function()
+                my_utils.command('Telescope lsp_document_symbols')
+            end,
+            'Document Symbols',
+        },
         S = {
-            '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>',
+            function()
+                my_utils.command('Telescope lsp_dynamic_workspace_symbols')
+            end,
             'Workspace Symbols',
         },
     },
     s = {
         name = 'Search',
-        b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
-        c = { '<cmd>Telescope colorscheme<cr>', 'Colorscheme' },
-        h = { '<cmd>Telescope help_tags<cr>', 'Find Help' },
-        M = { '<cmd>Telescope man_pages<cr>', 'Man Pages' },
-        r = { '<cmd>Telescope oldfiles<cr>', 'Open Recent File' },
-        R = { '<cmd>Telescope registers<cr>', 'Registers' },
-        k = { '<cmd>Telescope keymaps<cr>', 'Keymaps' },
-        C = { '<cmd>Telescope commands<cr>', 'Commands' },
+        b = {
+            function()
+                my_utils.command('Telescope git_branches')
+            end,
+            'Checkout branch',
+        },
+        c = {
+            function()
+                my_utils.command('Telescope colorscheme')
+            end,
+            'Colorscheme',
+        },
+        h = {
+            function()
+                my_utils.command('Telescope help_tags')
+            end,
+            'Find Help',
+        },
+        M = {
+            function()
+                my_utils.command('Telescope man_pages')
+            end,
+            'Man Pages',
+        },
+        r = {
+            function()
+                my_utils.command('Telescope oldfiles')
+            end,
+            'Open Recent File',
+        },
+        R = {
+            function()
+                my_utils.command('Telescope registers')
+            end,
+            'Registers',
+        },
+        k = {
+            function()
+                my_utils.command('Telescope keymaps')
+            end,
+            'Keymaps',
+        },
+        C = {
+            function()
+                my_utils.command('Telescope commands')
+            end,
+            'Commands',
+        },
     },
 
     t = {
         name = 'Terminal',
-        n = { '<cmd>lua _NODE_TOGGLE()<cr>', 'Node' },
-        u = { '<cmd>lua _NCDU_TOGGLE()<cr>', 'NCDU' },
-        t = { '<cmd>lua _HTOP_TOGGLE()<cr>', 'Htop' },
-        p = { '<cmd>lua _PYTHON_TOGGLE()<cr>', 'Python' },
-        f = { '<cmd>ToggleTerm direction=float<cr>', 'Float' },
-        h = { '<cmd>ToggleTerm size=10 direction=horizontal<cr>', 'Horizontal' },
-        v = { '<cmd>ToggleTerm size=80 direction=vertical<cr>', 'Vertical' },
+        n = {
+            function()
+                _NODE_TOGGLE()
+            end,
+            'Node',
+        },
+        u = {
+            function()
+                _NCDU_TOGGLE()
+            end,
+            'NCDU',
+        },
+        t = {
+            function()
+                _HTOP_TOGGLE()
+            end,
+            'Htop',
+        },
+        p = {
+            function()
+                _PYTHON_TOGGLE()
+            end,
+            'Python',
+        },
+        f = {
+            function()
+                my_utils.command('ToggleTerm direction=float')
+            end,
+            'Float',
+        },
+        h = {
+            function()
+                my_utils.command('ToggleTerm size=10 direction=horizontal')
+            end,
+            'Horizontal',
+        },
+        v = {
+            function()
+                my_utils.command('ToggleTerm size=80 direction=vertical')
+            end,
+            'Vertical',
+        },
     },
 }
 
@@ -216,8 +503,11 @@ local vopts = {
 }
 
 local vmappings = {
-    ['/'] = { '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', 'Comment' },
-    -- s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
+    ['/'] = {
+        --TODO: replace this with lua function
+        '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>',
+        'Comment',
+    },
 }
 which_key.setup(setup)
 which_key.register(mappings, opts)

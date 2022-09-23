@@ -3,7 +3,10 @@ if not status_ok then
     return
 end
 
-local actions = require('telescope.actions')
+local status_ok1, actions = pcall(require, 'telescope.actions')
+if not status_ok1 then
+    return
+end
 
 local icons = require('huray.icons')
 

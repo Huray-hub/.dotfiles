@@ -1,5 +1,4 @@
 local status_ok, dap = pcall(require, 'dap')
-
 if not status_ok then
     vim.notify('dap ' .. dap .. ' not found!')
     return
@@ -84,7 +83,11 @@ dap.configurations.cpp = {
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
 
-require('nvim-dap-virtual-text').setup()
+local status_ok1, dap_virtual_text = pcall(require, 'nvim-dap-virtual-text')
+if not status_ok1 then
+    return
+end
+dap_virtual_text.setup()
 
 local dap_ui_status_ok, dapui = pcall(require, 'dapui')
 if not dap_ui_status_ok then
@@ -134,7 +137,6 @@ dapui.setup({
 })
 
 require('dap-python').setup()
--- require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
