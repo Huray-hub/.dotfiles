@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "PN/Computer Architecture.md",
+            "file": "LN/PaS - Week 01.md",
             "mode": "source",
             "source": false
           }
@@ -78,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PN/Computer Architecture.md",
+                "file": "LN/PaS - Week 01.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,15 +109,15 @@
   },
   "active": "795b0ef2c33a982a",
   "lastOpenFiles": [
+    "LN/Probabilities and Statistics.md",
+    "LN/90 days of DevOps.md",
     "PN/College roadmap.md",
+    "PN/Computer Architecture.md",
     "LN/OSII Exam topic 2019 Solutions.md",
     "LN/OSII Exam cheatsheet.md",
     "LN/OSII Theory - Lecture 07.md",
     "LN/OSII Exam topic 2019.md",
     "LN/OSII Book ch4 threads.md",
-    "LN/OSII Theory - Lecture 01.md",
-    "PN/Nodes.md",
-    "PN/Writing of Technological Documents.md",
-    "LN/Operating Systems II.md"
+    "LN/OSII Theory - Lecture 01.md"
   ]
 }

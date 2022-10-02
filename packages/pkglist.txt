@@ -23,7 +23,6 @@ cmake
 cmatrix
 deluge
 deluge-gtk
-dhcpcd
 discord
 docker
 dosfstools
@@ -128,6 +127,7 @@ python-pynvim
 python-sqlparse
 qt5ct
 redshift
+redshiftgui-bin
 reflector
 rider
 ripgrep
@@ -154,7 +154,6 @@ trash-cli
 tree
 ttf-font-awesome-4
 ttf-paratype
-typeracer-bin
 udiskie
 ueberzug
 unzip
