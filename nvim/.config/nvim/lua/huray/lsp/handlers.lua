@@ -81,20 +81,20 @@ local function lsp_keymaps(bufnr)
         command('CodeActionMenu')
     end)
 
-    create_command('Format', vim.lsp.buf.formatting, { bang = true })
+    create_command('Format', function() vim.lsp.buf.format({ async = true }) end, { bang = true })
 end
 
 M.on_attach = function(client, bufnr)
-    if client.name == 'tsserver' or client.name == 'sumneko_lua' then
-        client.resolved_capabilities.document_formatting = false
-    end
+    --[[ if client.name == 'tsserver' or client.name == 'sumneko_lua' then ]]
+    --[[     client.resolved_capabilities.document_formatting = false ]]
+    --[[ end ]]
 
-    if client.name == 'sqls' then
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.execute_command = true
-        client.commands = require('sqls').commands
-        require('sqls').on_attach(client, bufnr)
-    end
+    --[[ if client.name == 'sqls' then ]]
+    --[[     client.resolved_capabilities.document_formatting = false ]]
+    --[[     client.resolved_capabilities.execute_command = true ]]
+    --[[     client.commands = require('sqls').commands ]]
+    --[[     require('sqls').on_attach(client, bufnr) ]]
+    --[[ end ]]
 
     if client.name == 'jdt.ls' then
         require('jdtls').setup_dap({ hotcodereplace = 'auto' })
@@ -111,7 +111,7 @@ M.on_attach = function(client, bufnr)
         buffer = 0,
         group = _format_on_save,
         callback = function()
-            vim.lsp.buf.formatting_sync()
+            vim.lsp.buf.format({ async = true })
         end,
     })
 end
@@ -124,6 +124,6 @@ if not status_ok then
     return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+     M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M

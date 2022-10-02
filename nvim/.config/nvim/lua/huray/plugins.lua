@@ -100,8 +100,8 @@ return packer.startup(function(use)
     -- Programming languages
     use('mfussenegger/nvim-jdtls') -- Java
     use('simrat39/rust-tools.nvim') -- Rust
-    -- use('ray-x/go.nvim') -- Golang
-    -- use('ray-x/guihua.lua') -- recommended if need floating window support
+    --[[ use('ray-x/go.nvim') -- Golang ]]
+    --[[ use('ray-x/guihua.lua') -- recommended if need floating window support ]]
     use('nanotee/sqls.nvim') -- SQL
 
     -- Debugging
@@ -128,7 +128,6 @@ return packer.startup(function(use)
 
     -- Org mode
     use('nvim-orgmode/orgmode')
-
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

@@ -27,4 +27,13 @@ M.buf_keymap = function(mode, lhs, rhs, bufnr)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+-- TODO:
+M.open_win_in_float = function(path)
+    --[[ local buffer = vim.api.nvim_create_buf(M.command(path), ) ]]
+    --[[ local ui = vim.api.nvim_list_uis()[0] ]]
+    vim.api.nvim_open_win(M.command(':e' .. path), false, { relative = 'win' })
+end
+
+--M.create_command('OpenAgenda', M.open_win_in_float('~/Mega/org/notes.org'),{bang =true})
+
 return M

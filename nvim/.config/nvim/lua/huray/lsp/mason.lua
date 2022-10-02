@@ -37,7 +37,7 @@ local settings = {
     max_concurrent_installers = 4,
 }
 
-mason.setup(settings) -- Register a handler that will be called for all installed servers.
+mason.setup(settings)
 mason_lspconfig.setup({
     ensure_installed = servers,
     automatic_installation = true,
