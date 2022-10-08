@@ -23,6 +23,7 @@ cmake
 cmatrix
 deluge
 deluge-gtk
+delve
 discord
 docker
 dosfstools
