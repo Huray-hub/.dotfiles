@@ -32,3 +32,6 @@ require('huray.org-mode')
 require('huray.illuminate')
 require('huray.browser-search')
 require('huray.surround')
+require('go').setup()
+
+--[[ require'nvim_lsp'.ocamllsp.setup{on_attach=require'virtualtypes'.on_attach} ]]

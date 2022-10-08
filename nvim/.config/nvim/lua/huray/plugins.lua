@@ -100,8 +100,8 @@ return packer.startup(function(use)
     -- Programming languages
     use('mfussenegger/nvim-jdtls') -- Java
     use('simrat39/rust-tools.nvim') -- Rust
-    --[[ use('ray-x/go.nvim') -- Golang ]]
-    --[[ use('ray-x/guihua.lua') -- recommended if need floating window support ]]
+    use('ray-x/go.nvim') -- Golang
+    use('ray-x/guihua.lua') -- recommended if need floating window support
     use('nanotee/sqls.nvim') -- SQL
 
     -- Debugging
@@ -109,6 +109,7 @@ return packer.startup(function(use)
     use('theHamsta/nvim-dap-virtual-text')
     use('rcarriga/nvim-dap-ui')
     use('mfussenegger/nvim-dap-python')
+    use('leoluz/nvim-dap-go') -- delve go debugger
 
     -- Telescope
     use('nvim-telescope/telescope.nvim')
@@ -128,6 +129,8 @@ return packer.startup(function(use)
 
     -- Org mode
     use('nvim-orgmode/orgmode')
+
+    use('jubnzv/virtual-types.nvim')
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
