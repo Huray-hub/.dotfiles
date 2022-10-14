@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "LN/PaS - Week 01.md",
+            "file": "LN/Intro to Parallel Computing.md",
             "mode": "source",
             "source": false
           }
@@ -78,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "LN/PaS - Week 01.md",
+                "file": "LN/Intro to Parallel Computing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,6 +109,8 @@
   },
   "active": "795b0ef2c33a982a",
   "lastOpenFiles": [
+    "LN/Analysis and Design of Information Systems.md",
+    "LN/PaS - Week 01.md",
     "LN/Probabilities and Statistics.md",
     "LN/90 days of DevOps.md",
     "PN/College roadmap.md",
@@ -116,8 +118,6 @@
     "LN/OSII Exam topic 2019 Solutions.md",
     "LN/OSII Exam cheatsheet.md",
     "LN/OSII Theory - Lecture 07.md",
-    "LN/OSII Exam topic 2019.md",
-    "LN/OSII Book ch4 threads.md",
-    "LN/OSII Theory - Lecture 01.md"
+    "LN/OSII Exam topic 2019.md"
   ]
 }

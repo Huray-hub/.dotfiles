@@ -130,6 +130,7 @@ return packer.startup(function(use)
     -- Org mode
     use('nvim-orgmode/orgmode')
 
+    -- Virtual text on types
     use('jubnzv/virtual-types.nvim')
 
     -- Automatically set up your configuration after cloning packer.nvim

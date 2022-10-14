@@ -102,6 +102,11 @@ for _, server in pairs(servers) do
         goto continue
     end
 
+    if server == 'ocaml-lsp' then
+        local virtualtypes = require('virtualtypes')
+        lspconfig.ocamllsp.setup({ on_attach = virtualtypes.on_attach })
+    end
+
     lspconfig[server].setup(opts)
     ::continue::
 end

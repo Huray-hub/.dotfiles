@@ -138,7 +138,7 @@ local _codelens = augroup('_codelens', {})
 autocmd('BufWritePost', {
     desc = 'Refresh codelens virtual text after file saves',
     group = _codelens,
-    pattern = '*.java',
+    pattern = { '*.java', '*.go' },
     callback = function()
         vim.lsp.codelens.refresh()
     end,

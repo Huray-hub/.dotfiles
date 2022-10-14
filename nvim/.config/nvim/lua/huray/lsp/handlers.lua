@@ -81,7 +81,9 @@ local function lsp_keymaps(bufnr)
         command('CodeActionMenu')
     end)
 
-    create_command('Format', function() vim.lsp.buf.format({ async = true }) end, { bang = true })
+    create_command('Format', function()
+        vim.lsp.buf.format({ async = true })
+    end, { bang = true })
 end
 
 M.on_attach = function(client, bufnr)
@@ -124,6 +126,6 @@ if not status_ok then
     return
 end
 
-     M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M
