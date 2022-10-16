@@ -173,6 +173,12 @@ local mappings = {
             end,
             'Attach to remote',
         },
+        u = {
+            function()
+                require('dapui').toggle()
+            end,
+            'UI',
+        },
         ['?'] = {
             function()
                 local widgets = require('dap.ui.widgets')

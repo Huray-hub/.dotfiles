@@ -4,6 +4,17 @@ local my_utils = require('huray.my-utils')
 local set_global_variable = my_utils.set_global_variable
 local command = my_utils.command
 
+local vscode_setup = function(material_colorscheme)
+    --[[ vim.o.background = 'light' -- dark or light ]]
+
+    material_colorscheme.setup({
+        italic_comments = true,
+        group_overrides = {
+            Comment = { fg = '#6272A4', bg = 'NONE', italic = false },
+        },
+    })
+end
+
 local material_setup = function(material_colorscheme)
     set_global_variable('material_style', 'deep ocean') -- 'oceanic'  'deep ocean' 'palenight' 'lighter' 'darker'
 
@@ -133,6 +144,8 @@ if status_ok then
         material_setup(selected_colorscheme)
     elseif selected_colorscheme == 'catppuccin' then
         catppuccin_setup(selected_colorscheme)
+    elseif selected_colorscheme == 'vscode' then
+        vscode_setup(selected_colorscheme)
     end
 end
 

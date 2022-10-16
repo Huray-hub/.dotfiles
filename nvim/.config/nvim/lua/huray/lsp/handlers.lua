@@ -74,39 +74,19 @@ local function lsp_keymaps(bufnr)
         vim.diagnostic.goto_next({ border = 'rounded' })
     end)
     buf_keymap('n', '<leader>q', vim.diagnostic.setloclist)
-    buf_keymap('n', '<leader>a', function()
-        command('CodeActionMenu')
-    end)
-    buf_keymap('v', '<leader>a', function()
-        command('CodeActionMenu')
-    end)
+    buf_keymap('n', '<leader>a', vim.lsp.buf.code_action)
+    buf_keymap('v', '<leader>a', vim.lsp.buf.code_action)
 
     create_command('Format', function()
         vim.lsp.buf.format({ async = true })
     end, { bang = true })
 end
 
-M.on_attach = function(client, bufnr)
-    --[[ if client.name == 'tsserver' or client.name == 'sumneko_lua' then ]]
-    --[[     client.resolved_capabilities.document_formatting = false ]]
-    --[[ end ]]
+M.disable_format_on_save = function()
+    my_utils.del_augroup('_format_on_save')
+end
 
-    --[[ if client.name == 'sqls' then ]]
-    --[[     client.resolved_capabilities.document_formatting = false ]]
-    --[[     client.resolved_capabilities.execute_command = true ]]
-    --[[     client.commands = require('sqls').commands ]]
-    --[[     require('sqls').on_attach(client, bufnr) ]]
-    --[[ end ]]
-
-    if client.name == 'jdt.ls' then
-        require('jdtls').setup_dap({ hotcodereplace = 'auto' })
-        require('jdtls.dap').setup_dap_main_class_configs()
-        vim.lsp.codelens.refresh()
-    end
-
-    lsp_options(bufnr)
-    lsp_keymaps(bufnr)
-
+M.enable_format_on_save = function()
     local _format_on_save = my_utils.augroup('_format_on_save', {})
     my_utils.autocmd('BufWritePre', {
         desc = 'Format document on save',
@@ -118,6 +98,38 @@ M.on_attach = function(client, bufnr)
     })
 end
 
+M.toggle_format_on_save = function()
+    if vim.fn.exists('#_format_on_save#BufWritePre') == 0 then
+        M.enable_format_on_save()
+    else
+        M.disable_format_on_save()
+    end
+end
+
+my_utils.create_command('ToggleFormatOnSave', M.toggle_format_on_save, { bang = true })
+
+M.on_attach = function(client, bufnr)
+    if client.name == 'sqls' then
+        client.commands = require('sqls').commands
+        require('sqls').on_attach(client, bufnr)
+        --[[ client.server_capabilities.document_formatting = false ]]
+        --[[ client.server_capabilities.execute_command = true ]]
+        --[[ print(client.server_capabilities.format) ]]
+        client.server_capabilities.documentFormattingProvider = false
+    end
+
+    if client.name == 'jdt.ls' then
+        require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+        require('jdtls.dap').setup_dap_main_class_configs()
+        vim.lsp.codelens.refresh()
+    end
+
+    lsp_options(bufnr)
+    lsp_keymaps(bufnr)
+
+    M.enable_format_on_save()
+end
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -126,6 +138,6 @@ if not status_ok then
     return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M

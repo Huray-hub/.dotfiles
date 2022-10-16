@@ -16,7 +16,15 @@ local settings = {
             -- more settings: https://github.com/golang/tools/blob/master/gopls/doc/settings.md
             -- flags = {allow_incremental_sync = true, debounce_text_changes = 500},
             -- not supported
-            analyses = { unusedparams = true, unreachable = false },
+            analyses = {
+                unusedparams = true,
+                unreachable = false,
+                nilness = true,
+                shadow = true,
+                unusedwrite = true,
+                useany = true,
+                unusedvariable = true,
+            },
             codelenses = {
                 generate = true, -- show the `go generate` lens.
                 gc_details = true, --  // Show a code lens toggling the display of gc's choices.
@@ -30,8 +38,13 @@ local settings = {
             diagnosticsDelay = '500ms',
             experimentalWatchedFileDelay = '1000ms',
             symbolMatcher = 'fuzzy',
-            gofumpt = false, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
+            gofumpt = true, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
             buildFlags = { '-tags', 'integration' },
+            hints = {
+                assignVariableTypes = true,
+                constantValues = true,
+                parameterNames = true,
+            },
             -- buildFlags = {"-tags", "functional"}
         },
     },

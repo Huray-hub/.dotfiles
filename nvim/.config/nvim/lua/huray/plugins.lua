@@ -48,7 +48,7 @@ return packer.startup(function(use)
     use('lewis6991/impatient.nvim')
     use('goolord/alpha-nvim')
     use('folke/which-key.nvim')
-    use({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' })
+    --[[ use({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' }) ]]
     use('kosayoda/nvim-lightbulb')
 
     -- Convenience
@@ -66,6 +66,7 @@ return packer.startup(function(use)
     use('lukas-reineke/indent-blankline.nvim')
     use('RRethy/vim-illuminate')
     use('filipdutescu/renamer.nvim')
+    use('stevearc/dressing.nvim')
 
     -- Colorschemes
     use('marko-cerovac/material.nvim')
@@ -75,6 +76,7 @@ return packer.startup(function(use)
     use('navarasu/onedark.nvim')
     use('ellisonleao/gruvbox.nvim')
     use('Mofiqul/vscode.nvim')
+    use({ 'EdenEast/nightfox.nvim', tag = 'v1.0.0' })
 
     -- Cmp plugins
     use('hrsh7th/nvim-cmp') -- The completion plugin
@@ -129,9 +131,6 @@ return packer.startup(function(use)
 
     -- Org mode
     use('nvim-orgmode/orgmode')
-
-    -- Virtual text on types
-    use('jubnzv/virtual-types.nvim')
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

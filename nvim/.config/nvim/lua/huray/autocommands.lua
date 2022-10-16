@@ -146,18 +146,19 @@ autocmd('BufWritePost', {
 
 ---------------------------------------------------------------------
 local _sql = augroup('_sql', {})
-autocmd('FileType', {
-    desc = 'Mappings for sql files',
-    group = _sql,
-    pattern = 'sql',
-    callback = function()
-        buf_keymap('n', '<leader>a', vim.lsp.buf.code_action)
-        buf_keymap('v', '<leader>a', vim.lsp.buf.code_action)
-        buf_keymap('n', '<F5>', '<Plug>(sqls-execute-query)')
-        buf_keymap('v', '<F5>', '<Plug>(sqls-execute-query)')
-    end,
-})
-
+-- TODO: check codeactions and remove this
+--[[ autocmd('FileType', { ]]
+--[[     desc = 'Mappings for sql files', ]]
+--[[     group = _sql, ]]
+--[[     pattern = 'sql', ]]
+--[[     callback = function() ]]
+--[[         buf_keymap('n', '<leader>a', vim.lsp.buf.code_action) ]]
+--[[         buf_keymap('v', '<leader>a', vim.lsp.buf.code_action) ]]
+--[[         buf_keymap('n', '<F5>', '<Plug>(sqls-execute-query)') ]]
+--[[         buf_keymap('v', '<F5>', '<Plug>(sqls-execute-query)') ]]
+--[[     end, ]]
+--[[ }) ]]
+--[[]]
 autocmd('FileType', {
     desc = 'Sql output filetype opens in vertical split',
     group = _sql,

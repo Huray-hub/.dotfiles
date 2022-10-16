@@ -10,6 +10,8 @@ local diagnostics = null_ls.builtins.diagnostics
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/code_actions
 local code_actions = null_ls.builtins.code_actions
 
+local home = os.getenv('HOME')
+
 null_ls.setup({
     debug = false,
     sources = {
@@ -19,17 +21,8 @@ null_ls.setup({
         }),
         formatting.stylua,
         formatting.shfmt,
-        formatting.sqlformat.with({
-            extra_args = {
-                '--keywords',
-                'upper',
-                '--identifiers',
-                'upper',
-                '--indent_width',
-                '2',
-                '--indent_after_first',
-                '--use_space_around_operators',
-            },
+        formatting.sql_formatter.with({
+            args = { '--config', vim.fn.glob(home .. '/.config/sql-formatter/sql-formatter.json') },
         }),
         diagnostics.flake8,
         diagnostics.shellcheck,
