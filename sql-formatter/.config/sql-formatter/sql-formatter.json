@@ -1,0 +1,14 @@
+{
+    "language": "mysql",
+    "tabWidth": 4,
+    "useTabs": false,
+    "keywordCase": "upper",
+    "indentStyle": "standard", 
+    "logicalOperatorNewline": "before",
+    "tabulateAlias": true,
+    "commaPosition": "after",
+    "expressionWidth": 50,
+    "linesBetweenQueries": 2,
+    "denseOperators": false,
+    "newlineBeforeSemicolon": false
+}
