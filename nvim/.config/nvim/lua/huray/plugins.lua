@@ -67,6 +67,7 @@ return packer.startup(function(use)
     use('RRethy/vim-illuminate')
     use('filipdutescu/renamer.nvim')
     use('stevearc/dressing.nvim')
+    use({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }) -- Modern looks for folding
 
     -- Colorschemes
     use('marko-cerovac/material.nvim')

@@ -112,9 +112,7 @@ M.on_attach = function(client, bufnr)
     if client.name == 'sqls' then
         client.commands = require('sqls').commands
         require('sqls').on_attach(client, bufnr)
-        --[[ client.server_capabilities.document_formatting = false ]]
         --[[ client.server_capabilities.execute_command = true ]]
-        --[[ print(client.server_capabilities.format) ]]
         client.server_capabilities.documentFormattingProvider = false
     end
 
@@ -132,6 +130,10 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+}
 
 local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not status_ok then

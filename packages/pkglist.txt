@@ -33,7 +33,6 @@ efibootmgr
 fakeroot
 fd
 feh
-ffcall
 ffmpegthumbnailer
 file
 findutils
@@ -44,8 +43,8 @@ freerdp
 fuse2
 fzf
 gawk
+gcalcli
 gcc
-gcc-fortran
 gdb
 gettext
 ghostscript
@@ -74,7 +73,6 @@ lf
 libinput-gestures
 libpipewire02
 libreoffice-fresh
-libsigsegv
 libtool
 linux
 linux-firmware
@@ -111,6 +109,7 @@ obsidian
 opam
 openssh
 os-prober
+packettracer
 pacman
 pacman-contrib
 pamixer
@@ -123,7 +122,6 @@ pipewire-pulse
 pkgconf
 playerctl
 postman-bin
-potrace
 prettier
 python-black
 python-debugpy
@@ -143,7 +141,6 @@ sed
 shellcheck
 shfmt
 signal-desktop
-sowing
 speedtest-cli
 spotify
 spotify-tui-bin
@@ -154,11 +151,9 @@ stylua
 sudo
 sxhkd
 syncthing
-t1lib
 teams
+telegram-desktop
 texinfo
-texlive-bin
-texlive-core
 trash-cli
 tree
 ttf-font-awesome-4
@@ -240,4 +235,3 @@ zathura-pdf-mupdf
 zip
 zsh
 zsh-completions-git
-zziplib

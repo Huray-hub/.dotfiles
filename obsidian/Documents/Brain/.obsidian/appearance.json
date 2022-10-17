@@ -1,5 +1,6 @@
 {
   "baseFontSize": 17,
   "translucency": false,
-  "cssTheme": "LYT Mode"
+  "cssTheme": "LYT Mode",
+  "accentColor": ""
 }
