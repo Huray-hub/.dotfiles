@@ -109,6 +109,10 @@ end
 my_utils.create_command('ToggleFormatOnSave', M.toggle_format_on_save, { bang = true })
 
 M.on_attach = function(client, bufnr)
+    if client.name == 'gopls' then
+        client.server_capabilities.documentFormattingProvider = false
+    end
+
     if client.name == 'sqls' then
         client.commands = require('sqls').commands
         require('sqls').on_attach(client, bufnr)

@@ -1,11 +1,12 @@
-local colorscheme = 'vscode' -- greek message: πούλησα την ψυχή μου στο διάολο
+--[[ local colorscheme = 'vscode' -- greek message: πούλησα την ψυχή μου στο διάολο ]]
+local colorscheme = 'tokyonight'
 
 local my_utils = require('huray.my-utils')
 local set_global_variable = my_utils.set_global_variable
 local command = my_utils.command
 
 local vscode_setup = function(material_colorscheme)
-    --[[ vim.o.background = 'light' -- dark or light ]]
+    vim.o.background = 'light' -- dark or light
 
     material_colorscheme.setup({
         italic_comments = true,

@@ -24,9 +24,15 @@ null_ls.setup({
         formatting.sql_formatter.with({
             args = { '--config', vim.fn.glob(home .. '/.config/sql-formatter/sql-formatter.json') },
         }),
+        formatting.gofumpt,
+        formatting.goimports,
+        formatting.golines.with({
+            args = { '--max-len', '90' },
+        }),
         diagnostics.flake8,
         diagnostics.shellcheck,
         diagnostics.zsh,
+        diagnostics.golangci_lint,
         code_actions.shellcheck,
     },
 })

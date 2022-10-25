@@ -3,6 +3,7 @@ adobe-source-han-sans-jp-fonts
 alacritty
 alsa-utils
 amd-ucode
+anydesk-bin
 arandr
 arc-gtk-theme
 arc-icon-theme
@@ -97,7 +98,6 @@ ncdu
 neofetch
 neomutt
 neovim
-nerd-fonts-hack
 netcoredbg
 networkmanager
 nodejs
@@ -157,6 +157,7 @@ texinfo
 trash-cli
 tree
 ttf-font-awesome-4
+ttf-hack-nerd
 ttf-paratype
 udiskie
 ueberzug

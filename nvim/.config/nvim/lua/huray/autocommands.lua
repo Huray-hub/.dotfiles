@@ -41,6 +41,17 @@ autocmd('FileType', {
     end,
 })
 
+autocmd('FileType', {
+    desc = 'Quickfix Lists will close with q',
+    group = _general_settings,
+    pattern = 'qf',
+    callback = function()
+        buf_keymap('n', '<Esc>', function()
+            vim.api.nvim_win_close(0, false)
+        end)
+    end,
+})
+
 autocmd('TextYankPost', {
     desc = 'Highlights text on yank(copy)',
     group = _general_settings,

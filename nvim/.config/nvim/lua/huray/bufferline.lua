@@ -2,7 +2,7 @@ local status_ok, bufferline = pcall(require, 'bufferline')
 if not status_ok then
     return
 end
-
+--[[ bufferline.setup{} ]]
 bufferline.setup({
     options = {
         numbers = 'none', -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
@@ -58,7 +58,7 @@ bufferline.setup({
         offsets = { { filetype = 'NvimTree', text = '', padding = 1 } },
         show_buffer_icons = true,
         show_buffer_close_icons = false,
-        show_close_icon = true,
+        show_close_icon = false,
         show_tab_indicators = true,
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
         -- can also be a table containing 2 custom separators
@@ -82,8 +82,8 @@ bufferline.setup({
         },
 
         -- buffer_selected = {
-        --   fg = {attribute='fg',highlight='#ff0000'},
-        --   bg = {attribute='bg',highlight='#0000ff'},
+        --   guifg = {attribute='fg',highlight='#ff0000'},
+        --   guibg = {attribute='bg',highlight='#0000ff'},
         --   gui = 'none'
         --   },
         buffer_visible = {
@@ -100,8 +100,8 @@ bufferline.setup({
             bg = { attribute = 'bg', highlight = 'TabLine' },
         },
         -- close_button_selected = {
-        --   fg = {attribute='fg',highlight='TabLineSel'},
-        --   bg ={attribute='bg',highlight='TabLineSel'}
+        --   guifg = {attribute='fg',highlight='TabLineSel'},
+        --   guibg ={attribute='bg',highlight='TabLineSel'}
         --   },
 
         tab_selected = {
@@ -113,7 +113,7 @@ bufferline.setup({
             bg = { attribute = 'bg', highlight = 'TabLine' },
         },
         tab_close = {
-            -- fg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
+            -- guifg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
             fg = { attribute = 'fg', highlight = 'TabLineSel' },
             bg = { attribute = 'bg', highlight = 'Normal' },
         },
@@ -121,17 +121,17 @@ bufferline.setup({
         duplicate_selected = {
             fg = { attribute = 'fg', highlight = 'TabLineSel' },
             bg = { attribute = 'bg', highlight = 'TabLineSel' },
-            italic = true,
+            -- gui = 'italic',
         },
         duplicate_visible = {
             fg = { attribute = 'fg', highlight = 'TabLine' },
             bg = { attribute = 'bg', highlight = 'TabLine' },
-            italic = true,
+            -- gui = 'italic',
         },
         duplicate = {
             fg = { attribute = 'fg', highlight = 'TabLine' },
             bg = { attribute = 'bg', highlight = 'TabLine' },
-            italic = true,
+            -- gui = 'italic',
         },
 
         modified = {
@@ -156,8 +156,8 @@ bufferline.setup({
             bg = { attribute = 'bg', highlight = 'Normal' },
         },
         -- separator_visible = {
-        --   fg = {attribute='bg',highlight='TabLine'},
-        --   bg = {attribute='bg',highlight='TabLine'}
+        --   guifg = {attribute='bg',highlight='TabLine'},
+        --   guibg = {attribute='bg',highlight='TabLine'}
         --   },
         indicator_selected = {
             fg = { attribute = 'fg', highlight = 'LspDiagnosticsDefaultHint' },

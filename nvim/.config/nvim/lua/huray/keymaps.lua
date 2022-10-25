@@ -92,7 +92,3 @@ end)
 keymap('n', '<F22>', function() --F22 -> S-F11
     require('dap').step_out()
 end)
-
--- nvim ufo
-keymap('n', 'zR', require('ufo').openAllFolds)
-keymap('n', 'zM', require('ufo').closeAllFolds)
