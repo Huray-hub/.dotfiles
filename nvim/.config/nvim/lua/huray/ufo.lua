@@ -9,5 +9,5 @@ ufo.setup()
 -- nvim ufo
 local my_utils = require('huray.my-utils')
 local keymap = my_utils.keymap
-keymap('n', 'zR', require('ufo').openAllFolds)
-keymap('n', 'zM', require('ufo').closeAllFolds)
+keymap('n', 'zR', ufo.openAllFolds)
+keymap('n', 'zM', ufo.closeAllFolds)

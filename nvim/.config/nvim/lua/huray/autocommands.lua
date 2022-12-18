@@ -21,6 +21,19 @@ autocmd('FileType', {
     end,
 })
 
+autocmd('FileType', {
+    desc = 'Close Quickfix list on leaving',
+    group = _general_settings,
+    pattern = 'qf',
+    callback = function()
+        buf_keymap('n', '<CR>', '<CR><CMD>cclose<CR>')
+        --[[ buf_keymap('n', '<CR>', function() ]]
+        --[[     enter here somehow ]]
+        --[[     command('cclose') ]]
+        --[[  end)  ]]
+    end,
+})
+
 autocmd('FileType', { --depends on bufferline.nvim
     desc = 'Cheakhealth filetypes will close with q',
     group = _general_settings,

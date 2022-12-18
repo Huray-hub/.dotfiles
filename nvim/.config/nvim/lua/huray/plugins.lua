@@ -68,13 +68,13 @@ return packer.startup(function(use)
     use('filipdutescu/renamer.nvim')
     use('stevearc/dressing.nvim')
     use({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }) -- Modern looks for folding
+    use({ 'kevinhwang91/nvim-bqf', ft = 'qf' })
 
     -- Colorschemes
     use('marko-cerovac/material.nvim')
     use('folke/tokyonight.nvim')
     use('lunarvim/darkplus.nvim')
     use('Mofiqul/dracula.nvim')
-    use('navarasu/onedark.nvim')
     use('ellisonleao/gruvbox.nvim')
     use('Mofiqul/vscode.nvim')
     use({ 'EdenEast/nightfox.nvim', tag = 'v1.0.0' })
@@ -126,12 +126,16 @@ return packer.startup(function(use)
 
     -- Git
     use('lewis6991/gitsigns.nvim')
+    use({ 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' })
 
     -- Discord presence
     use('andweeb/presence.nvim')
 
     -- Org mode
     use('nvim-orgmode/orgmode')
+
+    -- SchemaStore
+    use('b0o/schemastore.nvim')
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

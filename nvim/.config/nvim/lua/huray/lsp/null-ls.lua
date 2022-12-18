@@ -24,15 +24,27 @@ null_ls.setup({
         formatting.sql_formatter.with({
             args = { '--config', vim.fn.glob(home .. '/.config/sql-formatter/sql-formatter.json') },
         }),
-        formatting.gofumpt,
-        formatting.goimports,
+        --[[ formatting.gofumpt, ]]
+        --[[ formatting.goimports, ]]
         formatting.golines.with({
             args = { '--max-len', '90' },
         }),
+        --[[ diagnostics.golangci_lint.with({ ]]
+        --[[     args = { 'run', ]]
+        --[[         '--fix=false', ]]
+        --[[         '--fast', ]]
+        --[[         '--out-format=json', ]]
+        --[[         '$DIRNAME', ]]
+        --[[         '--path-prefix', ]]
+        --[[         '$ROOT' ]]
+        --[[     }, ]]
+        --[[ }), ]]
         diagnostics.flake8,
         diagnostics.shellcheck,
         diagnostics.zsh,
-        diagnostics.golangci_lint,
+        --[[ diagnostics.staticcheck.with({ ]]
+        --[[     args = { "-f", "json" , "./..." } ]]
+        --[[ }), ]]
         code_actions.shellcheck,
     },
 })

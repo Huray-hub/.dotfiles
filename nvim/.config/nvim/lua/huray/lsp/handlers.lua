@@ -73,7 +73,7 @@ local function lsp_keymaps(bufnr)
     buf_keymap('n', ']d', function()
         vim.diagnostic.goto_next({ border = 'rounded' })
     end)
-    buf_keymap('n', '<leader>q', vim.diagnostic.setloclist)
+    buf_keymap('n', '<leader>q', vim.diagnostic.setqflist) -- setloclist for buffer only
     buf_keymap('n', '<leader>a', vim.lsp.buf.code_action)
     buf_keymap('v', '<leader>a', vim.lsp.buf.code_action)
 

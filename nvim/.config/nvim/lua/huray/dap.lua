@@ -26,11 +26,11 @@ dap.adapters.lldb = { -- requires llvm package
     name = 'lldb',
 }
 
-dap.adapters.coreclr = {
-    type = 'executable',
-    command = '/usr/bin/netcoredbg',
-    args = { '--interpreter=vscode' },
-}
+--[[ dap.adapters.coreclr = { ]]
+--[[     type = 'executable', ]]
+--[[     command = '/usr/bin/netcoredbg', ]]
+--[[     args = { '--interpreter=vscode' }, ]]
+--[[ } ]]
 
 -- adapter configurations
 dap.configurations.cs = {
@@ -56,6 +56,7 @@ dap.configurations.cpp = {
         stopOnEntry = false,
         args = {
             '< input-data.txt',
+            --[[ 'file.txt', ]]
         },
         MIMode = 'lldb',
 
@@ -138,3 +139,14 @@ dapui.setup({
 
 require('dap-python').setup()
 require('dap-go').setup()
+
+-- TODO: on startup, look for this directory in the project to load launch profiles
+--
+-- load json config from .vscode/launch.json
+--[[ local root = vim.fn.finddir('.git/..', ';') ]]
+--[[ print(root) ]]
+--[[ require('dap.ext.vscode').load_launchjs(root .. '/.nvim/launch.json') -- parse .nvim/launch.json if exists ]]
+--[[ require('dap.ext.vscode').load_launchjs(root .. '/.vscode/launch.json') -- parse .vscode/launch.json if exists ]]
+--
+--[[ require('dap.ext.vscode').load_launchjs(vim.fn.getcwd() .. '/.nvim/launch.json') ]]
+--[[ require('dap.ext.vscode').load_launchjs(vim.fn.getcwd() .. '/.vscode/launch.json') ]]

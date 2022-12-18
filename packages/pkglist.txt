@@ -13,15 +13,17 @@ autorandr
 base
 bat
 bdf-unifont
+betterlockscreen
 binutils
 bison
 bluez
 bluez-utils
 brave-bin
-caprine
+calibre
 chntpw
 cmake
 cmatrix
+cuda
 deluge
 deluge-gtk
 delve
@@ -29,6 +31,7 @@ discord
 docker
 dosfstools
 dotnet-sdk
+drawio-desktop-bin
 dunst
 efibootmgr
 fakeroot
@@ -56,6 +59,7 @@ gnome-keyring
 gnome-pomodoro-git
 go
 go-md2man
+goland
 gpointing-device-settings
 gradle
 graphicsmagick
@@ -69,6 +73,7 @@ imagemagick
 intellij-idea-community-edition
 jq
 jre-openjdk
+kitty
 lazygit
 lf
 libinput-gestures
@@ -86,10 +91,11 @@ ly-git
 m4
 make
 man-pages
-manga-cli-git
+mangadesk
 mars-mips
 md2pdf
 megasync-bin
+mlocate
 mpv
 mtools
 mysql-workbench
@@ -141,6 +147,7 @@ sed
 shellcheck
 shfmt
 signal-desktop
+slack-desktop
 speedtest-cli
 spotify
 spotify-tui-bin
@@ -154,6 +161,7 @@ syncthing
 teams
 telegram-desktop
 texinfo
+ticktick
 trash-cli
 tree
 ttf-font-awesome-4
@@ -173,6 +181,7 @@ wget
 which
 wireplumber
 wireshark-cli
+wireshark-qt
 wkhtmltopdf
 wmname
 xclip
@@ -235,4 +244,3 @@ zathura
 zathura-pdf-mupdf
 zip
 zsh
-zsh-completions-git

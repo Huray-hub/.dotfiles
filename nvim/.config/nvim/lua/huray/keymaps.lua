@@ -50,7 +50,11 @@ end)
 keymap('n', 'n', 'nzzzv')
 keymap('n', 'N', 'Nzzzv')
 --keymap("n", "J", "mzJ`z")
+
+-- Keep scrolling centered
 keymap('n', 'n', 'nzzzv')
+keymap('n', '<C-d>', '<C-d>zz')
+keymap('n', '<C-u>', '<C-u>zz')
 
 -- Insert --
 -- Undo break points
@@ -77,7 +81,15 @@ keymap('x', '<A-j>', ":move '>+1<CR>gv-gv")
 keymap('x', '<A-k>', ":move '<-2<CR>gv-gv")
 
 -- Debugging
+-- NOTE: I am testing various stuff here,
+-- and I know this isn't a place to add that kind of logic
 keymap('n', '<F5>', function() --it also starts the execution in debug mode
+    --[[ local session = require('dap').session() ]]
+    --[[ if vim.bo.filetype == 'go' and session == nil or session.initialized == false then ]]
+    --[[     command('GoDebug') ]]
+    --[[ else ]]
+    --[[     require('dap').continue() ]]
+    --[[ end ]]
     require('dap').continue()
 end)
 keymap('n', '<F17>', function() --F17 = S-F5

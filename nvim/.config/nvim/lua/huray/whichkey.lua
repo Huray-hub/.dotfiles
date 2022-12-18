@@ -497,7 +497,7 @@ local mappings = {
         },
     },
 
-    ['O'] = { '<CMD>BrowserSearch<CR><ESC>', 'Open Link' },
+    ['O'] = { '<Plug>SearchNormal', 'Open Link' },
 
     T = {
         name = 'Terminal',
@@ -561,7 +561,7 @@ local vmappings = {
         '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>',
         'Comment',
     },
-    ['O'] = { '<CMD>BrowserSearch<CR><ESC>', 'Open Link' },
+    ['O'] = { '<Plug>SearchVisual', 'Open Link' },
 }
 
 which_key.setup(setup)

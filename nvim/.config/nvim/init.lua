@@ -33,4 +33,7 @@ require('huray.browser-search')
 require('huray.surround')
 require('huray.dressing')
 require('huray.ufo')
-require('go').setup()
+require('huray.go-nvim')
+require('huray.bfq')
+-- TODO: setup neogit properly
+require('neogit').setup()
