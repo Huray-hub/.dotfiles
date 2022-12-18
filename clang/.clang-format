@@ -1,6 +1,6 @@
 BasedOnStyle: LLVM
 IndentWidth: 4
-BreakBeforeBraces: Allman
+BreakBeforeBraces: Attach 
 AllowShortIfStatementsOnASingleLine: false
 IndentCaseLabels: false
-ColumnLimit: 0
+ColumnLimit: 80

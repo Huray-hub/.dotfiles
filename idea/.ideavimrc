@@ -1,7 +1,7 @@
 set incsearch
 set ignorecase
 set smartcase
-set relativenumber
+set number relativenumber
 set showmode
 set clipboard+=unnamed
 set clipboard+=ideaput
@@ -33,7 +33,7 @@ sethandler <C-M> a:ide
 sethandler <C-N> a:vim
 sethandler <C-O> a:vim
 sethandler <C-P> a:vim
-sethandler <C-R> a:ide
+sethandler <C-R> a:vim
 sethandler <C-S> a:vim
 sethandler <C-T> a:ide
 sethandler <C-U> a:vim
@@ -43,7 +43,8 @@ sethandler <C-X> a:vim
 sethandler <C-Y> a:ide
 sethandler <C-]> a:ide
 sethandler <C-[> a:ide
-sethandler <C-\> a:ide
+sethandler <C-\> a:vim
+sethandler <F5> a:vim
 
 
 let mapleader=" "
@@ -57,8 +58,12 @@ nnoremap gr :action FindUsages<CR>
 nnoremap gl :action ShowErrorDescription<CR>
 nnoremap <S-h> :action PreviousTab<CR>
 nnoremap <S-l> :action NextTab<CR>
+nnoremap <F5> :action Debug<CR>
+nnoremap <S-F5> :action Stop<CR>
+nnoremap <C-S-F5> :action Rerun<CR>
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
+nnoremap <C-\> :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>/ :action CommentByLineComment<CR>
 nnoremap <leader>f :action GotoFile<CR>
 "nnoremap <leader>a :action GotoAction<CR>

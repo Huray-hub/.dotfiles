@@ -14,5 +14,12 @@
   "alwaysUpdateLinks": true,
   "attachmentFolderPath": "~A",
   "newFileLocation": "current",
-  "newFileFolderPath": "Zettelkasten"
+  "newFileFolderPath": "Zettelkasten",
+  "pdfExportSettings": {
+    "includeName": false,
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
 }
