@@ -1,87 +1,131 @@
-# Colors (One Darker)
-# Note I am using alacritty-ligatures until ligatures make it upstream
-colors:
-  # Default colors
-  primary:
-    # background: "#232731"
-    background: '#1f2227'
-    foreground: '#abb2bf'
+schemes:
+  tokyo-night-storm: &tokyo-night-storm
+    name: TokyoNight Storm
+    author: Folke
+    # Default colors
+    primary:
+      background: '0x24283b'
+      foreground: '0xc0caf5'
 
-  # Normal colors
-  # Nord
-  normal:
-    black: '#4C566A'
-    red: '#bf616a'
-    green: '#A3BE8C'
-    yellow: '#D7BA7D'
-    blue: '#5e81ac'
-    magenta: '#B48EAD'
-    cyan: '#88c0d0'
-    white: '#abb2bf'
-
-  # Bright colors
-  bright:
-    black: '#4C566A'
-    red: '#bf616a'
-    green: '#A3BE8C'
-    yellow: '#D7BA7D'
-    blue: '#5e81ac'
-    magenta: '#B48EAD'
-    cyan: '#88c0d0'
-    white: '#abb2bf'
-
+    # Normal colors
     normal:
-      black: '#4b5263'
-      red: '#e06c75'
-      green: '#98C379'
-      yellow: '#E5C07B'
-      blue: '#61AFEF'
-      magenta: '#C678DD'
-      cyan: '#56B6C2'
+      black:   '0x1D202F'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xbb9af7'
+      cyan:    '0x7dcfff'
+      white:   '0xa9b1d6'
+
+    # Bright colors
+    bright:
+      black:   '0x414868'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xbb9af7'
+      cyan:    '0x7dcfff'
+      white:   '0xc0caf5'
+
+    indexed_colors:
+      - { index: 16, color: '0xff9e64' }
+      - { index: 17, color: '0xdb4b4b' }
+  # TokyoNight Alacritty Colors
+  # https://github.com/folke/tokyonight.nvim/blob/main/extras/alacritty_tokyonight_night.yml
+  tokyo-night: &tokyo-night
+    name: TokyoNight Night
+    author: Folke
+    # Default colors
+    primary:
+      background: '0x1a1b26'
+      foreground: '0xc0caf5'
+
+    # Normal colors
+    normal:
+      black:   '0x15161E'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xbb9af7'
+      cyan:    '0x7dcfff'
+      white:   '0xa9b1d6'
+
+    # Bright colors
+    bright:
+      black:   '0x414868'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xbb9af7'
+      cyan:    '0x7dcfff'
+      white:   '0xc0caf5'
+
+    indexed_colors:
+      - { index: 16, color: '0xff9e64' }
+      - { index: 17, color: '0xdb4b4b' }
+
+  one-darker: &one-darker
+    # Default colors
+    primary:
+      # background: "#232731"
+      background: '#1f2227'
+      foreground: '#abb2bf'
+
+    # Normal colors
+    normal:
+      black: '#4C566A'
+      red: '#bf616a'
+      green: '#A3BE8C'
+      yellow: '#D7BA7D'
+      blue: '#5e81ac'
+      magenta: '#B48EAD'
+      cyan: '#88c0d0'
       white: '#abb2bf'
 
     # Bright colors
     bright:
-      black: '#4b5263'
-      red: '#e06c75'
-      green: '#98C379'
-      yellow: '#E5C07B'
-      blue: '#61AFEF'
-      magenta: '#C678DD'
-      cyan: '#56B6C2'
+      black: '#4C566A'
+      red: '#bf616a'
+      green: '#A3BE8C'
+      yellow: '#D7BA7D'
+      blue: '#5e81ac'
+      magenta: '#B48EAD'
+      cyan: '#88c0d0'
       white: '#abb2bf'
 
-  # Coloescheme 3
-  #primary:
-  #  background: '#11121D'
-  #  foreground: '#a9b1d6'
-  #normal:
-  #  black: '#32344a'
-  #  red: '#f7768e'
-  #  green: '#9ece6a'
-  #  yellow: '#e0af68'
-  #  blue: '#7aa2f7'
-  #  magenta: '#ad8ee6'
-  #  cyan: '#449dab'
-  #  white: '#787c99'
-  #bright:
-  #  black: '#444b6a'
-  #  red: '#ff7a93'
-  #  green: '#b9f27c'
-  #  yellow: '#ff9e64'
-  #  blue: '#7da6ff'
-  #  magenta: '#bb9af7'
-  #  cyan: '#0db9d7'
-  #  white: '#acb0d0'
+      normal:
+        black: '#4b5263'
+        red: '#e06c75'
+        green: '#98C379'
+        yellow: '#E5C07B'
+        blue: '#61AFEF'
+        magenta: '#C678DD'
+        cyan: '#56B6C2'
+        white: '#abb2bf'
 
-  # background_opacity: 1.0
+      # Bright colors
+      bright:
+        black: '#4b5263'
+        red: '#e06c75'
+        green: '#98C379'
+        yellow: '#E5C07B'
+        blue: '#61AFEF'
+        magenta: '#C678DD'
+        cyan: '#56B6C2'
+        white: '#abb2bf'
 
-  # Change cursor colors
-  cursor:
-    text: '#3B4252'
-    cursor: '#ECEFF4'
+    # Change cursor colors
+    cursor:
+      text: '#3B4252'
+      cursor: '#ECEFF4'
 
-# draw_bold_text_with_bright_colors: true
+colors: *tokyo-night-storm
+
+draw_bold_text_with_bright_colors: true
 
 cursor:
   style:
@@ -90,19 +134,25 @@ cursor:
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Hack Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
+    # family: monospace
+    # family: Hack Nerd Font Mono
     # Style can be specified to pick a specific face.
     style: Regular
 
   # The bold font face
   bold:
-    family: Hack Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
+    # family: monospace
+    # family: Hack Nerd Font Mono
     # Style can be specified to pick a specific face.
     style: Bold
 
   # The italic font face
   italic:
-    family: Hack Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
+    # family: monospace
+    # family: Hack Nerd Font Mono
     # Style can be specified to pick a specific face.
     style: Italic
 
