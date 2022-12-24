@@ -2,7 +2,7 @@ super + Return
   $TERMINAL
 
 super + {w,s,d,t}
-  {$BROWSER,spotify,discord,teams}
+  {$BROWSER,spotify-launcher,discord,teams}
 
 super + e
   $TERMINAL -e lfrun $HOME

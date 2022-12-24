@@ -112,4 +112,9 @@ map gm cd ~/Mega
 map gC cd ~/Mega/College/Courses
 map gr cd ~/Repos
 map gv cd ~/Videos
+map gl cd ~/.local
 map gs cd ~/.local/bin
+map g. cd ~/.dotfiles
+map ge cd ~/Mega/E-books
+map g/ cd /
+map gt cd /run/media/panos/T7/

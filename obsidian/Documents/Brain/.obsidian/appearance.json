@@ -1,6 +1,8 @@
 {
   "baseFontSize": 17,
   "translucency": false,
-  "cssTheme": "LYT Mode",
-  "accentColor": ""
+  "cssTheme": "Clair de Lune",
+  "accentColor": "",
+  "showViewHeader": false,
+  "enabledCssSnippets": []
 }
