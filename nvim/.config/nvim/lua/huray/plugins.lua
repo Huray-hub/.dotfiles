@@ -45,10 +45,9 @@ return packer.startup(function(use)
     use('nvim-lualine/lualine.nvim')
     use('akinsho/toggleterm.nvim')
     use('ahmedkhalf/project.nvim')
-    use('lewis6991/impatient.nvim')
+    use({ 'lewis6991/impatient.nvim', commit = 'd3dd30ff0b811756e735eb9020609fa315bfbbcc' })
     use('goolord/alpha-nvim')
     use('folke/which-key.nvim')
-    --[[ use({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' }) ]]
     use('kosayoda/nvim-lightbulb')
 
     -- Convenience

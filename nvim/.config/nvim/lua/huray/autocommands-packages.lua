@@ -33,5 +33,5 @@ autocmd('BufWritePost', {
     desc = 'Reload picom when picom.conf is updated',
     group = _picom,
     pattern = '*picom.conf',
-    command = '!killall picom; picom --experimental-backends -b',
+    command = '!killall picom; picom -b',
 })

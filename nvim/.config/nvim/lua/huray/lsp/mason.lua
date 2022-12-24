@@ -16,7 +16,6 @@ local servers = {
     'gopls',
     'rust_analyzer',
     'taplo',
-    'asm_lsp',
 }
 
 local status_ok_1, mason_lspconfig = pcall(require, 'mason-lspconfig')

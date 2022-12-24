@@ -217,3 +217,11 @@ vim.api.nvim_create_autocmd({ 'CursorHold' }, {
         end
     end,
 })
+
+---------------------------------------------------------------------
+vim.cmd([[augroup terminal_background
+  autocmd!
+  autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
+  autocmd ColorScheme * highlight NonText guibg=NONE ctermbg=NONE
+augroup END
+]])
