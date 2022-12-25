@@ -1,30 +1,22 @@
 #!/bin/bash
 
-ensure-lf() {
-	if [ -f /usr/bin/lf ]; then
-		echo "lf is installed"
-	else
-		echo "installing lf"
-		sudo pacman -S lf
-	fi
-}
-
 ensure-lfrun() {
 	if [ -f /usr/bin/lfrun ]; then
-		echo "lfrun is installed"
+		echo "lfimg is installed"
 	else
-		echo "installing lfrun"
+		echo "installing lfimg"
 		git clone https://github.com/cirala/lfimg &&
 			cd lfimg &&
 			make install &&
-			cp cleaner preview to ~/.config/lf/ &&
+			mv cleaner preview ~/.config/lf/ &&
 			cd .. &&
-			rm -r lfrun
+			rm -r lfimg
 	fi
 }
 
-install-lfrun-dependencies() {
+install-lf() {
 	local deps_pacman=(
+		"lf"
 		"ueberzug"
 		"ffmpegthumbnailer"
 		"imagemagick"
@@ -43,25 +35,7 @@ install-lfrun-dependencies() {
 		# "perl-image-exiftool"
 	)
 
-	# printf "Dependencies (comment out those you don't want):
-	#    ueberzug             cli utl to preview images on X11
-	#    ffmpegthumbnailer   videos
-	#    imagemagick         .jpeg .png .bmp .svg .tiff .gif
-	#    poppler             .pdf
-	#    wkhtmltopdf         .html
-	#    bat                 text files
-	#    chafa               image preview over SSH or inside Wayland session
-	#    unzip               .zip .jar
-	#    7z                  .7z
-	#    unrar               .rar
-	#    catdoc              .doc
-	#    docx2txt            .docx
-	#    odt2txt             .odt *.ods
-	#    gnumeric            .xls .xlsx
-	#    cdrtools            info for .iso files (uses only iso-info command)
-	#    perl-image-exiftool     music files (exiftool command)\n"
-
-	# pacman -S "${deps_pacman[@]}"
+	sudo pacman -S "${deps_pacman[@]}"
 
 	local deps_aur=(
 		"epub-thumbnailer-git"
@@ -69,23 +43,9 @@ install-lfrun-dependencies() {
 		# "mcomix"
 	)
 
-	# printf "AUR dependencies (comment out those you don't want):
-	#    epub-thumbnailer-git    .epub
-	#    transmission            .torrent
-	#    mcomix                  .cbz .cbr\n"
+	yay -S "${deps_aur[@]}"
 
-	yay -S "${deps_pacman[@]}" "${deps_aur[@]}"
-}
-
-install-lf() {
-	ensure-lf
 	ensure-lfrun
-	install-lfrun-dependencies
 }
 
 install-lf
-
-unset -f install-lf
-unset -f ensure-lf
-unset -f ensure-lfrun
-unset -f install-lfrun-dependencies
