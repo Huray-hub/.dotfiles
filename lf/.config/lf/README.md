@@ -7,6 +7,13 @@ My lf config with thumbnail support
 chmod +x install.sh && ./install.sh
 ```
 
+If you do not you my lfrc file add to yours:
+```
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
+```
+
+
 ## Dependencies (some of them are commented out because I do not need them)
 
 Pacman:
