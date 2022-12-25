@@ -11,10 +11,10 @@ alt + space
   rofi -show 
 
 XF86AudioMute
-  pamixer -t
+  ~/.local/bin/toggle-sound-mute.sh
 
 XF86Audio{Raise,Lower}Volume
-  pamixer -{i,d} 7 
+  ~/.local/bin/change-volume.sh {i,d} 10
 
 XF86Audio{Play,Pause}
   playerctl play-pause
@@ -23,7 +23,7 @@ XF86Audio{Next,Prev}
   playerctl {next,previous}
 
 XF86MonBrightness{Up,Down}
-  brillo -q -{A,U} 10
+  ~/.local/bin/change-brightness.sh {A,U} 4
 
 XF86Calculator
   rofi -show calc

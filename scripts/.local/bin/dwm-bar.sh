@@ -1,29 +1,67 @@
 #!/bin/bash
 
+black=#1e222a
+# green=#7eca9c
+# white=#abb2bf
+grey=#808080
+blue=#7aa2f7
+red=#d47d85
+darkblue=#668ee3
+yellow=#E0AF68
+
 dte() {
-	dte="$(date +"%a, %b %d %R")"
-	echo "$dte"
+	local dte
+	dte=$(date +"%a, %b %d %R")
+
+	printf "^c%s^ ^b%s^  " "$black" "$darkblue"
+	printf "^c%s^^b%s^ %s " "$black" "$blue" "$dte"
 }
 
 battery() {
-	# local blue=#81A1C1
-	get_capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
-	# printf "^c$blue^   $get_capacity"
-	# printf '%s' "$get_capacity"
-	echo "$get_capacity "
+	local capacity
+	capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
+
+	printf "^c%s^  %s" "$blue" "$capacity"
 }
 
-status() {
-	battery
-	dte
+wlan() {
+	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
+	up) printf "^c%s^ ^b%s^ 󰤨 ^d^%s" "$black" "$blue" " ^c$blue^Connected" ;;
+	down) printf "^c%s^ ^b%s^ 󰤭 ^d^%s" "$black" "$blue" " ^c$blue^Disconnected" ;;
+	esac
 }
 
-# TODO: get if audio is muted
-# mute_audio() {
-#   echo "$"
+brightness() {
+	printf "^c%s^  " "$yellow"
+	printf "^c%s^%.0f\n" "$yellow" "$(brillo -G)"
+}
+
+# TODO: monitor if mic is muted
+# mic() {
+#
 # }
 
+volume() {
+	local status
+	status=$(pamixer --get-mute)
+	local volume
+	volume=$(pamixer --get-volume)
+
+	if [ "$status" == "true" ]; then
+		printf "^c%s^  %s" "$grey" "$volume"
+	else
+		if [ "$volume" -eq 0 ]; then
+			printf "^c%s^ 🔈 %s" "$red" "$volume"
+		elif [ "$volume" -le 50 ]; then
+			printf "^c%s^ 奔 %s" "$red" "$volume"
+		else
+			printf "^c%s^  %s" "$red" "$volume"
+		fi
+	fi
+
+}
+
 while true; do
-	xsetroot -name "$(status)"
+	xsetroot -name "$(volume) $(battery) $(brightness) $(wlan) $(dte)"
 	sleep 30
 done
