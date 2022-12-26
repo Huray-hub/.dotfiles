@@ -33,6 +33,7 @@ install-lf() {
 		"gnumeric"
 		# "cdrtools"
 		# "perl-image-exiftool"
+		"glow"
 	)
 
 	sudo pacman -S "${deps_pacman[@]}"

@@ -35,6 +35,7 @@ set cleaner ~/.config/lf/cleaner
 | odt2txt | .odt *.ods | pacman |
 | gnumeric | .xls .xlsx | pacman |
 | cdrtools | info for .iso files (uses only iso-info command) | pacman |
+| glow | .md | pacman |
 | perl-image-exiftool | music files (exiftool command) | pacman |
 | epub-thumbnailer-git | .epub | aur |
 | transmission | .torrent | aur |
