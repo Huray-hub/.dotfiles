@@ -40,12 +40,13 @@ return packer.startup(function(use)
     use('nvim-lua/plenary.nvim') -- Useful lua functions used ny lots of plugins
     use('kyazdani42/nvim-web-devicons')
     use('kyazdani42/nvim-tree.lua')
-    use({ 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'kyazdani42/nvim-web-devicons' })
+    -- TEMPORARY DISABLE
+    --[[ use({ 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'kyazdani42/nvim-web-devicons' }) ]]
     use('moll/vim-bbye')
     use('nvim-lualine/lualine.nvim')
     use('akinsho/toggleterm.nvim')
     use('ahmedkhalf/project.nvim')
-    use({ 'lewis6991/impatient.nvim', commit = 'd3dd30ff0b811756e735eb9020609fa315bfbbcc' })
+    use('lewis6991/impatient.nvim')
     use('goolord/alpha-nvim')
     use('folke/which-key.nvim')
     use('kosayoda/nvim-lightbulb')
@@ -54,11 +55,6 @@ return packer.startup(function(use)
     use('kylechui/nvim-surround') -- Surround text-objects with letters
     use('voldikss/vim-browser-search') -- Open Urls to Browser
     use('norcalli/nvim-colorizer.lua') -- Colors on hex codes
-    use({ -- Pass through parentheses with tabs
-        'abecodes/tabout.nvim',
-        wants = { 'nvim-treesitter' }, -- or require if not used so far
-        after = { 'nvim-cmp' }, -- if a completion plugin is using tabs load it before
-    })
     use('Shatur/neovim-session-manager') -- Session support
     use('windwp/nvim-autopairs') -- Autopairs, integrates with both cmp and treesitter
     use('numToStr/Comment.nvim') -- Easily comment stuff
@@ -68,6 +64,8 @@ return packer.startup(function(use)
     use('stevearc/dressing.nvim')
     use({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }) -- Modern looks for folding
     use({ 'kevinhwang91/nvim-bqf', ft = 'qf' })
+    use('windwp/nvim-ts-autotag')
+    use('uga-rosa/translate.nvim')
 
     -- Colorschemes
     use('marko-cerovac/material.nvim')
@@ -77,6 +75,7 @@ return packer.startup(function(use)
     use('ellisonleao/gruvbox.nvim')
     use('Mofiqul/vscode.nvim')
     use({ 'EdenEast/nightfox.nvim', tag = 'v1.0.0' })
+    use('xiyaowong/nvim-transparent')
 
     -- Cmp plugins
     use('hrsh7th/nvim-cmp') -- The completion plugin
@@ -104,7 +103,6 @@ return packer.startup(function(use)
     use('simrat39/rust-tools.nvim') -- Rust
     use('ray-x/go.nvim') -- Golang
     use('ray-x/guihua.lua') -- recommended if need floating window support
-    use('nanotee/sqls.nvim') -- SQL
 
     -- Debugging
     use('mfussenegger/nvim-dap') -- debug adapter protocol
@@ -112,6 +110,7 @@ return packer.startup(function(use)
     use('rcarriga/nvim-dap-ui')
     use('mfussenegger/nvim-dap-python')
     use('leoluz/nvim-dap-go') -- delve go debugger
+    use('mxsdev/nvim-dap-vscode-js')
 
     -- Telescope
     use('nvim-telescope/telescope.nvim')
@@ -121,11 +120,13 @@ return packer.startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
     })
+    use('nvim-treesitter/nvim-treesitter-textobjects')
     use('JoosepAlviste/nvim-ts-context-commentstring')
 
     -- Git
     use('lewis6991/gitsigns.nvim')
     use({ 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' })
+    use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
 
     -- Discord presence
     use('andweeb/presence.nvim')
@@ -135,6 +136,11 @@ return packer.startup(function(use)
 
     -- SchemaStore
     use('b0o/schemastore.nvim')
+
+    -- Database
+    use('tpope/vim-dadbod')
+    use('kristijanhusak/vim-dadbod-ui')
+    use('kristijanhusak/vim-dadbod-completion')
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

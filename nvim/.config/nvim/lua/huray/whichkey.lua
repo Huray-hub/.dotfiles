@@ -219,13 +219,13 @@ local mappings = {
     },
     ['f'] = {
         function()
-            require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({ previewer = false }))
+            my_utils.command('Telescope find_files')
         end,
         'Find files',
     },
     ['F'] = {
         function()
-            my_utils.command('Telescope live_grep theme=ivy')
+            my_utils.command('Telescope live_grep')
         end,
         'Find Text',
     },
@@ -292,9 +292,9 @@ local mappings = {
         name = 'Git',
         g = {
             function()
-                _LAZYGIT_TOGGLE()
+                my_utils.command('Neogit')
             end,
-            'Lazygit',
+            'Neogit',
         },
         j = {
             function()
@@ -363,10 +363,22 @@ local mappings = {
             'Checkout commit',
         },
         d = {
-            function()
-                my_utils.command('Gitsigns diffthis HEAD')
-            end,
-            'Diff',
+            name = 'Diffview',
+            o = {
+                function()
+                    my_utils.command('DiffviewOpen')
+                end,
+                --[[ function() ]]
+                --[[     my_utils.command('Gitsigns diffthis HEAD') ]]
+                --[[ end, ]]
+                'Open',
+            },
+            c = {
+                function()
+                    my_utils.command('DiffviewClose')
+                end,
+                'Close',
+            },
         },
     },
 
@@ -513,11 +525,11 @@ local mappings = {
             end,
             'NCDU',
         },
-        t = {
+        b = {
             function()
-                _HTOP_TOGGLE()
+                _BTOP_TOGGLE()
             end,
-            'Htop',
+            'Btop',
         },
         p = {
             function()

@@ -47,7 +47,13 @@ lightbulb.update_lightbulb({
         -- Text to provide when no actions are available
         text_unavailable = '',
     },
+    --[[ autocmd = { ]]
+        --[[ enabled = true, ]]
+        -- see :help autocmd-pattern
+        --[[ pattern = { '*' }, ]]
+        --[[ -- see :help autocmd-events ]]
+        --[[ events = { 'CursorHold', 'CursorHoldI' }, ]]
+    --[[ }, ]]
 })
 
---TODO: refactor this to lua
 vim.cmd([[autocmd CursorHold,CursorHoldI * lua require('nvim-lightbulb').update_lightbulb()]])

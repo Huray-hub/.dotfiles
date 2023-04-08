@@ -1,4 +1,3 @@
---[[ local colorscheme = 'vscode' -- greek message: πούλησα την ψυχή μου στο διάολο ]]
 local colorscheme = 'tokyonight'
 
 local my_utils = require('huray.my-utils')

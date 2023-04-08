@@ -18,12 +18,14 @@ local settings = {
             -- not supported
             analyses = {
                 unusedparams = true,
-                unreachable = false,
+                unreachable = true,
                 nilness = true,
                 shadow = true,
                 unusedwrite = true,
                 useany = true,
                 unusedvariable = true,
+                nilfunc = true,
+                lostcancel = true,
             },
             codelenses = {
                 generate = true, -- show the `go generate` lens.

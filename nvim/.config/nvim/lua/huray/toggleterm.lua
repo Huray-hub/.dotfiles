@@ -7,7 +7,7 @@ end
 
 toggleterm.setup({
     size = 20,
-    open_mapping = [[<c-\>]],
+    open_mapping = [[<C-\>]],
     hide_numbers = true,
     shade_filetypes = {},
     shade_terminals = true,
@@ -59,10 +59,10 @@ function _NCDU_TOGGLE()
     ncdu:toggle()
 end
 
-local htop = Terminal:new({ cmd = 'htop', hidden = true })
+local btop = Terminal:new({ cmd = 'btop', hidden = true })
 
-function _HTOP_TOGGLE()
-    htop:toggle()
+function _BTOP_TOGGLE()
+    btop:toggle()
 end
 
 local python = Terminal:new({ cmd = 'python', hidden = true })

@@ -9,13 +9,16 @@ local servers = {
     'pyright',
     'jsonls',
     'jdtls',
-    'sqls',
-    'sumneko_lua',
+    'lua_ls',
     'yamlls',
     'omnisharp',
     'gopls',
     'rust_analyzer',
     'taplo',
+    'svelte',
+    'tsserver',
+    'bufls',
+    'dockerls',
 }
 
 local status_ok_1, mason_lspconfig = pcall(require, 'mason-lspconfig')
@@ -31,7 +34,6 @@ local settings = {
             package_uninstalled = '◍',
         },
     },
-
     log_level = vim.log.levels.INFO,
     max_concurrent_installers = 4,
 }
@@ -65,9 +67,9 @@ for _, server in pairs(servers) do
         opts = vim.tbl_deep_extend('force', yamlls_opts, opts)
     end
 
-    if server == 'sumneko_lua' then
-        local sumneko_opts = require('huray.lsp.settings.sumneko_lua')
-        opts = vim.tbl_deep_extend('force', sumneko_opts, opts)
+    if server == 'lua_ls' then
+        local lua_ls_opts = require('huray.lsp.settings.lua_ls')
+        opts = vim.tbl_deep_extend('force', lua_ls_opts, opts)
     end
 
     if server == 'clangd' then

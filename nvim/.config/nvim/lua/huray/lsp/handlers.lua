@@ -93,7 +93,7 @@ M.enable_format_on_save = function()
         buffer = 0,
         group = _format_on_save,
         callback = function()
-            vim.lsp.buf.format({ async = true })
+            vim.lsp.buf.format()
         end,
     })
 end
@@ -120,12 +120,6 @@ M.on_attach = function(client, bufnr)
         client.server_capabilities.documentFormattingProvider = false
     end
 
-    if client.name == 'jdt.ls' then
-        require('jdtls').setup_dap({ hotcodereplace = 'auto' })
-        require('jdtls.dap').setup_dap_main_class_configs()
-        vim.lsp.codelens.refresh()
-    end
-
     lsp_options(bufnr)
     lsp_keymaps(bufnr)
 
@@ -134,10 +128,14 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-}
+
+-- TODO: this crashes yaml lsp
+if capabilities.textDocument.foldingRange then
+    capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+    }
+end
 
 local status_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not status_ok then

@@ -85,15 +85,18 @@ telescope.setup({
         },
     },
     pickers = {
-        -- Default configuration for builtin pickers goes here:
-        -- picker_name = {
-        --   picker_config_key = value,
-        --   ...
-        -- }
-        -- Now the picker_config_key will be applied every time you call this
-        -- builtin picker
         find_files = {
             hidden = true,
+            layout_config = { height = 0.7 },
+            previewer = false,
+            theme = 'dropdown',
+        },
+        live_grep = {
+            layout_config = { height = 0.6 },
+            theme = 'ivy',
+        },
+        lsp_references = {
+            layout_config = { width = 0.9 },
         },
     },
     extensions = {

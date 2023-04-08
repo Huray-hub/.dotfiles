@@ -170,25 +170,12 @@ autocmd('BufWritePost', {
 
 ---------------------------------------------------------------------
 local _sql = augroup('_sql', {})
--- TODO: check codeactions and remove this
---[[ autocmd('FileType', { ]]
---[[     desc = 'Mappings for sql files', ]]
---[[     group = _sql, ]]
---[[     pattern = 'sql', ]]
---[[     callback = function() ]]
---[[         buf_keymap('n', '<leader>a', vim.lsp.buf.code_action) ]]
---[[         buf_keymap('v', '<leader>a', vim.lsp.buf.code_action) ]]
---[[         buf_keymap('n', '<F5>', '<Plug>(sqls-execute-query)') ]]
---[[         buf_keymap('v', '<F5>', '<Plug>(sqls-execute-query)') ]]
---[[     end, ]]
---[[ }) ]]
---[[]]
 autocmd('FileType', {
     desc = 'Sql output filetype opens in vertical split',
     group = _sql,
     pattern = 'sqls_output',
     callback = function()
-        command('wincmd L')
+        command('wincmd J')
     end,
 })
 
@@ -204,7 +191,7 @@ autocmd('BufWritePost', {
 })
 
 ---------------------------------------------------------------------
-vim.api.nvim_create_autocmd({ 'CursorHold' }, {
+autocmd({ 'CursorHold' }, {
     callback = function()
         local status_ok, luasnip = pcall(require, 'luasnip')
         if not status_ok then
@@ -219,9 +206,11 @@ vim.api.nvim_create_autocmd({ 'CursorHold' }, {
 })
 
 ---------------------------------------------------------------------
-vim.cmd([[augroup terminal_background
-  autocmd!
-  autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
-  autocmd ColorScheme * highlight NonText guibg=NONE ctermbg=NONE
-augroup END
-]])
+-- color Slick
+--vim.cmd([[augroup terminal_background
+--  autocmd!
+--  autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
+--  autocmd ColorScheme * highlight NonText guibg=NONE ctermbg=NONE
+--  autocmd ColorScheme * highlight SignColumn guibg=NONE ctermbg=NONE
+--augroup END
+--]])

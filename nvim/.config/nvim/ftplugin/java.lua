@@ -29,17 +29,16 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
 local workspace_dir = WORKSPACE_PATH .. project_name
 
--- TODO: Testing
+local bundles = {}
+local mason_path = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/')
 
-local bundles = {
-    vim.fn.glob(
-        home .. '/.vscode-oss/extensions/vscjava.vscode-java-debug-*/server/com.microsoft.java.debug.plugin-*.jar'
-    ),
-}
-
+vim.list_extend(bundles, vim.split(vim.fn.glob(mason_path .. 'packages/java-test/extension/server/*.jar'), '\n'))
 vim.list_extend(
     bundles,
-    vim.split(vim.fn.glob(home .. '/.vscode-oss/extensions/vscjava.vscode-java-test-*/server/*.jar'), '\n')
+    vim.split(
+        vim.fn.glob(mason_path .. 'packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar'),
+        '\n'
+    )
 )
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
@@ -57,7 +56,7 @@ local config = {
         '-Declipse.product=org.eclipse.jdt.ls.core.product',
         '-Dlog.protocol=true',
         '-Dlog.level=ALL',
-        '-javaagent:' .. home .. '/.local/share/nvim/lsp_servers/jdtls/lombok.jar',
+        '-javaagent:' .. home .. '/.local/share/nvim/mason/packages/jdtls/lombok.jar',
         '-Xms1g',
         '--add-modules=ALL-SYSTEM',
         '--add-opens',
@@ -67,14 +66,14 @@ local config = {
 
         -- 💀
         '-jar',
-        vim.fn.glob(home .. '/.local/share/nvim/lsp_servers/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
+        vim.fn.glob(home .. '/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
         -- Must point to the                                                     Change this to
         -- eclipse.jdt.ls installation                                           the actual version
 
         -- 💀
         '-configuration',
-        home .. '/.local/share/nvim/lsp_servers/jdtls/config_' .. CONFIG,
+        home .. '/.local/share/nvim/mason/packages/jdtls/config_' .. CONFIG,
         -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
         -- Must point to the                      Change to one of `linux`, `win` or `mac`
         -- eclipse.jdt.ls installation            Depending on your system.
@@ -85,7 +84,7 @@ local config = {
         workspace_dir,
     },
 
-    on_attach = require('huray.lsp.handlers').on_attach,
+    --[[ on_attach = require('huray.lsp.handlers').on_attach, ]]
     capabilities = require('huray.lsp.handlers').capabilities,
 
     -- 💀
@@ -106,6 +105,19 @@ local config = {
             eclipse = {
                 downloadSources = true,
             },
+            configuration = {
+                updateBuildConfiguration = 'interactive',
+                --[[ runtimes = { ]]
+                --[[     { ]]
+                --[[         name = 'JavaSE-11', ]]
+                --[[         path = '~/.sdkman/candidates/java/11.0.2-open', ]]
+                --[[     }, ]]
+                --[[     { ]]
+                --[[         name = 'JavaSE-18', ]]
+                --[[         path = '~/.sdkman/candidates/java/18.0.1.1-open', ]]
+                --[[     }, ]]
+                --[[ }, ]]
+            },
             maven = {
                 downloadSources = true,
             },
@@ -120,6 +132,11 @@ local config = {
             },
             references = {
                 includeDecompiledSources = true,
+            },
+            inlayHints = {
+                parameterNames = {
+                    enabled = 'all', -- literals, all, none
+                },
             },
             format = {
                 enabled = true,
@@ -169,21 +186,36 @@ local config = {
         bundles = bundles,
     },
 }
+
+config['on_attach'] = function(client, bufnr)
+    local _, _ = pcall(vim.lsp.codelens.refresh)
+    require('jdtls.dap').setup_dap_main_class_configs()
+    require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    require('huray.lsp.handlers').on_attach(client, bufnr)
+end
+
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+    pattern = { '*.java' },
+    callback = function()
+        local _, _ = pcall(vim.lsp.codelens.refresh)
+    end,
+})
+
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
 require('jdtls').start_or_attach(config)
 
--- require('jdtls').setup_dap()
+--[[ require('jdtls').setup_dap() ]]
 
-vim.cmd(
-    "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
-)
+--[[ vim.cmd( ]]
+--[[     "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)" ]]
+--[[ ) ]]
 vim.cmd(
     "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)"
 )
 vim.cmd("command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()")
 -- vim.cmd "command! -buffer JdtJol lua require('jdtls').jol()"
-vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
+--[[ vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()") ]]
 -- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
 
 local status_ok, which_key = pcall(require, 'which-key')

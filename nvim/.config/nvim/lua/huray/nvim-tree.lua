@@ -18,15 +18,9 @@ nvim_tree.setup({
     create_in_closed_folder = false,
     disable_netrw = true,
     hijack_netrw = true,
-    open_on_setup = false,
-    ignore_ft_on_setup = {
-        'startify',
-        'dashboard',
-        'alpha',
-    },
     open_on_tab = false,
     hijack_cursor = false,
-    update_cwd = true,
+    update_cwd = false,
     diagnostics = {
         enable = true,
         icons = {
@@ -38,7 +32,7 @@ nvim_tree.setup({
     },
     update_focused_file = {
         enable = true,
-        update_cwd = true,
+        update_cwd = false,
         ignore_list = {},
     },
     git = {

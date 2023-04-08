@@ -8,7 +8,7 @@ require('go').setup({
     goimport = 'gopls', -- goimport command, can be gopls[default] or goimport
     fillstruct = 'gopls', -- can be nil (use fillstruct, slower) and gopls
     gofmt = 'gofumpt', --gofmt cmd,
-    max_line_len = 90, -- max line length in golines format, Target maximum line length for golines
+    max_line_len = 100, -- max line length in golines format, Target maximum line length for golines
     tag_transform = false, -- can be transform option("snakecase", "camelcase", etc) check gomodifytags for details and more options
     gotests_template = '', -- sets gotests -template parameter (check gotests for details)
     gotests_template_dir = '', -- sets gotests -template_dir parameter (check gotests for details)
