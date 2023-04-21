@@ -10,7 +10,7 @@ local servers = {
     'jsonls',
     'jdtls',
     'lua_ls',
-    'yamlls',
+    --[[ 'yamlls', ]]
     'omnisharp',
     'gopls',
     'rust_analyzer',
@@ -19,6 +19,7 @@ local servers = {
     'tsserver',
     'bufls',
     'dockerls',
+    'docker_compose_language_service',
 }
 
 local status_ok_1, mason_lspconfig = pcall(require, 'mason-lspconfig')
