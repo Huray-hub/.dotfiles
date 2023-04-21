@@ -3,8 +3,10 @@
 # Base16 purple-spice
 # Author: purple-spice
 
-set default-bg                  "#24283b"
-set default-fg                  "#a9b1d6"
+set default-bg                  "rgba(36,40,59,0.8)"
+# set default-bg                  "#24283B"
+# set default-fg                  "#FFFAC4"
+set default-fg                  "#A9B1D6"
 
 set statusbar-fg                "#a9b1d6"
 set statusbar-bg                "#24283b"
@@ -30,9 +32,10 @@ set completion-fg               "#a9b1d6"
 set completion-highlight-fg     "#9aa5ce"
 set completion-highlight-bg     "24283b"
 
-set recolor-lightcolor          "#1a1b26"
-set recolor-darkcolor           "#a9b1d6"
-
+# set recolor-lightcolor          "#1A1B26"
+set recolor-lightcolor          "#FFFAC4"
+set recolor-darkcolor           "#1A1B26"
+# set recolor-darkcolor           "#a9b1d6"
 set recolor                     "true"
 set recolor-keephue             "false"
 #}}}
@@ -70,6 +73,7 @@ set recolor-keephue             "false"
 # set recolor-lightcolor          "#282828"
 # set recolor-darkcolor           "#f5f5f5"
 
+set sandbox none
 set selection-clipboard clipboard
 set statusbar-h-padding 0
 set statusbar-v-padding 0

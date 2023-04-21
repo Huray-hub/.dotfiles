@@ -1,7 +1,7 @@
 #!/bin/bash
 
 black=#1e222a
-# green=#7eca9c
+green=#7eca9c
 # white=#abb2bf
 grey=#808080
 blue=#7aa2f7
@@ -24,6 +24,7 @@ battery() {
 	printf "^c%s^  %s" "$blue" "$capacity"
 }
 
+# 
 wlan() {
 	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
 	up) printf "^c%s^ ^b%s^ 󰤨 ^d^%s" "$black" "$blue" " ^c$blue^Connected" ;;
@@ -31,15 +32,32 @@ wlan() {
 	esac
 }
 
+# wlan() {
+# 	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
+# 	# up) printf "^c%s^ ^b%s^ 󰤨 ^d^" "$black" "$blue"  ;;
+# 	up) printf "^c%s^ 󰤨" "$green" ;;
+# 	down) printf "^c%s^ 󰤭" "$green" ;;
+# 	esac
+# }
+
 brightness() {
 	printf "^c%s^  " "$yellow"
 	printf "^c%s^%.0f\n" "$yellow" "$(brillo -G)"
 }
 
 # TODO: monitor if mic is muted
-# mic() {
-#
-# }
+mic() {
+	status="$(cat /sys/class/leds/hda::micmute/brightness)"
+
+	case $status in
+	0)
+		echo -e "^c$green^" "$"
+		;;
+	*)
+		echo -e "^c$grey^"
+		;;
+	esac
+}
 
 volume() {
 	local status

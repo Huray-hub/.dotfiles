@@ -1,14 +1,14 @@
 [sqlfluff]
 verbose = 0
 nocolor = False
-dialect = ansi
+dialect = postgres
 templater = jinja
 rules = None
-exclude_rules = L014, L044
+exclude_rules = L014, L044, L059
 recurse = 0
-output_line_length = 80
+output_line_length = 90
 runaway_limit = 10
-ignore_templated_areas = True
+ignore_templated_areas = False
 # Comma separated list of file extensions to lint.
 
 # NB: This config will only apply in the root folder.
@@ -34,23 +34,19 @@ dbt_is_incremental = {% macro is_incremental() %}True{% endmacro %}
 
 # Some rules can be configured directly from the config common to other rules.
 [sqlfluff:rules]
-tab_space_size = 2
-max_line_length = 80
+tab_space_size = 4
+max_line_length = 100
 indent_unit = space
-comma_style = trailing
 allow_scalar = True
 single_table_references = consistent
 unquoted_identifiers_policy = all
 
 # Some rules have their own specific config.
-[sqlfluff:rules:L003]
-lint_templated_tokens = True
-
 [sqlfluff:rules:L010]  # Keywords
 capitalisation_policy = upper
 
 [sqlfluff:rules:L014]  # Unquoted identifiers
-extended_capitalisation_policy = lower
+extended_capitalisation_policy = upper
 
 [sqlfluff:rules:L016]
 ignore_comment_lines = False
@@ -73,3 +69,20 @@ forbid_subquery_in = join
 
 [sqlfluff:rules:L047]  # Consistent syntax to count all rows
 prefer_count_1 = False
+
+[sqlfluff:rules:L063]
+extended_capitalisation_policy = upper
+
+
+[sqlfluff:layout]
+# We want non-default spacing _before_ the alias expressions.
+spacing_before = align
+# We want to align them within the next outer select clause.
+# This means for example that alias expressions within the FROM
+# or JOIN clause would _not_ be aligned with them.
+align_within = create_table
+# The point at which to stop searching outward for siblings, which
+# in this example would likely be the boundary of a CTE. Stopping
+# when we hit brackets is usually a good rule of thumb for this
+# configuration.
+# align_scope = parenthesed

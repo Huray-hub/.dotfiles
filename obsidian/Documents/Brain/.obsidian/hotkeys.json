@@ -1,6 +1,14 @@
 {
   "switcher:open": [],
-  "editor:toggle-italics": [],
+  "editor:toggle-italics": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "I"
+    }
+  ],
   "leader-hotkeys-obsidian:leader": [
     {
       "modifiers": [],

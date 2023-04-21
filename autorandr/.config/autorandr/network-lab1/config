@@ -7,31 +7,22 @@ off
 output DP-3
 off
 output DP-4
-off
-output DP-2-1
-crtc 2
-mode 2560x1440
-pos 0x0
-rate 59.95
-rotate left
-x-prop-audio auto
-x-prop-broadcast_rgb Automatic
-x-prop-max_bpc 12
-x-prop-non_desktop 0
-output DP-2-8
 crtc 0
-mode 2560x1440
-pos 1440x430
+filter bilinear
+mode 1920x1080
+pos 0x0
 primary
-rate 59.95
+rate 60.00
+transform 1.199997,0.000000,0.000000,0.000000,1.199997,0.000000,0.000000,0.000000,1.000000
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
+x-prop-colorspace Default
 x-prop-max_bpc 12
 x-prop-non_desktop 0
 output eDP-1
 crtc 1
 mode 1920x1200
-pos 1649x1870
+pos 192x1296
 rate 59.95
 x-prop-broadcast_rgb Automatic
 x-prop-colorspace Default

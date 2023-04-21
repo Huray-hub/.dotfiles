@@ -14,7 +14,7 @@ XF86AudioMute
   ~/.local/bin/toggle-sound-mute.sh
 
 XF86Audio{Raise,Lower}Volume
-  ~/.local/bin/change-volume.sh {i,d} 10
+  ~/.local/bin/change-volume.sh {i,d} 7
 
 XF86Audio{Play,Pause}
   playerctl play-pause
@@ -36,3 +36,6 @@ Print
 super + k
   ~/.local/bin/bt-toggle-headphones.sh
 
+# Lockscreen
+super + l
+   $TERMINAL -e betterlockscreen -l

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-random-multimonitor-wallpaper.sh
-
+feh --bg-fill --no-fehbg ~/Pictures/Wallpapers/nebula.jpeg
+# random-multimonitor-wallpaper.sh

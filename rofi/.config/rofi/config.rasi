@@ -1,6 +1,6 @@
 configuration {
 modi: "drun";
-font: "JetBrainsMono Nerd Font Mono 13";
+font: "JetBrainsMono Nerd Font Mono 14";
 /*  font: "mono 13";*/
 /*	location: 0;*/
 /*	yoffset: 0;*/
@@ -167,6 +167,9 @@ kb-row-down: "Control+j,Down";
 
 window {
   width: 20%;
+  border: 3px;
+  border-color: #AAAAAA;
+  border-radius: 10px;
 }
 
 element {
@@ -185,7 +188,7 @@ element-text {
 }
 
 element-icon {
-  size: 30;
+  size: 37;
 }
 
 entry {

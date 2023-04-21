@@ -1,8 +1,9 @@
 {
   "baseFontSize": 17,
   "translucency": false,
-  "cssTheme": "Clair de Lune",
+  "cssTheme": "Tokyo Night",
   "accentColor": "",
   "showViewHeader": false,
-  "enabledCssSnippets": []
+  "enabledCssSnippets": [],
+  "baseFontSizeAction": true
 }

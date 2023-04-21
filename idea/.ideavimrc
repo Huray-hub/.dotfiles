@@ -65,7 +65,9 @@ nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
 nnoremap <C-\> :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>/ :action CommentByLineComment<CR>
+vnoremap <leader>/ :action CommentByBlockComment<CR>
 nnoremap <leader>f :action GotoFile<CR>
+nnoremap <leader>F :action FindInPath<CR>
 "nnoremap <leader>a :action GotoAction<CR>
 "nnoremap <leader>a :action Refactorings.QuickListPopupAction<CR>
 nnoremap <leader>a :action ShowIntentionActions<CR>
@@ -74,6 +76,7 @@ nnoremap <Leader>c :action CloseContent<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>b :action ToggleLineBreakpoint<CR>
 nnoremap <leader>e :action ActivateProjectToolWindow<CR>
+nnoremap <leader>pi :action PinActiveEditorTab<CR>
 
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
@@ -94,7 +97,6 @@ vnoremap > >gv
 "sethandler <c-j> a:vim
 "sethandler <c-k> a:vim
 
-"nnoremap <c-/> <Action> FindInPath<CR>
 "nnoremap <leader>s <Action> GotoRelated<CR>
 "nnoremap <leader>h <Action> CallHierarchy<CR>
 "nnoremap <leader>b <Action> ShowNavBar<CR>

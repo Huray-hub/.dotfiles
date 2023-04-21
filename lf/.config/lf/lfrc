@@ -116,5 +116,6 @@ map gl cd ~/.local
 map gs cd ~/.local/bin
 map g. cd ~/.dotfiles
 map ge cd ~/Mega/E-books
+map gj cd ~/Repos/Sycada
 map g/ cd /
 map gt cd /run/media/panos/T7/
