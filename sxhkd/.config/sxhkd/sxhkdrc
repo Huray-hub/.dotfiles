@@ -13,8 +13,9 @@ alt + space
 XF86AudioMute
   ~/.local/bin/toggle-sound-mute.sh
 
+# ~/.local/bin/change-volume.sh {i,d} 7
 XF86Audio{Raise,Lower}Volume
-  ~/.local/bin/change-volume.sh {i,d} 7
+  ~/.local/bin/change-volume.sh 7%{+,-}
 
 XF86Audio{Play,Pause}
   playerctl play-pause
@@ -39,3 +40,7 @@ super + k
 # Lockscreen
 super + l
    $TERMINAL -e betterlockscreen -l
+
+# Toggle Microphone Mute
+super + shift + m
+    ~/.local/bin/toggle-microphone-mute.sh

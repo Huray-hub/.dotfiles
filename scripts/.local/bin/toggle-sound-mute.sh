@@ -1,7 +1,7 @@
 #!/bin/bash
 
 toggle_sound_mute() {
-	pamixer -t
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 	~/.local/bin/dwm-bar-refresh.sh
 }

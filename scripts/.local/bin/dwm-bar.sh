@@ -45,32 +45,32 @@ brightness() {
 	printf "^c%s^%.0f\n" "$yellow" "$(brillo -G)"
 }
 
-# TODO: monitor if mic is muted
 mic() {
-	status="$(cat /sys/class/leds/hda::micmute/brightness)"
+	local status
+	status="$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"
+	local volume
+	volume=$(printf "%.0f" "$(echo "${status:8:4} * 100" | bc)")
 
-	case $status in
-	0)
-		echo -e "^c$green^" "$"
-		;;
-	*)
-		echo -e "^c$grey^"
-		;;
-	esac
+	if [[ $status =~ "MUTED" ]]; then
+		printf "^c%s^  %s" "$green" "$volume"
+	else
+		printf "^c%s^  %s" "$green" "$volume"
+	fi
 }
 
 volume() {
 	local status
-	status=$(pamixer --get-mute)
+	status=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 	local volume
-	volume=$(pamixer --get-volume)
+	volume=$(printf "%.0f" "$(echo "${status:8:4} * 100" | bc)")
 
-	if [ "$status" == "true" ]; then
+	if [[ $status =~ "MUTED" ]]; then
 		printf "^c%s^  %s" "$grey" "$volume"
+		# printf "^c%s^ 🔇 %s" "$red" "$volume"
 	else
-		if [ "$volume" -eq 0 ]; then
+		if ((volume == 0)); then
 			printf "^c%s^ 🔈 %s" "$red" "$volume"
-		elif [ "$volume" -le 50 ]; then
+		elif ((volume < 51)); then
 			printf "^c%s^ 奔 %s" "$red" "$volume"
 		else
 			printf "^c%s^  %s" "$red" "$volume"
@@ -80,6 +80,6 @@ volume() {
 }
 
 while true; do
-	xsetroot -name "$(volume) $(battery) $(brightness) $(wlan) $(dte)"
+	xsetroot -name "$(volume) $(mic) $(battery) $(brightness) $(wlan) $(dte)"
 	sleep 30
 done
