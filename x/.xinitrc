@@ -46,7 +46,7 @@ setxkbmap -option caps:escape
 setxkbmap us,gr -option grp:win_space_toggle
 
 # ~/.local/bin/random-multimonitor-wallpaper.sh
-feh --bg-fill --no-fehbg ~/Pictures/Wallpapers/lattern-rain.jpg
+feh --bg-fill --no-fehbg ~/Pictures/Wallpapers/cat-mochiata.png
 ~/.local/bin/dwm-bar.sh &
 
 exec dwm

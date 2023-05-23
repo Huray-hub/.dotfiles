@@ -15,6 +15,7 @@ export PATH=${GRADLE_HOME}/bin:$PATH
 export SXHKD_SHELL="/usr/bin/sh"
 # export MANPATH="/usr/share/man"
 
+source  "$ZDOTDIR/zsh-private"
 # lf icons
 export LF_ICONS="\
 tw=:\

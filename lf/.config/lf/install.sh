@@ -21,7 +21,6 @@ install-lf() {
 		"ffmpegthumbnailer"
 		"imagemagick"
 		"poppler"
-		"wkhtmltopdf"
 		"bat"
 		# "chafa"
 		"unzip"
@@ -40,6 +39,7 @@ install-lf() {
 
 	local deps_aur=(
 		"epub-thumbnailer-git"
+		"wkhtmltopdf"
 		# "transmission"   # not worth it except you want the torrent client as well
 		# "mcomix"
 	)
