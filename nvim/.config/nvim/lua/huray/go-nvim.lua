@@ -1,5 +1,6 @@
 local path = require('mason-core.path')
 local install_root_dir = path.concat({ vim.fn.stdpath('data'), 'mason' })
+local icons = require('huray.icons')
 
 require('go').setup({
     disable_defaults = false, -- true|false when true set false to all boolean settings and replace all table
@@ -14,9 +15,6 @@ require('go').setup({
     gotests_template_dir = '', -- sets gotests -template_dir parameter (check gotests for details)
     comment_placeholder = '', -- comment_placeholder your cool placeholder e.g. ﳑ       
     icons = false,
-    --[[ { breakpoint = '', currentpos = '🏃' }, -- setup to `false` to disable icons setup ]]
-    --[[ 🧘 ]]
-    --[[  ]]
     verbose = false, -- output loginf in messages
     lsp_cfg = true, -- true: use non-default gopls setup specified in go/lsp.lua
     -- false: do nothing
@@ -35,10 +33,11 @@ require('go').setup({
     lsp_diag_hdlr = true, -- hook lsp diag handler
     lsp_diag_underline = true,
     -- virtual text setup
-    lsp_diag_virtual_text = { space = 0, prefix = '' },
+    lsp_diag_virtual_text = { space = 0, prefix = icons.ui.CircleDot },
+
     lsp_diag_signs = true,
-    lsp_diag_update_in_insert = false,
-    lsp_document_formatting = true,
+    lsp_diag_update_in_insert = true,
+    lsp_document_formatting = false,
     -- set to true: use gopls to format
     -- false if you want to use other formatter tool(e.g. efm, nulls)
     lsp_inlay_hints = {
@@ -55,7 +54,7 @@ require('go').setup({
         -- default: false
         show_variable_name = true,
         -- prefix for parameter hints
-        parameter_hints_prefix = ' ',
+        parameter_hints_prefix = icons.ui.Function .. ' ',
         show_parameter_hints = true,
         -- prefix for all the other hints (type, chaining)
         other_hints_prefix = '=> ',
@@ -87,22 +86,7 @@ require('go').setup({
     run_in_floaterm = false, -- set to true to run in float window. :GoTermClose closes the floatterm
     -- float term recommend if you use richgo/ginkgo with terminal color
 
-    trouble = false, -- true: use trouble to open quickfix
+    trouble = true, -- true: use trouble to open quickfix
     test_efm = false, -- errorfomat for quickfix, default mix mode, set to true will be efm only
     luasnip = false, -- enable included luasnip snippets. you can also disable while add lua/snips folder to luasnip load
-    --  Do not enable this if you already added the path, that will duplicate the entries
 })
-
---[[ local mason_registry = require('mason-registry') ]]
---[[]]
---[[ local server_available, requested_server = mason_registry.get_package('gopls') ]]
---[[ if server_available then ]]
---[[     requested_server:on_ready(function() ]]
---[[         local opts = require('go.lsp').config() -- config() return the go.nvim gopls setup ]]
---[[         requested_server:setup(opts) ]]
---[[     end) ]]
---[[     if not requested_server:is_installed() then ]]
---[[         -- Queue the server to be installed ]]
---[[         requested_server:install() ]]
---[[     end ]]
---[[ end ]]

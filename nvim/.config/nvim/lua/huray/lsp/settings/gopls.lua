@@ -1,5 +1,8 @@
+local util = require('lspconfig/util')
+
 local settings = {
     filetypes = { 'go', 'gomod', 'gohtmltmpl', 'gotexttmpl' },
+    root_dir = util.root_pattern('go.work', 'go.mod', '.git'),
     message_level = vim.lsp.protocol.MessageType.Error,
     cmd = {
         'gopls', -- share the gopls instance if there is one already
@@ -38,8 +41,8 @@ local settings = {
             staticcheck = true,
             matcher = 'fuzzy',
             diagnosticsDelay = '500ms',
-            symbolMatcher = 'fuzzy',
-            symbolStyle = 'Dynamic', --Dynamic, Full, Package
+            symbolMatcher = 'FastFuzzy',
+            symbolStyle = 'Dynamic', -- Dynamic, Full, Package
             gofumpt = true, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
             buildFlags = { '-tags', 'integration' },
             expandWorkspaceToModule = true,

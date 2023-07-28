@@ -4,7 +4,6 @@ local my_utils = require('huray.my-utils')
 local augroup = my_utils.augroup
 local autocmd = my_utils.autocmd
 local command = my_utils.command
-local set_global_option = my_utils.set_global_option
 local set_option = my_utils.set_option
 local buf_keymap = my_utils.buf_keymap
 
@@ -120,7 +119,7 @@ autocmd('FileType', {
     pattern = 'markdown',
     callback = function()
         set_option('wrap', true, { scope = 'local' })
-        set_option('spell', true, { scope = 'local' })
+        --[[ set_option('spell', true, { scope = 'local' }) ]]
     end,
 })
 
@@ -131,29 +130,6 @@ autocmd('VimResized', {
     group = _auto_resize,
     callback = function()
         command('tabdo wincmd =')
-    end,
-})
-
----------------------------------------------------------------------
-local _alpha = augroup('_alpha', {})
-autocmd('User', {
-    desc = 'Hide tabs in alpha page',
-    pattern = 'AlphaReady',
-    group = _alpha,
-    callback = function()
-        set_global_option('showtabline', 0)
-    end,
-})
-
--- this is a bad workaround because I don't know how
--- to trigger it only when alpha menu is on
-autocmd('BufUnload', {
-    desc = 'Show tabs when leaving alpha page',
-    group = _alpha,
-    callback = function()
-        if vim.bo.filetype == 'alpha' then
-            set_global_option('showtabline', 2)
-        end
     end,
 })
 
@@ -191,6 +167,21 @@ autocmd('BufWritePost', {
 })
 
 ---------------------------------------------------------------------
+local _launchjs_json = augroup('_launchjs_json', {})
+autocmd('BufWritePost', {
+    desc = 'Reload debug settings on launch.json save',
+    group = _launchjs_json,
+    pattern = 'launch.json',
+    command = 'lua require("dap.ext.vscode").load_launchjs()',
+})
+
+autocmd('DirChanged', {
+    desc = 'Reload debug settings on dir change',
+    group = _launchjs_json,
+    command= 'lua require("dap.ext.vscode").load_launchjs()'
+})
+
+---------------------------------------------------------------------
 autocmd({ 'CursorHold' }, {
     callback = function()
         local status_ok, luasnip = pcall(require, 'luasnip')
@@ -205,12 +196,14 @@ autocmd({ 'CursorHold' }, {
     end,
 })
 
----------------------------------------------------------------------
--- color Slick
---vim.cmd([[augroup terminal_background
---  autocmd!
---  autocmd ColorScheme * highlight Normal guibg=NONE ctermbg=NONE
---  autocmd ColorScheme * highlight NonText guibg=NONE ctermbg=NONE
---  autocmd ColorScheme * highlight SignColumn guibg=NONE ctermbg=NONE
---augroup END
---]])
+----------------------------------------------------------------------
+local _format_sync_go_grp = vim.api.nvim_create_augroup('GoImport', {})
+autocmd('BufWritePre', {
+    desc = 'Run gofmt + goimport on save',
+    pattern = '*.go',
+    callback = function()
+        command('GoFmt')
+        --[[ require('go.format').goimport() ]]
+    end,
+    group = _format_sync_go_grp,
+})

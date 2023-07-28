@@ -3,6 +3,8 @@ if not status_ok then
     return
 end
 
+local icons = require('huray.icons')
+
 vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile' }
 vim.g.indent_blankline_filetype_exclude = {
     'help',
@@ -15,7 +17,7 @@ vim.g.indent_blankline_filetype_exclude = {
 }
 vim.g.indentLine_enabled = 1
 -- vim.g.indent_blankline_char = "│"
-vim.g.indent_blankline_char = '▏'
+vim.g.indent_blankline_char = icons.ui.LineLeft
 -- vim.g.indent_blankline_char = "▎"
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 vim.g.indent_blankline_show_first_indent_level = true
@@ -61,6 +63,11 @@ indent_blankline.setup({
     -- show_end_of_line = true,
     -- space_char_blankline = " ",
     show_current_context = true,
+    filetype_exclude = {
+        'help',
+        'markdown',
+    },
+    use_treesitter = false,
     -- show_current_context_start = true,
     -- char_highlight_list = {
     --   "IndentBlanklineIndent1",

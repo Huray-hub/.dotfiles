@@ -6,10 +6,16 @@ end
 
 local icons = require('huray.icons')
 
+vim.api.nvim_set_hl(0, 'red', { ctermbg = 0, fg = '#993939', bg = '' })
+vim.api.nvim_set_hl(0, 'blue', { ctermbg = 0, fg = '#61afef', bg = '' })
+vim.api.nvim_set_hl(0, 'green', { ctermbg = 0, fg = '#98c379', bg = '' })
+vim.api.nvim_set_hl(0, 'orange', { fg = '#f09000' })
+
 dap.defaults.fallback.terminal_win_cmd = '80vsplit new'
-vim.fn.sign_define('DapBreakpoint', { text = icons.ui.Bug, texthl = '', linehl = '', numhl = '' })
-vim.fn.sign_define('DapBreakpointRejected', { text = icons.ui.Bug, texthl = '', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = '', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpoint', { text = icons.ui.Circle, texthl = 'red', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointCondition', { text = icons.ui.Circle, texthl = 'orange', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointRejected', { text = icons.ui.Circle, texthl = 'blue', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = icons.ui.BoldArrowRight, texthl = 'green', linehl = '', numhl = '' })
 
 local home = os.getenv('HOME')
 local mason_path = vim.fn.glob(vim.fn.stdpath('data') .. '/mason/packages/')
@@ -167,7 +173,6 @@ for _, language in ipairs({ 'typescript, javascript' }) do
         },
     }
 end
-
 
 -- TODO: on startup, look for this directory in the project to load launch profiles
 --

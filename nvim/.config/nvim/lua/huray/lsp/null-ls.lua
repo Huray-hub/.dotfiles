@@ -43,9 +43,10 @@ null_ls.setup({
         --[[ }), ]]
         --[[ formatting.gofumpt, ]]
         --[[ formatting.goimports, ]]
-        formatting.golines.with({
-            args = { '--max-len', '100' },
-        }),
+        --[[ formatting.golines.with({ ]]
+        --[[     args = { '--max-len', '100' }, ]]
+        --[[ }), ]]
+        formatting.buf,
         --[[ diagnostics.golangci_lint.with({ ]]
         --[[     args = { 'run', ]]
         --[[         '--fix=false', ]]
@@ -59,6 +60,8 @@ null_ls.setup({
         diagnostics.flake8,
         diagnostics.shellcheck,
         diagnostics.zsh,
+        --[[ diagnostics.protolint, ]]
+        --[[ diagnostics.buf, ]]
         --[[ diagnostics.sqlfluff, ]]
         --[[ diagnostics.staticcheck.with({ ]]
         --[[     args = { "-f", "json" , "./..." } ]]

@@ -40,14 +40,11 @@ return packer.startup(function(use)
     use('nvim-lua/plenary.nvim') -- Useful lua functions used ny lots of plugins
     use('kyazdani42/nvim-web-devicons')
     use('kyazdani42/nvim-tree.lua')
-    -- TEMPORARY DISABLE
-    --[[ use({ 'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'kyazdani42/nvim-web-devicons' }) ]]
     use('moll/vim-bbye')
     use('nvim-lualine/lualine.nvim')
     use('akinsho/toggleterm.nvim')
     use('ahmedkhalf/project.nvim')
     use('lewis6991/impatient.nvim')
-    use('goolord/alpha-nvim')
     use('folke/which-key.nvim')
     use('kosayoda/nvim-lightbulb')
 
@@ -63,17 +60,19 @@ return packer.startup(function(use)
     use('filipdutescu/renamer.nvim')
     use('stevearc/dressing.nvim')
     use({ 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }) -- Modern looks for folding
-    use({ 'kevinhwang91/nvim-bqf', ft = 'qf' })
+    --[[ use({ 'kevinhwang91/nvim-bqf', ft = 'qf' }) ]]
     use('windwp/nvim-ts-autotag')
     use('uga-rosa/translate.nvim')
-
+    use('b0o/incline.nvim')
+    use({ 'folke/trouble.nvim', requires = 'nvim-tree/nvim-web-devicons' })
+    use({
+        'lukas-reineke/headlines.nvim',
+        after = 'nvim-treesitter',
+    })
     -- Colorschemes
-    use('marko-cerovac/material.nvim')
     use('folke/tokyonight.nvim')
-    use('lunarvim/darkplus.nvim')
     use('Mofiqul/dracula.nvim')
     use('ellisonleao/gruvbox.nvim')
-    use('Mofiqul/vscode.nvim')
     use({ 'EdenEast/nightfox.nvim', tag = 'v1.0.0' })
     use('xiyaowong/nvim-transparent')
 
@@ -97,7 +96,6 @@ return packer.startup(function(use)
     use('tamago324/nlsp-settings.nvim') -- language server settings defined in json for
     use('jose-elias-alvarez/null-ls.nvim') -- for formatters and linters
     use('ray-x/lsp_signature.nvim')
-
     -- Programming languages
     use('mfussenegger/nvim-jdtls') -- Java
     use('simrat39/rust-tools.nvim') -- Rust
@@ -112,6 +110,37 @@ return packer.startup(function(use)
     use('leoluz/nvim-dap-go') -- delve go debugger
     use('mxsdev/nvim-dap-vscode-js')
 
+    -- Testing
+    use({
+        'nvim-neotest/neotest',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-treesitter/nvim-treesitter',
+            'antoinemadec/FixCursorHold.nvim',
+            'nvim-neotest/neotest-go',
+            -- Your other test adapters here
+        },
+        config = function()
+            -- get neotest namespace (api call creates or returns namespace)
+            local neotest_ns = vim.api.nvim_create_namespace('neotest')
+            vim.diagnostic.config({
+                virtual_text = {
+                    format = function(diagnostic)
+                        local message =
+                            diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
+                        return message
+                    end,
+                },
+            }, neotest_ns)
+            require('neotest').setup({
+                -- your neotest config here
+                adapters = {
+                    require('neotest-go'),
+                },
+            })
+        end,
+    })
+
     -- Telescope
     use('nvim-telescope/telescope.nvim')
 
@@ -125,7 +154,7 @@ return packer.startup(function(use)
 
     -- Git
     use('lewis6991/gitsigns.nvim')
-    use({ 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' })
+    use({ 'NeogitOrg/neogit', requires = 'nvim-lua/plenary.nvim' })
     use({ 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' })
 
     -- Discord presence

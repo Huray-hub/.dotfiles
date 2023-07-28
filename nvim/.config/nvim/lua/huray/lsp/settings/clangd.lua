@@ -15,6 +15,14 @@ local opts = {
         '--pch-storage=memory',
         -- '--enable-config',
     },
+    filetypes = {
+        'c',
+        'cpp',
+        'objc',
+        'objcpp',
+        'cuda',
+        --[[ 'proto', ]]
+    },
 }
 
 return opts

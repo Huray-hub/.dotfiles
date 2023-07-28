@@ -5,10 +5,10 @@ local M = {}
 M.setup = function()
     local icons = require('huray.icons')
     local signs = {
-        { name = 'DiagnosticSignError', text = icons.diagnostics.Error },
-        { name = 'DiagnosticSignWarn', text = icons.diagnostics.Warning },
-        { name = 'DiagnosticSignHint', text = icons.diagnostics.Hint },
-        { name = 'DiagnosticSignInfo', text = icons.diagnostics.Information },
+        { name = 'DiagnosticSignError', text = icons.diagnostics.BoldError },
+        { name = 'DiagnosticSignWarn', text = icons.diagnostics.BoldWarning },
+        { name = 'DiagnosticSignHint', text = icons.diagnostics.BoldHint },
+        { name = 'DiagnosticSignInfo', text = icons.diagnostics.BoldInformation },
     }
 
     for _, sign in ipairs(signs) do
@@ -16,7 +16,9 @@ M.setup = function()
     end
 
     local config = {
-        virtual_text = false,
+        virtual_text = {
+            prefix = icons.ui.CircleDot,
+        },
         signs = {
             active = signs,
         },
@@ -27,7 +29,7 @@ M.setup = function()
             focusable = false,
             style = 'minimal',
             border = 'rounded',
-            source = 'if_many', -- or "always"
+            source = 'if_many', -- "if_many" or "always"
             header = '',
             prefix = '',
         },
@@ -73,7 +75,9 @@ local function lsp_keymaps(bufnr)
     buf_keymap('n', ']d', function()
         vim.diagnostic.goto_next({ border = 'rounded' })
     end)
-    buf_keymap('n', '<leader>q', vim.diagnostic.setqflist) -- setloclist for buffer only
+    buf_keymap('n', '<leader>q', function()
+        my_utils.command('TroubleToggle quickfix')
+    end) -- setloclist for buffer only
     buf_keymap('n', '<leader>a', vim.lsp.buf.code_action)
     buf_keymap('v', '<leader>a', vim.lsp.buf.code_action)
 

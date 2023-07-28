@@ -6,7 +6,7 @@ local autocmd = my_utils.autocmd
 
 local _Xresources = augroup('_Xresources', {})
 autocmd('BufWritePost', {
-    desc = 'Run xrdb whenever Xresources are updated',
+    desc = 'Run xrdb on Xresources save',
     group = _Xresources,
     pattern = '*Xresources',
     command = '!xrdb %',
@@ -14,7 +14,7 @@ autocmd('BufWritePost', {
 
 local _sxhkd = augroup('_sxhkd', {})
 autocmd('BufWritePost', {
-    desc = 'Update binds when sxhkdrc is updated',
+    desc = 'Update binds on sxhkdrc save',
     group = _sxhkd,
     pattern = '*sxhkdrc',
     command = '!killall sxhkd; setsid sxhkd &',
@@ -22,7 +22,7 @@ autocmd('BufWritePost', {
 
 local _dunst = augroup('_dunst', {})
 autocmd('BufWritePost', {
-    desc = 'Reload dunst when dunstrc is updated',
+    desc = 'Reload dunst on dunstrc save',
     group = _dunst,
     pattern = '*dunstrc',
     command = '!killall dunst; dunst &',
@@ -30,7 +30,7 @@ autocmd('BufWritePost', {
 
 local _picom = augroup('_picom', {})
 autocmd('BufWritePost', {
-    desc = 'Reload picom when picom.conf is updated',
+    desc = 'Reload picom on picom.conf save',
     group = _picom,
     pattern = '*picom.conf',
     command = '!killall picom; picom -b',

@@ -78,13 +78,9 @@ local opts = {
     nowait = true, -- use `nowait` when creating keymaps
 }
 local my_utils = require('huray.my-utils')
+local note_taking = require('huray.note-taking')
+local dap = require('dap')
 local mappings = {
-    ['m'] = {
-        function()
-            my_utils.command('Alpha')
-        end,
-        'Alpha',
-    },
     ['t'] = {
         function()
             require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({ previewer = false }))
@@ -93,13 +89,13 @@ local mappings = {
     },
     ['b'] = {
         function()
-            require('dap').toggle_breakpoint()
+            dap.toggle_breakpoint()
         end,
         'Toggle breakpoint',
     },
     ['B'] = {
         function()
-            require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
+            dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
         end,
         'Toggle conditional breakpoint',
     },
@@ -107,7 +103,7 @@ local mappings = {
         name = 'Debugging',
         b = {
             function()
-                require('dap').toggle_breakpoint()
+                dap.toggle_breakpoint()
             end,
             'Breakpoint',
         },
@@ -115,7 +111,7 @@ local mappings = {
         r = { "<cmd>lua require'dap'.repl.toggle({}, 'vsplit')<cr><C-W>l", 'Repl' },
         l = {
             function()
-                require('dap').run_last()
+                dap.run_last()
             end,
             'Exit',
         },
@@ -127,37 +123,37 @@ local mappings = {
         },
         c = {
             function()
-                require('dap').run_to_cursor()
+                dap.run_to_cursor()
             end,
             'Run to cursor',
         },
         C = {
             function()
-                require('dap').clear_breakpoints()
+                dap.clear_breakpoints()
             end,
             'Clear breakpoints',
         },
         k = {
             function()
-                require('dap').up()
+                dap.up()
             end,
             'Move arrow up',
         },
         j = {
             function()
-                require('dap').down()
+                dap.down()
             end,
             'Move arrow down',
         },
         L = {
             function()
-                require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+                dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
             end,
             'breakpoint log message',
         },
         e = {
             function()
-                require('dap').set_exception_breakpoints({ 'all' })
+                dap.set_exception_breakpoints({ 'all' })
             end,
             'exception breakpoint',
         },
@@ -253,39 +249,9 @@ local mappings = {
         end,
         'Quit',
     },
-
-    p = {
-        name = 'Packer',
-        c = {
-            function()
-                my_utils.command('PackerCompile')
-            end,
-            'Compile',
-        },
-        i = {
-            function()
-                my_utils.command('PackerInstall')
-            end,
-            'Install',
-        },
-        s = {
-            function()
-                my_utils.command('PackerSync')
-            end,
-            'Sync',
-        },
-        S = {
-            function()
-                my_utils.command('PackerStatus')
-            end,
-            'Status',
-        },
-        u = {
-            function()
-                my_utils.command('PackerUpdate')
-            end,
-            'Update',
-        },
+    ['o'] = {
+        note_taking.toggle_org,
+        'Org',
     },
 
     g = {
@@ -368,9 +334,6 @@ local mappings = {
                 function()
                     my_utils.command('DiffviewOpen')
                 end,
-                --[[ function() ]]
-                --[[     my_utils.command('Gitsigns diffthis HEAD') ]]
-                --[[ end, ]]
                 'Open',
             },
             c = {
@@ -434,7 +397,8 @@ local mappings = {
         },
         q = {
             function()
-                vim.diagnostic.setloclist()
+                my_utils.command('TroubleToggle quickfix')
+                --[[ vim.diagnostic.setloclist() ]]
             end,
             'Quickfix',
         },

@@ -16,7 +16,10 @@ configs.setup({
     autopairs = {
         enable = true,
     },
-    indent = { enable = true, disable = { 'yaml', 'css' } },
+    indent = {
+        enable = true,
+        disable = { 'yaml', 'css' },
+    },
     context_commentstring = {
         enable = true,
         ensure_installed = false,

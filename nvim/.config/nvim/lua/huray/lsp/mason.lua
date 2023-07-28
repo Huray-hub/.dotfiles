@@ -11,13 +11,12 @@ local servers = {
     'jdtls',
     'lua_ls',
     --[[ 'yamlls', ]]
-    'omnisharp',
     'gopls',
     'rust_analyzer',
     'taplo',
     'svelte',
     'tsserver',
-    'bufls',
+    --[[ 'bufls', ]]
     'dockerls',
     'docker_compose_language_service',
 }
@@ -86,6 +85,11 @@ for _, server in pairs(servers) do
     if server == 'gopls' then
         local gopls_opts = require('huray.lsp.settings.gopls')
         opts = vim.tbl_deep_extend('force', gopls_opts, opts)
+    end
+
+    if server == 'bufls' then
+        local bufls_opts = require('huray.lsp.settings.bufls')
+        opts = vim.tbl_deep_extend('force', bufls_opts, opts)
     end
 
     if server == 'jdtls' then

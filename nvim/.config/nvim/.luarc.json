@@ -3,5 +3,11 @@
     "Lua.diagnostics.globals": [
         "vim",
         "_"
+    ],
+    "workspace.library": [
+        "/home/panos/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/2379200e"
+    ],
+    "diagnostics.disable": [
+        "lowercase-global"
     ]
 }

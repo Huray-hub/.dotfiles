@@ -9,7 +9,7 @@ vim.opt.ignorecase = true -- ignore case in search patterns
 vim.opt.mouse = 'a' -- allow the mouse to be used in neovim
 vim.opt.pumheight = 10 -- pop up menu height
 vim.opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 2 -- always show tabs
+vim.opt.showtabline = 0 -- always show tabs
 vim.opt.smartcase = true -- smart case
 vim.opt.smartindent = true -- make indenting smarter again
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
@@ -35,12 +35,13 @@ vim.opt.langmap =
     'ΑAΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR,ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz,'
 vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 --[[ vim.opt.foldmethod = 'expr' ]]
---[[ vim.opt.foldexpr = 'nvim_treesitter#foldexpr()' ]]
+--[[ vim.opt.foldexpr = 'nvim_tree'sitter#foldexpr()' ]]
 vim.opt.foldcolumn = '0' -- '0' is not bad
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 --[[ vim.opt.spell = true ]]
 vim.opt.laststatus = 3
+
 vim.opt.shortmess:append('c')
 vim.opt.whichwrap:append('<', '>', '[', ']', 'h', 'l')
 vim.opt.iskeyword:append('-')
