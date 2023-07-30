@@ -156,17 +156,6 @@ autocmd('FileType', {
 })
 
 ---------------------------------------------------------------------
-local _packer_user_config = augroup('_packer_user_config', {})
-autocmd('BufWritePost', {
-    desc = 'Reload neovim whenever you save the plugins.lua file',
-    group = _packer_user_config,
-    pattern = 'plugins.lua',
-    callback = function()
-        command('source <afile> | PackerSync')
-    end,
-})
-
----------------------------------------------------------------------
 local _launchjs_json = augroup('_launchjs_json', {})
 autocmd('BufWritePost', {
     desc = 'Reload debug settings on launch.json save',
@@ -178,7 +167,7 @@ autocmd('BufWritePost', {
 autocmd('DirChanged', {
     desc = 'Reload debug settings on dir change',
     group = _launchjs_json,
-    command= 'lua require("dap.ext.vscode").load_launchjs()'
+    command = 'lua require("dap.ext.vscode").load_launchjs()',
 })
 
 ---------------------------------------------------------------------
@@ -203,7 +192,6 @@ autocmd('BufWritePre', {
     pattern = '*.go',
     callback = function()
         command('GoFmt')
-        --[[ require('go.format').goimport() ]]
     end,
     group = _format_sync_go_grp,
 })
