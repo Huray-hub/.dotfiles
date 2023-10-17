@@ -9,6 +9,14 @@ set shell zsh
 set previewer ~/.config/lf/preview
 set cleaner ~/.config/lf/cleaner
 
+push ''
+
+cmd on-quit ${{
+    marks=$HOME/.local/share/lf/marks
+    sed -i "/^'/d" "$marks"
+    echo "':$PWD" >> "$marks"
+}}
+
 # Custom Functions
 cmd mkdir ${{
   printf "Directory Name: "
@@ -82,8 +90,8 @@ cmd restore_trash ${{
 map m
 map o
 map n
-map "'"
-map '"'
+# map "'"
+# map '"'
 map d
 
 # Basic Functions
@@ -103,20 +111,22 @@ map dd trash
 map dr restore_trash
 
 # Movement
+map g. cd ~/.dotfiles
+map g/ cd /
+map ga cd ~/Audio
+map gc cd ~/.config
+map gC cd ~/Mega/College/Courses
 map gd cd ~/Documents
 map gD cd ~/Downloads
-map gp cd ~/Pictures
-map gw cd ~/Pictures/Wallpapers
-map gc cd ~/.config
-map gm cd ~/Mega
-map gC cd ~/Mega/College/Courses
-map gr cd ~/Repos
-map gv cd ~/Videos
-map gl cd ~/.local
-map gs cd ~/.local/bin
-map g. cd ~/.dotfiles
 map ge cd ~/Mega/E-books
 map gj cd ~/Repos/Sycada
 map gJ cd ~/Documents/Sycada
-map g/ cd /
-map gt cd /run/media/panos/T7/
+map gl cd ~/.local
+map gm cd ~/Mega
+map gp cd ~/Pictures
+map gr cd ~/Repos
+map gs cd ~/.local/bin
+map gt cd ~/Mega/College/Courses/Algorithms_and_Complexity # This is a temporary shortcut that changes frequently (t for "temporary")
+map gT cd /run/media/panos/T7/
+map gv cd ~/Videos
+map gw cd ~/Pictures/Wallpapers
